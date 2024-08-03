@@ -21,61 +21,60 @@ import org.centrifugo.models.requests.user_block.UnblockUserRequest;
 import org.centrifugo.models.requests.user_status.DeleteUserStatusRequest;
 import org.centrifugo.models.requests.user_status.GetUserStatusRequest;
 import org.centrifugo.models.requests.user_status.UpdateUserStatusRequest;
+import org.centrifugo.models.responses.ResponseModel;
 
 import java.util.List;
 
 public interface CentrifugoCommand {
 
+    // TODO:
+    //  - add documentation
+    //  - change response to current type, e.g. StandardResponse<PublishResult>
+    //  - clear model class
+
     // Publication commands
 
-    void publish(final PublishRequest<?> request);
+    ResponseModel publish(final PublishRequest<?> request);
+    ResponseModel publish(final String data, final String channel);
 
-    void publish(final String data, final String channel);
-
-    void broadcast(final BroadcastRequest<?> request);
-
-    void broadcast(final String data, final List<String> channels);
+    ResponseModel broadcast(final BroadcastRequest<?> request);
+    ResponseModel broadcast(final String data, final List<String> channels);
 
     // Connection management commands
 
-    void disconnect(final DisconnectRequest request);
-
-    void disconnect(final String user);
+    ResponseModel disconnect(final DisconnectRequest request);
+    ResponseModel disconnect(final String user);
 
     void refresh(final RefreshRequest request);
-
     void refresh(final String user);
 
-    void subscribe(final SubscribeRequest request);
+    ResponseModel subscribe(final SubscribeRequest request);
+    ResponseModel subscribe(final String user, final String channel);
 
-    void subscribe(final String user, final String channel);
-
-    void unsubscribe(final UnsubscribeRequest request);
-
-    void unsubscribe(final String user, final String channel);
+    ResponseModel unsubscribe(final UnsubscribeRequest request);
+    ResponseModel unsubscribe(final String user, final String channel);
 
 
     // History commands
 
     void history(final HistoryRequest request);
-
-    void history(final Integer offset, final String epoch, final Integer limit, final Boolean reverse, final String channel);
+    void history(final String channel);
 
     void historyRemove(final HistoryRemoveRequest request);
-
     void historyRemove(final String channel);
 
     // Presence commands
 
-    void presence(final PresenceRequest request) ;
+    void presence(final PresenceRequest request);
+    void presence(final String channel);
+
     void presenceStats(final PresenceStatsRequest request);
-    void presence(final String channel) ;
     void presenceStats(final String channel);
 
     // Stats status commands
 
-    void channels(final ChannelsRequest request) ;
-    void channels(final String patter) ;
+    void channels(final ChannelsRequest request);
+    void channels(final String patter);
 
     void connections(final ConnectionsRequest request);
     void connections(final String user, final String expression);
@@ -102,6 +101,7 @@ public interface CentrifugoCommand {
     void revokeToken(final RevokeTokenRequest request);
 
     // Push notification commands
+
     void cancelPush(final CancelPushRequest request);
     void deviceList(final DeviceListRequest request);
     void deviceRegister(final DeviceRegisterRequest request);
@@ -115,8 +115,6 @@ public interface CentrifugoCommand {
     void userTopicUpdate(final UserTopicUpdateRequest request);
 
     // Batch notification commands
+
     void batch(final BatchRequest request);
-
-
-
 }

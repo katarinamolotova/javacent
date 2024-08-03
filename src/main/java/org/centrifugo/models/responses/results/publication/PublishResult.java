@@ -1,13 +1,13 @@
-package org.centrifugo.models.requests;
+package org.centrifugo.models.responses.results.publication;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.util.Objects;
 
 /**
- * StreamPosition
+ * PublishResult
  */
-public class StreamPosition {
+public class PublishResult {
 
   
   @JsonProperty("offset")
@@ -16,13 +16,8 @@ public class StreamPosition {
   
   @JsonProperty("epoch")
   private String epoch = null;
-
-  public StreamPosition(final Integer offset, final String epoch) {
-    this.offset = offset;
-    this.epoch = epoch;
-  }
-
-  public StreamPosition offset(final Integer offset) {
+  
+  public PublishResult offset(Integer offset) {
     this.offset = offset;
     return this;
   }
@@ -39,7 +34,7 @@ public class StreamPosition {
     this.offset = offset;
   }
   
-  public StreamPosition epoch(String epoch) {
+  public PublishResult epoch(String epoch) {
     this.epoch = epoch;
     return this;
   }
@@ -64,9 +59,9 @@ public class StreamPosition {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    StreamPosition streamPosition = (StreamPosition) o;
-    return Objects.equals(this.offset, streamPosition.offset) &&
-        Objects.equals(this.epoch, streamPosition.epoch);
+    PublishResult publishResult = (PublishResult) o;
+    return Objects.equals(this.offset, publishResult.offset) &&
+        Objects.equals(this.epoch, publishResult.epoch);
   }
 
   @Override
@@ -77,7 +72,7 @@ public class StreamPosition {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class StreamPosition {\n");
+    sb.append("class PublishResult {\n");
     
     sb.append("    offset: ").append(toIndentedString(offset)).append("\n");
     sb.append("    epoch: ").append(toIndentedString(epoch)).append("\n");

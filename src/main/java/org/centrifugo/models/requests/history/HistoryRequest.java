@@ -1,7 +1,6 @@
 package org.centrifugo.models.requests.history;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import org.centrifugo.models.requests.StreamPosition;
 import org.centrifugo.models.requests.RequestModel;
 
 import java.util.Objects;
