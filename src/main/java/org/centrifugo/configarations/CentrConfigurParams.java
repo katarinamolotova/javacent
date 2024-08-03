@@ -28,20 +28,20 @@ public class CentrConfigurParams {
         this.centrifugoApiUrl = getApiUrl();
     }
 
-    private String getApiKey() {
+    private static String getApiKey() {
         System.out.println();
         return loadProperties()
                 .getProperty(CENTRIFUGO_API_KEY, CENTRIFUGO_DEFAULT_API_KEY)
                 .toLowerCase();
     }
 
-    private String getApiUrl() {
+    private static String getApiUrl() {
         return loadProperties()
                 .getProperty(CENTRIFUGO_API_URL, CENTRIFUGO_DEFAULT_API_URL)
                 .toLowerCase();
     }
 
-    private Properties loadProperties() {
+    private static Properties loadProperties() {
         try {
             final Properties properties = new Properties();
             final String filePath = ClassLoader.getSystemResource(PROPERTIES).getFile();
