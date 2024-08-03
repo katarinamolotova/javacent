@@ -31,8 +31,9 @@ public class ConnectionsRequest implements RequestModel {
   public String getUser() {
     return user;
   }
-  public void setUser(String user) {
+  public ConnectionsRequest setUser(String user) {
     this.user = user;
+    return this;
   }
   
   public ConnectionsRequest expression(String expression) {
@@ -48,8 +49,9 @@ public class ConnectionsRequest implements RequestModel {
   public String getExpression() {
     return expression;
   }
-  public void setExpression(String expression) {
+  public ConnectionsRequest setExpression(String expression) {
     this.expression = expression;
+    return this;
   }
   
   @Override

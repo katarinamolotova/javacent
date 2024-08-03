@@ -27,8 +27,9 @@ public class PresenceRequest implements RequestModel {
   public String getChannel() {
     return channel;
   }
-  public void setChannel(String channel) {
+  public PresenceRequest setChannel(String channel) {
     this.channel = channel;
+    return this;
   }
   
   @Override
