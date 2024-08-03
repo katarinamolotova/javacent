@@ -3,18 +3,14 @@ package org.centrifugo.constants;
 public class CentrifugoApiUrl {
     public final static String PUBLISH = "/api/publish";
     public final static String BROADCAST = "/api/broadcast";
-
     public final static String DISCONNECT = "/api/disconnect";
     public final static String REFRESH = "/api/refresh";
     public final static String SUBSCRIBE = "/api/subscribe";
     public final static String UNSUBSCRIBE = "/api/unsubscribe";
-
     public final static String HISTORY = "/api/history";
     public final static String HISTORY_REMOVE = "/api/history_remove";
-
     public final static String PRESENCE = "/api/presence";
     public final static String PRESENCE_STATS = "/api/presence_stats";
-
     public final static String CHANNELS = "/api/channels";
     public final static String CONNECTIONS = "/api/connections";
     public final static String INFO = "/api/info";
