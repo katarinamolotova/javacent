@@ -27,8 +27,9 @@ public class ChannelsRequest implements RequestModel {
   public String getPattern() {
     return pattern;
   }
-  public void setPattern(String pattern) {
+  public ChannelsRequest setPattern(String pattern) {
     this.pattern = pattern;
+    return this;
   }
   
   @Override
