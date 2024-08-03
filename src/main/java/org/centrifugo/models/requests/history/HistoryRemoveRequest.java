@@ -27,8 +27,9 @@ public class HistoryRemoveRequest implements RequestModel {
   public String getChannel() {
     return channel;
   }
-  public void setChannel(String channel) {
+  public HistoryRemoveRequest setChannel(String channel) {
     this.channel = channel;
+    return this;
   }
   
   @Override

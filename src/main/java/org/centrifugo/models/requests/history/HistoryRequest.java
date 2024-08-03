@@ -39,8 +39,9 @@ public class HistoryRequest implements RequestModel {
   public String getChannel() {
     return channel;
   }
-  public void setChannel(String channel) {
+  public HistoryRequest setChannel(String channel) {
     this.channel = channel;
+    return this;
   }
   
   public HistoryRequest limit(Integer limit) {
@@ -56,8 +57,9 @@ public class HistoryRequest implements RequestModel {
   public Integer getLimit() {
     return limit;
   }
-  public void setLimit(Integer limit) {
+  public HistoryRequest setLimit(Integer limit) {
     this.limit = limit;
+    return this;
   }
   
   public HistoryRequest since(StreamPosition since) {
@@ -73,8 +75,9 @@ public class HistoryRequest implements RequestModel {
   public StreamPosition getSince() {
     return since;
   }
-  public void setSince(StreamPosition since) {
+  public HistoryRequest setSince(StreamPosition since) {
     this.since = since;
+    return this;
   }
   
   public HistoryRequest reverse(Boolean reverse) {
@@ -90,8 +93,9 @@ public class HistoryRequest implements RequestModel {
   public Boolean isReverse() {
     return reverse;
   }
-  public void setReverse(Boolean reverse) {
+  public HistoryRequest setReverse(Boolean reverse) {
     this.reverse = reverse;
+    return this;
   }
   
   @Override

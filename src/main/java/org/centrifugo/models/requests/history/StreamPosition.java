@@ -16,8 +16,13 @@ public class StreamPosition {
   
   @JsonProperty("epoch")
   private String epoch = null;
-  
-  public StreamPosition offset(Integer offset) {
+
+  public StreamPosition(final Integer offset, final String epoch) {
+    this.offset = offset;
+    this.epoch = epoch;
+  }
+
+  public StreamPosition offset(final Integer offset) {
     this.offset = offset;
     return this;
   }

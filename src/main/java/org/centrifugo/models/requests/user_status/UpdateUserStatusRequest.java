@@ -42,8 +42,9 @@ public class UpdateUserStatusRequest implements RequestModel {
   public List<String> getUsers() {
     return users;
   }
-  public void setUsers(List<String> users) {
+  public UpdateUserStatusRequest setUsers(List<String> users) {
     this.users = users;
+    return this;
   }
   
   public UpdateUserStatusRequest state(String state) {
@@ -59,8 +60,9 @@ public class UpdateUserStatusRequest implements RequestModel {
   public String getState() {
     return state;
   }
-  public void setState(String state) {
+  public UpdateUserStatusRequest setState(String state) {
     this.state = state;
+    return this;
   }
   
   @Override
