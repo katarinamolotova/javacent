@@ -1,7 +1,5 @@
 package org.centrifugo.configarations;
 
-import lombok.AllArgsConstructor;
-
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.Properties;
