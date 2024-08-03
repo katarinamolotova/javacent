@@ -11,6 +11,13 @@ public class CentrConfigurParams {
     private static final String CENTRIFUGO_DEFAULT_API_URL = "localhost:8000";
     private static final String CENTRIFUGO_DEFAULT_API_KEY = "centrifugo";
 
+    private final String centrifugoApiKey;
+    private final String centrifugoApiUrl;
+
+    public CentrConfigurParams() {
+        this.centrifugoApiKey = getApiKey();
+        this.centrifugoApiUrl = getApiUrl();
+    }
 
     public String getCentrifugoApiKey() {
         return centrifugoApiKey;
@@ -18,14 +25,6 @@ public class CentrConfigurParams {
 
     public String getCentrifugoApiUrl() {
         return centrifugoApiUrl;
-    }
-
-    private final String centrifugoApiKey;
-    private final String centrifugoApiUrl;
-
-    public CentrConfigurParams() {
-        this.centrifugoApiKey = getApiKey();
-        this.centrifugoApiUrl = getApiUrl();
     }
 
     private static String getApiKey() {
