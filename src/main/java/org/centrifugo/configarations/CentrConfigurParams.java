@@ -5,7 +5,7 @@ import java.io.IOException;
 import java.util.Properties;
 
 public class CentrConfigurParams {
-    private static final String PROPERTIES = "configurations.properties";
+    private static final String PROPERTIES = "centrifugo.properties";
     private static final String CENTRIFUGO_API_KEY = "centrifugo.api.key";
     private static final String CENTRIFUGO_API_URL = "centrifugo.api.url";
     private static final String CENTRIFUGO_DEFAULT_API_URL = "localhost:8000";
