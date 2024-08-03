@@ -6,7 +6,6 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.Properties;
 
-@AllArgsConstructor
 public class CentrConfigurParams {
     private static final String PROPERTIES = "configurations.properties";
     private static final String CENTRIFUGO_API_KEY = "centrifugo.api.key";
