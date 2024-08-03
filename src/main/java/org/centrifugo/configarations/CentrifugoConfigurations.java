@@ -38,7 +38,7 @@ public class CentrifugoConfigurations {
 
     private static String getApiUrl() {
         return loadProperties()
-                .getProperty(API_URL, "localhost")
+                .getProperty(API_URL, "localhost:8000")
                 .toLowerCase();
     }
 
