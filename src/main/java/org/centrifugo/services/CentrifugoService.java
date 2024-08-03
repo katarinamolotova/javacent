@@ -11,8 +11,8 @@ import org.apache.http.impl.client.HttpClients;
 import org.centrifugo.configarations.CentrConfigurParams;
 import org.centrifugo.constants.CentrifugoApiUrl;
 import org.centrifugo.exceptions.CentrifugoException;
+import org.centrifugo.models.requests.EmptyRequest;
 import org.centrifugo.models.requests.RequestModel;
-import org.centrifugo.models.requests.StreamPosition;
 import org.centrifugo.models.requests.batch.BatchRequest;
 import org.centrifugo.models.requests.connection_management.DisconnectRequest;
 import org.centrifugo.models.requests.connection_management.RefreshRequest;
@@ -36,8 +36,21 @@ import org.centrifugo.models.requests.user_status.GetUserStatusRequest;
 import org.centrifugo.models.requests.user_status.UpdateUserStatusRequest;
 import org.centrifugo.models.responses.ResponseModel;
 import org.centrifugo.models.responses.StandardResponse;
+import org.centrifugo.models.responses.results.batch.BatchResponse;
+import org.centrifugo.models.responses.results.history.HistoryResult;
+import org.centrifugo.models.responses.results.presence.PresenceResult;
+import org.centrifugo.models.responses.results.presence.PresenceStatsResult;
 import org.centrifugo.models.responses.results.publication.BroadcastResult;
 import org.centrifugo.models.responses.results.publication.PublishResult;
+import org.centrifugo.models.responses.results.push_notification.device_list.DeviceListResult;
+import org.centrifugo.models.responses.results.push_notification.device_register.DeviceRegisterResult;
+import org.centrifugo.models.responses.results.push_notification.device_topic_list.DeviceTopicListResult;
+import org.centrifugo.models.responses.results.push_notification.send_publish_notification.SendPushNotificationResult;
+import org.centrifugo.models.responses.results.push_notification.user_topic_list.UserTopicListResult;
+import org.centrifugo.models.responses.results.stats.channels.ChannelsResult;
+import org.centrifugo.models.responses.results.stats.connections.ConnectionsResult;
+import org.centrifugo.models.responses.results.stats.info.InfoResult;
+import org.centrifugo.models.responses.results.user_status.GetUserStatusResult;
 
 import java.io.IOException;
 import java.util.List;
@@ -128,28 +141,20 @@ public class CentrifugoService implements CentrifugoCommand {
     @Override
     public void history(final HistoryRequest request) {
         final HttpPost httpPost = getHttpPost(request, CentrifugoApiUrl.HISTORY);
-        sendToCentrifugo(httpPost);
+        final StandardResponse<HistoryResult> response = new StandardResponse<>();
+        sendToCentrifugo(httpPost, response.getClass());
     }
 
     @Override
-    public void history(
-            final Integer offset,
-            final String epoch,
-            final Integer limit,
-            final Boolean reverse,
-            final String channel
-    ) {
+    public void history(final String channel) {
         final HistoryRequest request = new HistoryRequest();
-        history(request.setLimit(limit)
-                .setChannel(channel)
-                .setReverse(reverse)
-                .setSince(new StreamPosition(offset, epoch)));
+        history(request.setChannel(channel));
     }
 
     @Override
     public void historyRemove(final HistoryRemoveRequest request) {
         final HttpPost httpPost = getHttpPost(request, CentrifugoApiUrl.HISTORY_REMOVE);
-        sendToCentrifugo(httpPost);
+        sendToCentrifugo(httpPost, StandardResponse.class);
     }
 
     @Override
@@ -161,7 +166,8 @@ public class CentrifugoService implements CentrifugoCommand {
     @Override
     public void presence(final PresenceRequest request) {
         final HttpPost httpPost = getHttpPost(request, CentrifugoApiUrl.PRESENCE);
-        sendToCentrifugo(httpPost);
+        final StandardResponse<PresenceResult> response = new StandardResponse<>();
+        sendToCentrifugo(httpPost, response.getClass());
     }
     @Override
     public void presence(final String channel) {
@@ -172,7 +178,8 @@ public class CentrifugoService implements CentrifugoCommand {
     @Override
     public void presenceStats(final PresenceStatsRequest request) {
         final HttpPost httpPost = getHttpPost(request, CentrifugoApiUrl.PRESENCE_STATS);
-        sendToCentrifugo(httpPost);
+        final StandardResponse<PresenceStatsResult> response = new StandardResponse<>();
+        sendToCentrifugo(httpPost, response.getClass());
     }
 
     @Override
@@ -184,7 +191,8 @@ public class CentrifugoService implements CentrifugoCommand {
     @Override
     public void channels(final ChannelsRequest request) {
         final HttpPost httpPost = getHttpPost(request, CentrifugoApiUrl.CHANNELS);
-        sendToCentrifugo(httpPost);
+        final StandardResponse<ChannelsResult> response = new StandardResponse<>();
+        sendToCentrifugo(httpPost, response.getClass());
     }
 
     @Override
@@ -196,7 +204,8 @@ public class CentrifugoService implements CentrifugoCommand {
     @Override
     public void connections(final ConnectionsRequest request) {
         final HttpPost httpPost = getHttpPost(request, CentrifugoApiUrl.CONNECTIONS);
-        sendToCentrifugo(httpPost);
+        final StandardResponse<ConnectionsResult> response = new StandardResponse<>();
+        sendToCentrifugo(httpPost, response.getClass());
     }
 
     @Override
@@ -204,17 +213,18 @@ public class CentrifugoService implements CentrifugoCommand {
         final ConnectionsRequest request = new ConnectionsRequest();
         connections(request.setUser(user).setExpression(expression));
     }
-    //TODO исправить на нужную
+
     @Override
     public void info() {
-        final HttpPost httpPost = getHttpPost(null, CentrifugoApiUrl.INFO);
-        sendToCentrifugo(httpPost);
+        final HttpPost httpPost = getHttpPost(new EmptyRequest(), CentrifugoApiUrl.INFO);
+        final StandardResponse<InfoResult> response = new StandardResponse<>();
+        sendToCentrifugo(httpPost, response.getClass());
     }
 
     @Override
     public void deleteUserStatus(final DeleteUserStatusRequest request) {
         final HttpPost httpPost = getHttpPost(request, CentrifugoApiUrl.DELETE_USER_STATUS);
-        sendToCentrifugo(httpPost);
+        sendToCentrifugo(httpPost, StandardResponse.class);
     }
 
     @Override
@@ -226,7 +236,8 @@ public class CentrifugoService implements CentrifugoCommand {
     @Override
     public void getUserStatus(final GetUserStatusRequest request) {
         final HttpPost httpPost = getHttpPost(request, CentrifugoApiUrl.GET_USER_STATUS);
-        sendToCentrifugo(httpPost);
+        final StandardResponse<GetUserStatusResult> response = new StandardResponse<>();
+        sendToCentrifugo(httpPost, response.getClass());
     }
 
     @Override
@@ -238,7 +249,7 @@ public class CentrifugoService implements CentrifugoCommand {
     @Override
     public void updateUserStatus(final UpdateUserStatusRequest request) {
         final HttpPost httpPost = getHttpPost(request, CentrifugoApiUrl.UPDATE_USER_STATUS);
-        sendToCentrifugo(httpPost);
+        sendToCentrifugo(httpPost, StandardResponse.class);
     }
 
     @Override
@@ -251,97 +262,102 @@ public class CentrifugoService implements CentrifugoCommand {
     @Override
     public void blockUser(final BlockUserRequest request) {
         final HttpPost httpPost = getHttpPost(request, CentrifugoApiUrl.BLOCK_USER);
-        sendToCentrifugo(httpPost);
+        sendToCentrifugo(httpPost, StandardResponse.class);
     }
 
     @Override
     public void unblockUser(final UnblockUserRequest request) {
         final HttpPost httpPost = getHttpPost(request, CentrifugoApiUrl.UNBLOCK_USER);
-        sendToCentrifugo(httpPost);
+        sendToCentrifugo(httpPost, StandardResponse.class);
     }
 
     @Override
     public void invalidateUserTokens(final InvalidateUserTokensRequest request) {
         final HttpPost httpPost = getHttpPost(request, CentrifugoApiUrl.INVALIDATE_USER_TOKENS);
-        sendToCentrifugo(httpPost);
+        sendToCentrifugo(httpPost, StandardResponse.class);
     }
 
     @Override
     public void revokeToken(final RevokeTokenRequest request) {
         final HttpPost httpPost = getHttpPost(request, CentrifugoApiUrl.REVOKE_TOKEN);
-        sendToCentrifugo(httpPost);
+        sendToCentrifugo(httpPost, StandardResponse.class);
     }
 
     @Override
     public void cancelPush(final CancelPushRequest request) {
         final HttpPost httpPost = getHttpPost(request, CentrifugoApiUrl.CANCEL_PUSH);
-        sendToCentrifugo(httpPost);
+        sendToCentrifugo(httpPost, StandardResponse.class);
     }
 
     @Override
     public void deviceList(final DeviceListRequest request) {
         final HttpPost httpPost = getHttpPost(request, CentrifugoApiUrl.DEVICE_LIST);
-        sendToCentrifugo(httpPost);
+        final StandardResponse<DeviceListResult> response = new StandardResponse<>();
+        sendToCentrifugo(httpPost, response.getClass());
     }
 
     @Override
     public void deviceRegister(final DeviceRegisterRequest request) {
         final HttpPost httpPost = getHttpPost(request, CentrifugoApiUrl.DEVICE_REGISTER);
-        sendToCentrifugo(httpPost);
+        final StandardResponse<DeviceRegisterResult> response = new StandardResponse<>();
+        sendToCentrifugo(httpPost, response.getClass());
     }
 
     @Override
     public void deviceRemove(final DeviceRemoveRequest request) {
         final HttpPost httpPost = getHttpPost(request, CentrifugoApiUrl.DEVICE_REMOVE);
-        sendToCentrifugo(httpPost);
+        sendToCentrifugo(httpPost, StandardResponse.class);
     }
 
     @Override
     public void deviceTopicList(final DeviceTopicListRequest request) {
         final HttpPost httpPost = getHttpPost(request, CentrifugoApiUrl.DEVICE_TOPIC_LIST);
-        sendToCentrifugo(httpPost);
+        final StandardResponse<DeviceTopicListResult> response = new StandardResponse<>();
+        sendToCentrifugo(httpPost, response.getClass());
     }
 
     @Override
     public void deviceTopicUpdate(final DeviceTopicUpdateRequest request) {
         final HttpPost httpPost = getHttpPost(request, CentrifugoApiUrl.DEVICE_TOPIC_UPDATE);
-        sendToCentrifugo(httpPost);
+        sendToCentrifugo(httpPost, StandardResponse.class);
     }
 
     @Override
     public void deviceUpdate(final DeviceUpdateRequest request) {
         final HttpPost httpPost = getHttpPost(request, CentrifugoApiUrl.DEVICE_UPDATE);
-        sendToCentrifugo(httpPost);
+        sendToCentrifugo(httpPost, StandardResponse.class);
     }
 
     @Override
     public void sendPushNotification(final SendPushNotificationRequest request) {
         final HttpPost httpPost = getHttpPost(request, CentrifugoApiUrl.SEND_PUSH_NOTIFICATION);
-        sendToCentrifugo(httpPost);
+        final StandardResponse<SendPushNotificationResult> response = new StandardResponse<>();
+        sendToCentrifugo(httpPost, response.getClass());
     }
 
     @Override
     public void updatePushStatus(final UpdatePushStatusRequest request) {
         final HttpPost httpPost = getHttpPost(request, CentrifugoApiUrl.UPDATE_PUSH_STATUS);
-        sendToCentrifugo(httpPost);
+        sendToCentrifugo(httpPost, StandardResponse.class);
     }
 
     @Override
     public void userTopicList(final UserTopicListRequest request) {
         final HttpPost httpPost = getHttpPost(request, CentrifugoApiUrl.USER_TOPIC_LIST);
-        sendToCentrifugo(httpPost);
+        final StandardResponse<UserTopicListResult> response = new StandardResponse<>();
+        sendToCentrifugo(httpPost, response.getClass());
     }
 
     @Override
     public void userTopicUpdate(final UserTopicUpdateRequest request) {
         final HttpPost httpPost = getHttpPost(request, CentrifugoApiUrl.USER_TOPIC_UPDATE);
-        sendToCentrifugo(httpPost);
+        sendToCentrifugo(httpPost, StandardResponse.class);
     }
 
     @Override
     public void batch(final BatchRequest request) {
         final HttpPost httpPost = getHttpPost(request, CentrifugoApiUrl.BATCH);
-        sendToCentrifugo(httpPost);
+        sendToCentrifugo(httpPost, BatchResponse.class);
     }
 
     private HttpPost getHttpPost(final RequestModel request, final String url) {

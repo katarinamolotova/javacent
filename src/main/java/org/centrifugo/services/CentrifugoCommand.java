@@ -27,6 +27,11 @@ import java.util.List;
 
 public interface CentrifugoCommand {
 
+    // TODO:
+    //  - add documentation
+    //  - change response to current type, e.g. StandardResponse<PublishResult>
+    //  - clear model class
+
     // Publication commands
 
     ResponseModel publish(final PublishRequest<?> request);
@@ -53,7 +58,7 @@ public interface CentrifugoCommand {
     // History commands
 
     void history(final HistoryRequest request);
-    void history(final Integer offset, final String epoch, final Integer limit, final Boolean reverse, final String channel);
+    void history(final String channel);
 
     void historyRemove(final HistoryRemoveRequest request);
     void historyRemove(final String channel);
