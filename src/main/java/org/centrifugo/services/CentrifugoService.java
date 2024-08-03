@@ -8,12 +8,12 @@ import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 import org.centrifugo.constants.CentrifugoApiUrl;
 import org.centrifugo.models.requests.RequestModel;
-import org.centrifugo.models.requests.connection_management.DisconnectModel;
-import org.centrifugo.models.requests.connection_management.RefreshModel;
-import org.centrifugo.models.requests.connection_management.SubscribeModel;
-import org.centrifugo.models.requests.connection_management.UnsubscribeModel;
-import org.centrifugo.models.requests.publication.BroadcastModel;
-import org.centrifugo.models.requests.publication.PublishModel;
+import org.centrifugo.models.requests.connection_management.DisconnectRequest;
+import org.centrifugo.models.requests.connection_management.RefreshRequest;
+import org.centrifugo.models.requests.connection_management.SubscribeRequest;
+import org.centrifugo.models.requests.connection_management.UnsubscribeRequest;
+import org.centrifugo.models.requests.publication.BroadcastRequest;
+import org.centrifugo.models.requests.publication.PublishRequest;
 
 import java.io.IOException;
 import java.util.List;
@@ -24,59 +24,83 @@ public class CentrifugoService implements CentrifugoCommand {
     private final String CENTRIFUGO_URL = "localhost"; // todo: config?
 
     @Override
-    public void publish(final PublishModel<?> model) {
-        final HttpPost httpPost = getHttpPost(model, CentrifugoApiUrl.PUBLISH);
+    public void publish(final PublishRequest<?> request) {
+        final HttpPost httpPost = getHttpPost(request, CentrifugoApiUrl.PUBLISH);
         sendToCentrifugo(httpPost);
     }
 
     @Override
     public void publish(final String data, final String channel) {
-        final PublishModel<String> dataModel = new PublishModel<>(data, channel);
-        publish(dataModel);
+        final PublishRequest<String> request = new PublishRequest<>();
+        publish(request.channel(channel).data(data));
     }
 
     @Override
-    public void broadcast(final BroadcastModel<?> model) {
-        final HttpPost httpPost = getHttpPost(model, CentrifugoApiUrl.BROADCAST);
+    public void broadcast(final BroadcastRequest<?> request) {
+        final HttpPost httpPost = getHttpPost(request, CentrifugoApiUrl.BROADCAST);
         sendToCentrifugo(httpPost);
     }
 
     @Override
     public void broadcast(final String data, final List<String> channels) {
-        final BroadcastModel<String> dataModel = new BroadcastModel<>(data, channels);
-        broadcast(dataModel);
+        final BroadcastRequest<String> request = new BroadcastRequest<>();
+        broadcast(request.data(data).channels(channels));
     }
 
     @Override
-    public void disconnect(final DisconnectModel model) {
-        final HttpPost httpPost = getHttpPost(model, CentrifugoApiUrl.DISCONNECT);
+    public void disconnect(final DisconnectRequest request) {
+        final HttpPost httpPost = getHttpPost(request, CentrifugoApiUrl.DISCONNECT);
         sendToCentrifugo(httpPost);
     }
 
     @Override
-    public void refresh(final RefreshModel model) {
-        final HttpPost httpPost = getHttpPost(model, CentrifugoApiUrl.REFRESH);
+    public void disconnect(final String user) {
+        final DisconnectRequest request = new DisconnectRequest();
+        disconnect(request.user(user));
+    }
+
+    @Override
+    public void refresh(final RefreshRequest request) {
+        final HttpPost httpPost = getHttpPost(request, CentrifugoApiUrl.REFRESH);
         sendToCentrifugo(httpPost);
     }
 
     @Override
-    public void subscribe(final SubscribeModel model) {
-        final HttpPost httpPost = getHttpPost(model, CentrifugoApiUrl.SUBSCRIBE);
+    public void refresh(final String user) {
+        final RefreshRequest request = new RefreshRequest();
+        refresh(request.user(user));
+    }
+
+    @Override
+    public void subscribe(final SubscribeRequest request) {
+        final HttpPost httpPost = getHttpPost(request, CentrifugoApiUrl.SUBSCRIBE);
         sendToCentrifugo(httpPost);
     }
 
     @Override
-    public void unsubscribe(final UnsubscribeModel model) {
-        final HttpPost httpPost = getHttpPost(model, CentrifugoApiUrl.UNSUBSCRIBE);
+    public void subscribe(final String user, final String channel) {
+        final SubscribeRequest request = new SubscribeRequest();
+        subscribe(request.user(user).channel(channel));
+    }
+
+    @Override
+    public void unsubscribe(final UnsubscribeRequest request) {
+        final HttpPost httpPost = getHttpPost(request, CentrifugoApiUrl.UNSUBSCRIBE);
         sendToCentrifugo(httpPost);
     }
 
-    private HttpPost getHttpPost(final RequestModel model, final String url)  {
+    @Override
+    public void unsubscribe(final String user, final String channel) {
+        final UnsubscribeRequest request = new UnsubscribeRequest();
+        unsubscribe(request.user(user).channel(channel));
+    }
+
+    private HttpPost getHttpPost(final RequestModel request, final String url)  {
         final HttpPost httpPost = new HttpPost(CENTRIFUGO_URL + url);
 
         try {
             final ObjectMapper objectMapper = new ObjectMapper();
-            final String json = objectMapper.writeValueAsString(model);
+            final String json = objectMapper.writeValueAsString(request);
             final StringEntity entity = new StringEntity(json);
             httpPost.setEntity(entity);
             httpPost.setHeader("X-API-Key", CENTRIFUGO_API_KEY);

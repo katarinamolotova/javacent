@@ -10,6 +10,6 @@ import org.centrifugo.models.requests.RequestModel;
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
-public abstract class DataModelAbstract<T> implements RequestModel {
+public abstract class DataRequestAbstract<T> implements RequestModel {
     private T data;
 }
