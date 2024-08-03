@@ -1,7 +1,7 @@
 package org.centrifugo.models.responses.results.publication;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import org.centrifugo.models.responses.ResponseAbstract;
+import org.centrifugo.models.responses.StandardResponse;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,14 +14,14 @@ public class BroadcastResult {
 
   
   @JsonProperty("responses")
-  private List<ResponseAbstract<PublishResult>> responses = null;
+  private List<StandardResponse<PublishResult>> responses = null;
   
-  public BroadcastResult responses(List<ResponseAbstract<PublishResult>> responses) {
+  public BroadcastResult responses(List<StandardResponse<PublishResult>> responses) {
     this.responses = responses;
     return this;
   }
 
-  public BroadcastResult addResponsesItem(ResponseAbstract<PublishResult> responsesItem) {
+  public BroadcastResult addResponsesItem(StandardResponse<PublishResult> responsesItem) {
     
     if (this.responses == null) {
       this.responses = new ArrayList<>();
@@ -35,10 +35,10 @@ public class BroadcastResult {
   * Get responses
   * @return responses
   **/
-  public List<ResponseAbstract<PublishResult>> getResponses() {
+  public List<StandardResponse<PublishResult>> getResponses() {
     return responses;
   }
-  public void setResponses(List<ResponseAbstract<PublishResult>> responses) {
+  public void setResponses(List<StandardResponse<PublishResult>> responses) {
     this.responses = responses;
   }
   

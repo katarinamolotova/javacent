@@ -4,7 +4,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.util.Objects;
 
-public abstract class ResponseAbstract<T> implements ResponseModel {
+public class StandardResponse<T> implements ResponseModel {
     @JsonProperty("error")
     private Error error = null;
 
@@ -12,7 +12,7 @@ public abstract class ResponseAbstract<T> implements ResponseModel {
     @JsonProperty("result")
     private T result = null;
 
-    public ResponseAbstract<T> error(Error error) {
+    public StandardResponse<T> error(Error error) {
         this.error = error;
         return this;
     }
@@ -29,7 +29,7 @@ public abstract class ResponseAbstract<T> implements ResponseModel {
         this.error = error;
     }
 
-    public ResponseAbstract<T> result(T result) {
+    public StandardResponse<T> result(T result) {
         this.result = result;
         return this;
     }
@@ -54,7 +54,7 @@ public abstract class ResponseAbstract<T> implements ResponseModel {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        ResponseAbstract<T> channelsResponse = (ResponseAbstract<T>) o;
+        StandardResponse<T> channelsResponse = (StandardResponse<T>) o;
         return Objects.equals(this.error, channelsResponse.error) &&
                 Objects.equals(this.result, channelsResponse.result);
     }
