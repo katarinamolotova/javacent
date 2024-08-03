@@ -1,4 +1,4 @@
-package org.centrifugo.models.requests;
+package org.centrifugo.models.requests.history;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 

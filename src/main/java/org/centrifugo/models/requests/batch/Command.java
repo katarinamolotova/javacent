@@ -1,6 +1,7 @@
 package org.centrifugo.models.requests.batch;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import org.centrifugo.models.requests.EmptyRequest;
 import org.centrifugo.models.requests.connection_management.DisconnectRequest;
 import org.centrifugo.models.requests.connection_management.RefreshRequest;
 import org.centrifugo.models.requests.connection_management.SubscribeRequest;
@@ -67,7 +68,7 @@ public class Command {
   
   
   @JsonProperty("info")
-  private Object info = null;
+  private EmptyRequest info = null;
   
   
   @JsonProperty("rpc")
@@ -310,7 +311,7 @@ public class Command {
     this.historyRemove = historyRemove;
   }
   
-  public Command info(Object info) {
+  public Command info(EmptyRequest info) {
     this.info = info;
     return this;
   }
@@ -320,10 +321,10 @@ public class Command {
   * Get info
   * @return info
   **/
-  public Object getInfo() {
+  public EmptyRequest getInfo() {
     return info;
   }
-  public void setInfo(Object info) {
+  public void setInfo(EmptyRequest info) {
     this.info = info;
   }
   
