@@ -2,17 +2,18 @@ package org.centrifugo.configarations;
 
 import lombok.AllArgsConstructor;
 
-import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.Properties;
 
 @AllArgsConstructor
-public class CentrifugoConfigurations {
-
+public class CentrConfigurParams {
     private static final String PROPERTIES = "configurations.properties";
-    private static final String API_KEY = "centrifugo.api.key";
-    private static final String API_URL = "centrifugo.api.url";
+    private static final String CENTRIFUGO_API_KEY = "centrifugo.api.key";
+    private static final String CENTRIFUGO_API_URL = "centrifugo.api.url";
+    private static final String CENTRIFUGO_DEFAULT_API_URL = "localhost:8000";
+    private static final String CENTRIFUGO_DEFAULT_API_KEY = "centrifugo";
+
 
     public String getCentrifugoApiKey() {
         return centrifugoApiKey;
@@ -25,28 +26,29 @@ public class CentrifugoConfigurations {
     private final String centrifugoApiKey;
     private final String centrifugoApiUrl;
 
-    public CentrifugoConfigurations(){
+    public CentrConfigurParams() {
         this.centrifugoApiKey = getApiKey();
         this.centrifugoApiUrl = getApiUrl();
     }
 
-    private static String getApiKey() {
+    private String getApiKey() {
+        System.out.println();
         return loadProperties()
-                .getProperty(API_KEY, "centrifugo")
+                .getProperty(CENTRIFUGO_API_KEY, CENTRIFUGO_DEFAULT_API_KEY)
                 .toLowerCase();
     }
 
-    private static String getApiUrl() {
+    private String getApiUrl() {
         return loadProperties()
-                .getProperty(API_URL, "localhost:8000")
+                .getProperty(CENTRIFUGO_API_URL, CENTRIFUGO_DEFAULT_API_URL)
                 .toLowerCase();
     }
 
-    private static Properties loadProperties() {
+    private Properties loadProperties() {
         try {
-            final File file = new File(PROPERTIES);
             final Properties properties = new Properties();
-            properties.load(new FileReader(file));
+            final String filePath = ClassLoader.getSystemResource(PROPERTIES).getFile();
+            properties.load(new FileReader(filePath));
             return properties;
         } catch (IOException e) {
             return new Properties();
