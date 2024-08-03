@@ -1,6 +1,8 @@
 package org.centrifugo.services;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.io.IOUtils;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.StringEntity;
@@ -355,11 +357,13 @@ public class CentrifugoService implements CentrifugoCommand {
                 final CloseableHttpResponse response = client.execute(httpPost)
         ) {
             // todo what do we have to return?
-//            final int status = response.getStatusLine().getStatusCode();
-//            final String text = IOUtils.toString(response.getEntity().getContent(), Charsets.UTF_8.toString());
+            final int status = response.getStatusLine().getStatusCode();
+            final String text = IOUtils.toString(response.getEntity().getContent(), "UTF-8");
 //            log.info("CentrifugoService. Response '{}'. Status: '{}'", text, status);
+            System.out.println("Status: " + status + " Response: " + text);
         } catch (final IOException e) {
-//            log.error("CentrifugoService. Can't send publications", e);
+            System.out.println(e.getMessage());
+           e.printStackTrace();
         }
     }
 }

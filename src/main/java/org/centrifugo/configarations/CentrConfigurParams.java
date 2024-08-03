@@ -8,7 +8,7 @@ public class CentrConfigurParams {
     private static final String PROPERTIES = "centrifugo.properties";
     private static final String CENTRIFUGO_API_KEY = "centrifugo.api.key";
     private static final String CENTRIFUGO_API_URL = "centrifugo.api.url";
-    private static final String CENTRIFUGO_DEFAULT_API_URL = "localhost:8000";
+    private static final String CENTRIFUGO_DEFAULT_API_URL = "http://localhost:8000";
     private static final String CENTRIFUGO_DEFAULT_API_KEY = "centrifugo";
 
     private final String centrifugoApiKey;
