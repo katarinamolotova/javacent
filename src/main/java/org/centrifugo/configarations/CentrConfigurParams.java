@@ -6,17 +6,19 @@ import java.util.Properties;
 
 public class CentrConfigurParams {
     private static final String PROPERTIES = "centrifugo.properties";
-    private static final String CENTRIFUGO_API_KEY = "centrifugo.api.key";
-    private static final String CENTRIFUGO_API_URL = "centrifugo.api.url";
-    private static final String CENTRIFUGO_DEFAULT_API_URL = "http://localhost:8000";
-    private static final String CENTRIFUGO_DEFAULT_API_KEY = "centrifugo";
 
     private final String centrifugoApiKey;
     private final String centrifugoApiUrl;
+    private final boolean isInSecure;
 
     public CentrConfigurParams() {
-        this.centrifugoApiKey = getApiKey();
         this.centrifugoApiUrl = getApiUrl();
+        this.isInSecure = getInSecureOption();
+        this.centrifugoApiKey = getApiKey(this.isInSecure);
+    }
+
+    public boolean isInSecure() {
+        return isInSecure;
     }
 
     public String getCentrifugoApiKey() {
@@ -27,19 +29,47 @@ public class CentrConfigurParams {
         return centrifugoApiUrl;
     }
 
-    private static String getApiKey() {
-        System.out.println();
+    private static boolean getInSecureOption() {
+        final String property = loadProperties().getProperty(
+                AvailableProperties.API_INSECURE_PROPERTIES,
+                AvailableProperties.DEFAULT_API_INSECURE_VALUE
+        );
+        PropertiesValidator.booleanValueValidate(
+                property,
+                AvailableProperties.API_INSECURE_PROPERTIES
+        );
+        return Boolean.getBoolean(property);
+    }
+
+    private static String getApiKey(final boolean isInSecure) {
+        if (isInSecure) {
+            return AvailableProperties.DEFAULT_API_KEY_VALUE;
+        }
         return loadProperties()
-                .getProperty(CENTRIFUGO_API_KEY, CENTRIFUGO_DEFAULT_API_KEY)
+                .getProperty(
+                        AvailableProperties.API_KEY_PROPERTIES,
+                        AvailableProperties.DEFAULT_API_KEY_VALUE
+                )
                 .toLowerCase();
     }
 
     private static String getApiUrl() {
-        return loadProperties()
-                .getProperty(CENTRIFUGO_API_URL, CENTRIFUGO_DEFAULT_API_URL)
-                .toLowerCase();
+        final String url = loadProperties()
+                .getProperty(
+                        AvailableProperties.API_URL_PROPERTIES,
+                        AvailableProperties.DEFAULT_API_URL_VALUE
+                ).toLowerCase();
+        PropertiesValidator.urlValidate(url);
+
+        final String port = loadProperties()
+                .getProperty(
+                        AvailableProperties.API_PORT_PROPERTIES,
+                        AvailableProperties.DEFAULT_API_PORT_VALUE
+                ).toLowerCase();
+        PropertiesValidator.portValidate(port);
+        return String.format("%s:%s", url, port);
     }
-    // TODO create property validator, need use REGEX
+
     private static Properties loadProperties() {
         try {
             final Properties properties = new Properties();
