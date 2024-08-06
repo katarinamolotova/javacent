@@ -33,19 +33,19 @@ public class PropertiesValidator {
                             "Illegal url value, value must match \n%s or \n%s",
                             LOCAL_REGEX,
                             URL_REGEX
-                    )
-
-            );
+                    ));
         }
     }
 
-    public static void booleanValueValidate(final String value) {
+    public static void booleanValueValidate(final String value, final String property) {
         if (!value.equalsIgnoreCase(Boolean.FALSE.toString()) &&
             !value.equalsIgnoreCase(Boolean.TRUE.toString())
         ) {
             throw new IllegalStateException(
-                    "Illegal argument, value has to be Boolean type"
-            );
+                    String.format(
+                            "Illegal argument for %s property, value has to be Boolean type",
+                            property
+                    ));
         }
     }
 }
