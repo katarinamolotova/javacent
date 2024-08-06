@@ -39,7 +39,7 @@ public class CentrConfigurParams {
                 .getProperty(CENTRIFUGO_API_URL, CENTRIFUGO_DEFAULT_API_URL)
                 .toLowerCase();
     }
-
+    // TODO create property validator, need use REGEX
     private static Properties loadProperties() {
         try {
             final Properties properties = new Properties();
