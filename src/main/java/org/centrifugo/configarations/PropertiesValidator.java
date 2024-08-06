@@ -18,18 +18,23 @@ public class PropertiesValidator {
         final int portNumber = Integer.parseInt(port);
         if (!(portNumber >= MIN_PORT && portNumber <= MAX_PORT)) {
             throw new IllegalStateException(
-                    "Unsupported port number value, use value from " +
-                    MIN_PORT +
-                    " to " +
-                    MAX_PORT);
+                    String.format(
+                            "Unsupported port number value, use value from %d to %d",
+                            MIN_PORT,
+                            MAX_PORT
+                    ));
         }
     }
 
     public static void urlValidate(final String url) {
         if (!url.matches(LOCAL_REGEX) && !url.matches(URL_REGEX)) {
             throw new IllegalStateException(
-                    "Illegal url value, value must match \n" + URL_REGEX +
-                    " or\n" + LOCAL_REGEX
+                    String.format(
+                            "Illegal url value, value must match \n%s or \n%s",
+                            LOCAL_REGEX,
+                            URL_REGEX
+                    )
+
             );
         }
     }
