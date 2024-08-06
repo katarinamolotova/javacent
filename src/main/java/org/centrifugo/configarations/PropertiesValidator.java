@@ -2,9 +2,7 @@ package org.centrifugo.configarations;
 
 public class PropertiesValidator {
     private final static String URL_REGEX = "^(https?://)?" +
-                                            "((([a-z\\d]([a-z\\d-]*" +
-                                            "[a-z\\d])*)\\.)+[a-z]{2,}" +
-                                            "|((\\d{1,3}\\.){3}\\d{1,3}))?" +
+                                            "((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|((\\d{1,3}\\.){3}\\d{1,3}))?" +
                                             "(/[-a-z\\d%_.~+]*)*" +
                                             "(\\?[;&a-z\\d%_.~+=-]*)?" +
                                             "(#[-a-z\\d_]*)?$";
@@ -21,7 +19,10 @@ public class PropertiesValidator {
     }
 
     public static void urlValidate(final String url) {
-        if (!url.matches(URL_REGEX)) {
+        if (!url.equalsIgnoreCase("http://localhost") &&
+            !url.equalsIgnoreCase("https://localhost") &&
+            !url.matches(URL_REGEX)
+        ) {
             throw new IllegalStateException("asd-asd");
         }
     }
