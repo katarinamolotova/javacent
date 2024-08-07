@@ -1,4 +1,4 @@
-package org.centrifugo.services;
+package org.centrifugo.services.interfaces;
 
 import org.centrifugo.models.requests.token.InvalidateUserTokensRequest;
 import org.centrifugo.models.requests.token.RevokeTokenRequest;

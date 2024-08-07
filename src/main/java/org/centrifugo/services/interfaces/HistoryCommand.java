@@ -1,4 +1,4 @@
-package org.centrifugo.services;
+package org.centrifugo.services.interfaces;
 
 import org.centrifugo.models.requests.history.HistoryRemoveRequest;
 import org.centrifugo.models.requests.history.HistoryRequest;
