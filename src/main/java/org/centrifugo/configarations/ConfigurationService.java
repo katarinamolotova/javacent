@@ -4,21 +4,23 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.Properties;
 
-public class CentrConfigurParams {
-    private static final String PROPERTIES = "centrifugo.properties";
+public class ConfigurationService {
+    private static final String PROPERTIES_FILE_NAME = "centrifugo.properties";
 
     private final String centrifugoApiKey;
     private final String centrifugoApiUrl;
-    private final boolean isInSecure;
+    private final boolean centrifugoIsInsecure;
+    private final Properties properties;
 
-    public CentrConfigurParams() {
+    public ConfigurationService() {
+        this.properties = loadProperties();
         this.centrifugoApiUrl = getApiUrl();
-        this.isInSecure = getInSecureOption();
-        this.centrifugoApiKey = getApiKey(this.isInSecure);
+        this.centrifugoIsInsecure = getInSecureOption();
+        this.centrifugoApiKey = getApiKey();
     }
 
-    public boolean isInSecure() {
-        return isInSecure;
+    public boolean isCentrifugoInsecure() {
+        return centrifugoIsInSecure;
     }
 
     public String getCentrifugoApiKey() {
@@ -29,11 +31,11 @@ public class CentrConfigurParams {
         return centrifugoApiUrl;
     }
 
-    private static boolean getInSecureOption() {
-        final String property = loadProperties().getProperty(
+    private boolean getInSecureOption() {
+        final String property = properties.getProperty(
                 AvailableProperties.API_INSECURE_PROPERTIES,
                 AvailableProperties.DEFAULT_API_INSECURE_VALUE
-        );
+        ).toLowerCase();
         PropertiesValidator.booleanValueValidate(
                 property,
                 AvailableProperties.API_INSECURE_PROPERTIES
@@ -41,11 +43,11 @@ public class CentrConfigurParams {
         return Boolean.getBoolean(property);
     }
 
-    private static String getApiKey(final boolean isInSecure) {
-        if (isInSecure) {
+    private String getApiKey() {
+        if (centrifugoIsInsecure) {
             return AvailableProperties.DEFAULT_API_KEY_VALUE;
         }
-        return loadProperties()
+        return properties
                 .getProperty(
                         AvailableProperties.API_KEY_PROPERTIES,
                         AvailableProperties.DEFAULT_API_KEY_VALUE
@@ -53,19 +55,17 @@ public class CentrConfigurParams {
                 .toLowerCase();
     }
 
-    private static String getApiUrl() {
-        final String url = loadProperties()
-                .getProperty(
-                        AvailableProperties.API_URL_PROPERTIES,
-                        AvailableProperties.DEFAULT_API_URL_VALUE
-                ).toLowerCase();
+    private String getApiUrl() {
+        final String url = properties.getProperty(
+                AvailableProperties.API_URL_PROPERTIES,
+                AvailableProperties.DEFAULT_API_URL_VALUE
+        ).toLowerCase();
         PropertiesValidator.urlValidate(url);
 
-        final String port = loadProperties()
-                .getProperty(
-                        AvailableProperties.API_PORT_PROPERTIES,
-                        AvailableProperties.DEFAULT_API_PORT_VALUE
-                ).toLowerCase();
+        final String port = properties.getProperty(
+                AvailableProperties.API_PORT_PROPERTIES,
+                AvailableProperties.DEFAULT_API_PORT_VALUE
+        ).toLowerCase();
         PropertiesValidator.portValidate(port);
         return String.format("%s:%s", url, port);
     }
@@ -73,7 +73,7 @@ public class CentrConfigurParams {
     private static Properties loadProperties() {
         try {
             final Properties properties = new Properties();
-            final String filePath = ClassLoader.getSystemResource(PROPERTIES).getFile();
+            final String filePath = ClassLoader.getSystemResource(PROPERTIES_FILE_NAME).getFile();
             properties.load(new FileReader(filePath));
             return properties;
         } catch (IOException e) {
