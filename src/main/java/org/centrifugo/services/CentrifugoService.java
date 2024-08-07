@@ -51,13 +51,23 @@ import org.centrifugo.models.responses.results.stats.channels.ChannelsResult;
 import org.centrifugo.models.responses.results.stats.connections.ConnectionsResult;
 import org.centrifugo.models.responses.results.stats.info.InfoResult;
 import org.centrifugo.models.responses.results.user_status.GetUserStatusResult;
+import org.centrifugo.services.interfaces.BatchNotificationCommand;
+import org.centrifugo.services.interfaces.ConnectionManagementCommand;
+import org.centrifugo.services.interfaces.HistoryCommand;
+import org.centrifugo.services.interfaces.PushNotificationCommand;
+import org.centrifugo.services.interfaces.PresenceCommand;
+import org.centrifugo.services.interfaces.PublicationCommand;
+import org.centrifugo.services.interfaces.TokenCommand;
+import org.centrifugo.services.interfaces.StatisticsCommand;
+import org.centrifugo.services.interfaces.UserBlockCommand;
+import org.centrifugo.services.interfaces.UserStatusCommand;
 
 import java.io.IOException;
 import java.util.List;
 
 public class CentrifugoService
         implements BatchNotificationCommand, ConnectionManagementCommand, HistoryCommand, PushNotificationCommand,
-        PresenceCommand, PublicationCommand, TokenCommand, StatStatusCommand, UserBlockCommand, UserStatusCommand
+        PresenceCommand, PublicationCommand, TokenCommand, StatisticsCommand, UserBlockCommand, UserStatusCommand
 {
     private final ConfigurationService configurations;
     private final ObjectMapper mapper;
@@ -200,9 +210,9 @@ public class CentrifugoService
     }
 
     @Override
-    public void channels(final String patter) {
+    public void channels(final String pattern) {
         final ChannelsRequest request = new ChannelsRequest();
-        channels(request.setPattern(patter));
+        channels(request.setPattern(pattern));
     }
 
     @Override

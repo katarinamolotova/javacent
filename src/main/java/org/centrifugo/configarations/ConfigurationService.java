@@ -20,7 +20,7 @@ public class ConfigurationService {
     }
 
     public boolean isCentrifugoInsecure() {
-        return centrifugoIsInSecure;
+        return centrifugoIsInsecure;
     }
 
     public String getCentrifugoApiKey() {
