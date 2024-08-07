@@ -5,7 +5,7 @@ Java SDK to communicate with Centrifugo v5 HTTP API. Java >= 8 supported.
 To add to your maven project:
 ```
 <dependency>
-  <groupId>com.centrifugo</groupId>
+  <groupId>org.centrifugo</groupId>
   <artifactId>javacent</artifactId>
   <version>1.0-SNAPSHOT</version>
 </dependency>
