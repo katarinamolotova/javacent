@@ -11,131 +11,151 @@ import java.util.Objects;
  */
 public class UserTopicFilter {
 
-  
-  @JsonProperty("users")
-  private List<String> users = null;
-  
-  
-  @JsonProperty("topics")
-  private List<String> topics = null;
-  
-  
-  @JsonProperty("topic_prefix")
-  private String topicPrefix = null;
-  
-  public UserTopicFilter users(List<String> users) {
-    this.users = users;
-    return this;
-  }
+    @JsonProperty("users")
+    private List<String> users = null;
 
-  public UserTopicFilter addUsersItem(String usersItem) {
-    
-    if (this.users == null) {
-      this.users = new ArrayList<String>();
+    @JsonProperty("topics")
+    private List<String> topics = null;
+
+    @JsonProperty("topic_prefix")
+    private String topicPrefix = null;
+
+    public UserTopicFilter(List<String> users, List<String> topics, String topicPrefix) {
+        this.users = users;
+        this.topics = topics;
+        this.topicPrefix = topicPrefix;
     }
-    
-    this.users.add(usersItem);
-    return this;
-  }
-  
-  /**
-  * Get users
-  * @return users
-  **/
-  public List<String> getUsers() {
-    return users;
-  }
-  public void setUsers(List<String> users) {
-    this.users = users;
-  }
-  
-  public UserTopicFilter topics(List<String> topics) {
-    this.topics = topics;
-    return this;
-  }
 
-  public UserTopicFilter addTopicsItem(String topicsItem) {
-    
-    if (this.topics == null) {
-      this.topics = new ArrayList<String>();
+    public UserTopicFilter() {
     }
-    
-    this.topics.add(topicsItem);
-    return this;
-  }
-  
-  /**
-  * Get topics
-  * @return topics
-  **/
-  public List<String> getTopics() {
-    return topics;
-  }
-  public void setTopics(List<String> topics) {
-    this.topics = topics;
-  }
-  
-  public UserTopicFilter topicPrefix(String topicPrefix) {
-    this.topicPrefix = topicPrefix;
-    return this;
-  }
 
-  
-  /**
-  * Get topicPrefix
-  * @return topicPrefix
-  **/
-  public String getTopicPrefix() {
-    return topicPrefix;
-  }
-  public void setTopicPrefix(String topicPrefix) {
-    this.topicPrefix = topicPrefix;
-  }
-  
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
+    public static UserTopicFilterBuilder builder() {
+        return new UserTopicFilterBuilder();
     }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
+
+    public UserTopicFilter addUsersItem(String usersItem) {
+
+        if (this.users == null) {
+            this.users = new ArrayList<String>();
+        }
+
+        this.users.add(usersItem);
+        return this;
     }
-    UserTopicFilter userTopicFilter = (UserTopicFilter) o;
-    return Objects.equals(this.users, userTopicFilter.users) &&
-        Objects.equals(this.topics, userTopicFilter.topics) &&
-        Objects.equals(this.topicPrefix, userTopicFilter.topicPrefix);
-  }
 
-  @Override
-  public int hashCode() {
-    return Objects.hash(users, topics, topicPrefix);
-  }
-  
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class UserTopicFilter {\n");
-    
-    sb.append("    users: ").append(toIndentedString(users)).append("\n");
-    sb.append("    topics: ").append(toIndentedString(topics)).append("\n");
-    sb.append("    topicPrefix: ").append(toIndentedString(topicPrefix)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
+    public UserTopicFilter addTopicsItem(String topicsItem) {
 
-  /**
-   * Convert the given object to string with each line indented by 4 spaces
-   * (except the first line).
-   */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
+        if (this.topics == null) {
+            this.topics = new ArrayList<String>();
+        }
+
+        this.topics.add(topicsItem);
+        return this;
     }
-    return o.toString().replace("\n", "\n    ");
-  }
 
-  
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        UserTopicFilter userTopicFilter = (UserTopicFilter) o;
+        return Objects.equals(this.users, userTopicFilter.users) &&
+               Objects.equals(this.topics, userTopicFilter.topics) &&
+               Objects.equals(this.topicPrefix, userTopicFilter.topicPrefix);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(users, topics, topicPrefix);
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("class UserTopicFilter {\n");
+
+        sb.append("    users: ").append(toIndentedString(users)).append("\n");
+        sb.append("    topics: ").append(toIndentedString(topics)).append("\n");
+        sb.append("    topicPrefix: ").append(toIndentedString(topicPrefix)).append("\n");
+        sb.append("}");
+        return sb.toString();
+    }
+
+    private String toIndentedString(Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    public List<String> getUsers() {
+        return this.users;
+    }
+
+    public List<String> getTopics() {
+        return this.topics;
+    }
+
+    public String getTopicPrefix() {
+        return this.topicPrefix;
+    }
+
+    @JsonProperty("users")
+    public void setUsers(List<String> users) {
+        this.users = users;
+    }
+
+    @JsonProperty("topics")
+    public void setTopics(List<String> topics) {
+        this.topics = topics;
+    }
+
+    @JsonProperty("topic_prefix")
+    public void setTopicPrefix(String topicPrefix) {
+        this.topicPrefix = topicPrefix;
+    }
+
+    public static class UserTopicFilterBuilder {
+        private List<String> users;
+        private List<String> topics;
+        private String topicPrefix;
+
+        UserTopicFilterBuilder() {
+        }
+
+        @JsonProperty("users")
+        public UserTopicFilterBuilder users(List<String> users) {
+            this.users = users;
+            return this;
+        }
+
+        @JsonProperty("topics")
+        public UserTopicFilterBuilder topics(List<String> topics) {
+            this.topics = topics;
+            return this;
+        }
+
+        @JsonProperty("topic_prefix")
+        public UserTopicFilterBuilder topicPrefix(String topicPrefix) {
+            this.topicPrefix = topicPrefix;
+            return this;
+        }
+
+        public UserTopicFilter build() {
+            return new UserTopicFilter(this.users, this.topics, this.topicPrefix);
+        }
+
+        public String toString() {
+            return "UserTopicFilter.UserTopicFilterBuilder(users=" +
+                   this.users +
+                   ", topics=" +
+                   this.topics +
+                   ", topicPrefix=" +
+                   this.topicPrefix +
+                   ")";
+        }
+    }
 }
-
-
-

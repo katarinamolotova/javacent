@@ -12,77 +12,66 @@ import java.util.Objects;
  */
 public class GetUserStatusRequest implements RequestModel {
 
-  
-  @JsonProperty("users")
-  private List<String> users = null;
-  
-  public GetUserStatusRequest users(List<String> users) {
-    this.users = users;
-    return this;
-  }
+    @JsonProperty("users")
+    private List<String> users = null;
 
-  public GetUserStatusRequest addUsersItem(String usersItem) {
-    
-    if (this.users == null) {
-      this.users = new ArrayList<String>();
+    public GetUserStatusRequest(List<String> users) {
+        this.users = users;
     }
-    
-    this.users.add(usersItem);
-    return this;
-  }
-  
-  /**
-  * Get users
-  * @return users
-  **/
-  public List<String> getUsers() {
-    return users;
-  }
-  public GetUserStatusRequest setUsers(List<String> users) {
-    this.users = users;
-    return this;
-  }
-  
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
-    }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
-    }
-    GetUserStatusRequest getUserStatusRequest = (GetUserStatusRequest) o;
-    return Objects.equals(this.users, getUserStatusRequest.users);
-  }
 
-  @Override
-  public int hashCode() {
-    return Objects.hash(users);
-  }
-  
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class GetUserStatusRequest {\n");
-    
-    sb.append("    users: ").append(toIndentedString(users)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
-
-  /**
-   * Convert the given object to string with each line indented by 4 spaces
-   * (except the first line).
-   */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
+    public GetUserStatusRequest() {
     }
-    return o.toString().replace("\n", "\n    ");
-  }
 
-  
+    public GetUserStatusRequest addUsersItem(String usersItem) {
+
+        if (this.users == null) {
+            this.users = new ArrayList<String>();
+        }
+
+        this.users.add(usersItem);
+        return this;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        GetUserStatusRequest getUserStatusRequest = (GetUserStatusRequest) o;
+        return Objects.equals(this.users, getUserStatusRequest.users);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(users);
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("class GetUserStatusRequest {\n");
+
+        sb.append("    users: ").append(toIndentedString(users)).append("\n");
+        sb.append("}");
+        return sb.toString();
+    }
+
+    private String toIndentedString(Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    public List<String> getUsers() {
+        return this.users;
+    }
+
+    @JsonProperty("users")
+    public void setUsers(List<String> users) {
+        this.users = users;
+    }
 }
-
-
-

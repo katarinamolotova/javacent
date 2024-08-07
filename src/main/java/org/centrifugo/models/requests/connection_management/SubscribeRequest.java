@@ -11,297 +11,359 @@ import java.util.Objects;
  */
 public class SubscribeRequest implements RequestModel {
 
-  
-  @JsonProperty("channel")
-  private String channel = null;
-  
-  
-  @JsonProperty("user")
-  private String user = null;
-  
-  
-  @JsonProperty("expire_at")
-  private Integer expireAt = null;
-  
-  
-  @JsonProperty("info")
-  private Object info = null;
-  
-  
-  @JsonProperty("b64info")
-  private String b64info = null;
-  
-  
-  @JsonProperty("client")
-  private String client = null;
-  
-  
-  @JsonProperty("data")
-  private Object data = null;
-  
-  
-  @JsonProperty("b64data")
-  private String b64data = null;
-  
-  
-  @JsonProperty("recover_since")
-  private StreamPosition recoverSince = null;
-  
-  
-  @JsonProperty("override")
-  private SubscribeOptionOverride override = null;
-  
-  
-  @JsonProperty("session")
-  private String session = null;
-  
-  public SubscribeRequest channel(String channel) {
-    this.channel = channel;
-    return this;
-  }
+    @JsonProperty("channel")
+    private String channel = null;
 
-  
-  /**
-  * Get channel
-  * @return channel
-  **/
-  public String getChannel() {
-    return channel;
-  }
-  public void setChannel(String channel) {
-    this.channel = channel;
-  }
-  
-  public SubscribeRequest user(String user) {
-    this.user = user;
-    return this;
-  }
+    @JsonProperty("user")
+    private String user = null;
 
-  
-  /**
-  * Get user
-  * @return user
-  **/
-  public String getUser() {
-    return user;
-  }
-  public void setUser(String user) {
-    this.user = user;
-  }
-  
-  public SubscribeRequest expireAt(Integer expireAt) {
-    this.expireAt = expireAt;
-    return this;
-  }
+    @JsonProperty("expire_at")
+    private Integer expireAt = null;
 
-  
-  /**
-  * Get expireAt
-  * @return expireAt
-  **/
-  public Integer getExpireAt() {
-    return expireAt;
-  }
-  public void setExpireAt(Integer expireAt) {
-    this.expireAt = expireAt;
-  }
-  
-  public SubscribeRequest info(Object info) {
-    this.info = info;
-    return this;
-  }
+    @JsonProperty("info")
+    private Object info = null;
 
-  
-  /**
-  * Get info
-  * @return info
-  **/
-  public Object getInfo() {
-    return info;
-  }
-  public void setInfo(Object info) {
-    this.info = info;
-  }
-  
-  public SubscribeRequest b64info(String b64info) {
-    this.b64info = b64info;
-    return this;
-  }
+    @JsonProperty("b64info")
+    private String b64info = null;
 
-  
-  /**
-  * Get b64info
-  * @return b64info
-  **/
-  public String getB64info() {
-    return b64info;
-  }
-  public void setB64info(String b64info) {
-    this.b64info = b64info;
-  }
-  
-  public SubscribeRequest client(String client) {
-    this.client = client;
-    return this;
-  }
+    @JsonProperty("client")
+    private String client = null;
 
-  
-  /**
-  * Get client
-  * @return client
-  **/
-  public String getClient() {
-    return client;
-  }
-  public void setClient(String client) {
-    this.client = client;
-  }
-  
-  public SubscribeRequest data(Object data) {
-    this.data = data;
-    return this;
-  }
+    @JsonProperty("data")
+    private Object data = null;
 
-  
-  /**
-  * Get data
-  * @return data
-  **/
-  public Object getData() {
-    return data;
-  }
-  public void setData(Object data) {
-    this.data = data;
-  }
-  
-  public SubscribeRequest b64data(String b64data) {
-    this.b64data = b64data;
-    return this;
-  }
+    @JsonProperty("b64data")
+    private String b64data = null;
 
-  
-  /**
-  * Get b64data
-  * @return b64data
-  **/
-  public String getB64data() {
-    return b64data;
-  }
-  public void setB64data(String b64data) {
-    this.b64data = b64data;
-  }
-  
-  public SubscribeRequest recoverSince(StreamPosition recoverSince) {
-    this.recoverSince = recoverSince;
-    return this;
-  }
+    @JsonProperty("recover_since")
+    private StreamPosition recoverSince = null;
 
-  
-  /**
-  * Get recoverSince
-  * @return recoverSince
-  **/
-  public StreamPosition getRecoverSince() {
-    return recoverSince;
-  }
-  public void setRecoverSince(StreamPosition recoverSince) {
-    this.recoverSince = recoverSince;
-  }
-  
-  public SubscribeRequest override(SubscribeOptionOverride override) {
-    this.override = override;
-    return this;
-  }
+    @JsonProperty("override")
+    private SubscribeOptionOverride override = null;
 
-  
-  /**
-  * Get override
-  * @return override
-  **/
-  public SubscribeOptionOverride getOverride() {
-    return override;
-  }
-  public void setOverride(SubscribeOptionOverride override) {
-    this.override = override;
-  }
-  
-  public SubscribeRequest session(String session) {
-    this.session = session;
-    return this;
-  }
+    @JsonProperty("session")
+    private String session = null;
 
-  
-  /**
-  * Get session
-  * @return session
-  **/
-  public String getSession() {
-    return session;
-  }
-  public void setSession(String session) {
-    this.session = session;
-  }
-  
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
+    public SubscribeRequest(
+            String channel,
+            String user,
+            Integer expireAt,
+            Object info,
+            String b64info,
+            String client,
+            Object data,
+            String b64data,
+            StreamPosition recoverSince,
+            SubscribeOptionOverride override,
+            String session
+    ) {
+        this.channel = channel;
+        this.user = user;
+        this.expireAt = expireAt;
+        this.info = info;
+        this.b64info = b64info;
+        this.client = client;
+        this.data = data;
+        this.b64data = b64data;
+        this.recoverSince = recoverSince;
+        this.override = override;
+        this.session = session;
     }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
+
+    public SubscribeRequest() {
     }
-    SubscribeRequest subscribeRequest = (SubscribeRequest) o;
-    return Objects.equals(this.channel, subscribeRequest.channel) &&
-        Objects.equals(this.user, subscribeRequest.user) &&
-        Objects.equals(this.expireAt, subscribeRequest.expireAt) &&
-        Objects.equals(this.info, subscribeRequest.info) &&
-        Objects.equals(this.b64info, subscribeRequest.b64info) &&
-        Objects.equals(this.client, subscribeRequest.client) &&
-        Objects.equals(this.data, subscribeRequest.data) &&
-        Objects.equals(this.b64data, subscribeRequest.b64data) &&
-        Objects.equals(this.recoverSince, subscribeRequest.recoverSince) &&
-        Objects.equals(this.override, subscribeRequest.override) &&
-        Objects.equals(this.session, subscribeRequest.session);
-  }
 
-  @Override
-  public int hashCode() {
-    return Objects.hash(channel, user, expireAt, info, b64info, client, data, b64data, recoverSince, override, session);
-  }
-  
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class SubscribeRequest {\n");
-    
-    sb.append("    channel: ").append(toIndentedString(channel)).append("\n");
-    sb.append("    user: ").append(toIndentedString(user)).append("\n");
-    sb.append("    expireAt: ").append(toIndentedString(expireAt)).append("\n");
-    sb.append("    info: ").append(toIndentedString(info)).append("\n");
-    sb.append("    b64info: ").append(toIndentedString(b64info)).append("\n");
-    sb.append("    client: ").append(toIndentedString(client)).append("\n");
-    sb.append("    data: ").append(toIndentedString(data)).append("\n");
-    sb.append("    b64data: ").append(toIndentedString(b64data)).append("\n");
-    sb.append("    recoverSince: ").append(toIndentedString(recoverSince)).append("\n");
-    sb.append("    override: ").append(toIndentedString(override)).append("\n");
-    sb.append("    session: ").append(toIndentedString(session)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
-
-  /**
-   * Convert the given object to string with each line indented by 4 spaces
-   * (except the first line).
-   */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
+    public static SubscribeRequestBuilder builder() {
+        return new SubscribeRequestBuilder();
     }
-    return o.toString().replace("\n", "\n    ");
-  }
 
-  
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        SubscribeRequest subscribeRequest = (SubscribeRequest) o;
+        return Objects.equals(this.channel, subscribeRequest.channel) &&
+               Objects.equals(this.user, subscribeRequest.user) &&
+               Objects.equals(this.expireAt, subscribeRequest.expireAt) &&
+               Objects.equals(this.info, subscribeRequest.info) &&
+               Objects.equals(this.b64info, subscribeRequest.b64info) &&
+               Objects.equals(this.client, subscribeRequest.client) &&
+               Objects.equals(this.data, subscribeRequest.data) &&
+               Objects.equals(this.b64data, subscribeRequest.b64data) &&
+               Objects.equals(this.recoverSince, subscribeRequest.recoverSince) &&
+               Objects.equals(this.override, subscribeRequest.override) &&
+               Objects.equals(this.session, subscribeRequest.session);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(
+                channel,
+                user,
+                expireAt,
+                info,
+                b64info,
+                client,
+                data,
+                b64data,
+                recoverSince,
+                override,
+                session
+        );
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("class SubscribeRequest {\n");
+
+        sb.append("    channel: ").append(toIndentedString(channel)).append("\n");
+        sb.append("    user: ").append(toIndentedString(user)).append("\n");
+        sb.append("    expireAt: ").append(toIndentedString(expireAt)).append("\n");
+        sb.append("    info: ").append(toIndentedString(info)).append("\n");
+        sb.append("    b64info: ").append(toIndentedString(b64info)).append("\n");
+        sb.append("    client: ").append(toIndentedString(client)).append("\n");
+        sb.append("    data: ").append(toIndentedString(data)).append("\n");
+        sb.append("    b64data: ").append(toIndentedString(b64data)).append("\n");
+        sb.append("    recoverSince: ").append(toIndentedString(recoverSince)).append("\n");
+        sb.append("    override: ").append(toIndentedString(override)).append("\n");
+        sb.append("    session: ").append(toIndentedString(session)).append("\n");
+        sb.append("}");
+        return sb.toString();
+    }
+
+    private String toIndentedString(Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    public String getChannel() {
+        return this.channel;
+    }
+
+    public String getUser() {
+        return this.user;
+    }
+
+    public Integer getExpireAt() {
+        return this.expireAt;
+    }
+
+    public Object getInfo() {
+        return this.info;
+    }
+
+    public String getB64info() {
+        return this.b64info;
+    }
+
+    public String getClient() {
+        return this.client;
+    }
+
+    public Object getData() {
+        return this.data;
+    }
+
+    public String getB64data() {
+        return this.b64data;
+    }
+
+    public StreamPosition getRecoverSince() {
+        return this.recoverSince;
+    }
+
+    public SubscribeOptionOverride getOverride() {
+        return this.override;
+    }
+
+    public String getSession() {
+        return this.session;
+    }
+
+    @JsonProperty("channel")
+    public void setChannel(String channel) {
+        this.channel = channel;
+    }
+
+    @JsonProperty("user")
+    public void setUser(String user) {
+        this.user = user;
+    }
+
+    @JsonProperty("expire_at")
+    public void setExpireAt(Integer expireAt) {
+        this.expireAt = expireAt;
+    }
+
+    @JsonProperty("info")
+    public void setInfo(Object info) {
+        this.info = info;
+    }
+
+    @JsonProperty("b64info")
+    public void setB64info(String b64info) {
+        this.b64info = b64info;
+    }
+
+    @JsonProperty("client")
+    public void setClient(String client) {
+        this.client = client;
+    }
+
+    @JsonProperty("data")
+    public void setData(Object data) {
+        this.data = data;
+    }
+
+    @JsonProperty("b64data")
+    public void setB64data(String b64data) {
+        this.b64data = b64data;
+    }
+
+    @JsonProperty("recover_since")
+    public void setRecoverSince(StreamPosition recoverSince) {
+        this.recoverSince = recoverSince;
+    }
+
+    @JsonProperty("override")
+    public void setOverride(SubscribeOptionOverride override) {
+        this.override = override;
+    }
+
+    @JsonProperty("session")
+    public void setSession(String session) {
+        this.session = session;
+    }
+
+    public static class SubscribeRequestBuilder {
+        private String channel;
+        private String user;
+        private Integer expireAt;
+        private Object info;
+        private String b64info;
+        private String client;
+        private Object data;
+        private String b64data;
+        private StreamPosition recoverSince;
+        private SubscribeOptionOverride override;
+        private String session;
+
+        SubscribeRequestBuilder() {
+        }
+
+        @JsonProperty("channel")
+        public SubscribeRequestBuilder channel(String channel) {
+            this.channel = channel;
+            return this;
+        }
+
+        @JsonProperty("user")
+        public SubscribeRequestBuilder user(String user) {
+            this.user = user;
+            return this;
+        }
+
+        @JsonProperty("expire_at")
+        public SubscribeRequestBuilder expireAt(Integer expireAt) {
+            this.expireAt = expireAt;
+            return this;
+        }
+
+        @JsonProperty("info")
+        public SubscribeRequestBuilder info(Object info) {
+            this.info = info;
+            return this;
+        }
+
+        @JsonProperty("b64info")
+        public SubscribeRequestBuilder b64info(String b64info) {
+            this.b64info = b64info;
+            return this;
+        }
+
+        @JsonProperty("client")
+        public SubscribeRequestBuilder client(String client) {
+            this.client = client;
+            return this;
+        }
+
+        @JsonProperty("data")
+        public SubscribeRequestBuilder data(Object data) {
+            this.data = data;
+            return this;
+        }
+
+        @JsonProperty("b64data")
+        public SubscribeRequestBuilder b64data(String b64data) {
+            this.b64data = b64data;
+            return this;
+        }
+
+        @JsonProperty("recover_since")
+        public SubscribeRequestBuilder recoverSince(StreamPosition recoverSince) {
+            this.recoverSince = recoverSince;
+            return this;
+        }
+
+        @JsonProperty("override")
+        public SubscribeRequestBuilder override(SubscribeOptionOverride override) {
+            this.override = override;
+            return this;
+        }
+
+        @JsonProperty("session")
+        public SubscribeRequestBuilder session(String session) {
+            this.session = session;
+            return this;
+        }
+
+        public SubscribeRequest build() {
+            return new SubscribeRequest(
+                    this.channel,
+                    this.user,
+                    this.expireAt,
+                    this.info,
+                    this.b64info,
+                    this.client,
+                    this.data,
+                    this.b64data,
+                    this.recoverSince,
+                    this.override,
+                    this.session
+            );
+        }
+
+        public String toString() {
+            return "SubscribeRequest.SubscribeRequestBuilder(channel=" +
+                   this.channel +
+                   ", user=" +
+                   this.user +
+                   ", expireAt=" +
+                   this.expireAt +
+                   ", info=" +
+                   this.info +
+                   ", b64info=" +
+                   this.b64info +
+                   ", client=" +
+                   this.client +
+                   ", data=" +
+                   this.data +
+                   ", b64data=" +
+                   this.b64data +
+                   ", recoverSince=" +
+                   this.recoverSince +
+                   ", override=" +
+                   this.override +
+                   ", session=" +
+                   this.session +
+                   ")";
+        }
+    }
 }
-
-
-

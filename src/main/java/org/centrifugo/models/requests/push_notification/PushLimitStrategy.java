@@ -9,90 +9,107 @@ import java.util.Objects;
  */
 public class PushLimitStrategy {
 
-  
-  @JsonProperty("rate_limit")
-  private PushRateLimitStrategy rateLimit = null;
-  
-  
-  @JsonProperty("time_limit")
-  private PushTimeLimitStrategy timeLimit = null;
-  
-  public PushLimitStrategy rateLimit(PushRateLimitStrategy rateLimit) {
-    this.rateLimit = rateLimit;
-    return this;
-  }
+    @JsonProperty("rate_limit")
+    private PushRateLimitStrategy rateLimit = null;
 
-  
-  /**
-  * Get rateLimit
-  * @return rateLimit
-  **/
-  public PushRateLimitStrategy getRateLimit() {
-    return rateLimit;
-  }
-  public void setRateLimit(PushRateLimitStrategy rateLimit) {
-    this.rateLimit = rateLimit;
-  }
-  
-  public PushLimitStrategy timeLimit(PushTimeLimitStrategy timeLimit) {
-    this.timeLimit = timeLimit;
-    return this;
-  }
+    @JsonProperty("time_limit")
+    private PushTimeLimitStrategy timeLimit = null;
 
-  
-  /**
-  * Get timeLimit
-  * @return timeLimit
-  **/
-  public PushTimeLimitStrategy getTimeLimit() {
-    return timeLimit;
-  }
-  public void setTimeLimit(PushTimeLimitStrategy timeLimit) {
-    this.timeLimit = timeLimit;
-  }
-  
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
+    public PushLimitStrategy(PushRateLimitStrategy rateLimit, PushTimeLimitStrategy timeLimit) {
+        this.rateLimit = rateLimit;
+        this.timeLimit = timeLimit;
     }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
+
+    public PushLimitStrategy() {
     }
-    PushLimitStrategy pushLimitStrategy = (PushLimitStrategy) o;
-    return Objects.equals(this.rateLimit, pushLimitStrategy.rateLimit) &&
-        Objects.equals(this.timeLimit, pushLimitStrategy.timeLimit);
-  }
 
-  @Override
-  public int hashCode() {
-    return Objects.hash(rateLimit, timeLimit);
-  }
-  
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class PushLimitStrategy {\n");
-    
-    sb.append("    rateLimit: ").append(toIndentedString(rateLimit)).append("\n");
-    sb.append("    timeLimit: ").append(toIndentedString(timeLimit)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
-
-  /**
-   * Convert the given object to string with each line indented by 4 spaces
-   * (except the first line).
-   */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
+    public static PushLimitStrategyBuilder builder() {
+        return new PushLimitStrategyBuilder();
     }
-    return o.toString().replace("\n", "\n    ");
-  }
 
-  
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        PushLimitStrategy pushLimitStrategy = (PushLimitStrategy) o;
+        return Objects.equals(this.rateLimit, pushLimitStrategy.rateLimit) &&
+               Objects.equals(this.timeLimit, pushLimitStrategy.timeLimit);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(rateLimit, timeLimit);
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("class PushLimitStrategy {\n");
+
+        sb.append("    rateLimit: ").append(toIndentedString(rateLimit)).append("\n");
+        sb.append("    timeLimit: ").append(toIndentedString(timeLimit)).append("\n");
+        sb.append("}");
+        return sb.toString();
+    }
+
+    private String toIndentedString(Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    public PushRateLimitStrategy getRateLimit() {
+        return this.rateLimit;
+    }
+
+    public PushTimeLimitStrategy getTimeLimit() {
+        return this.timeLimit;
+    }
+
+    @JsonProperty("rate_limit")
+    public void setRateLimit(PushRateLimitStrategy rateLimit) {
+        this.rateLimit = rateLimit;
+    }
+
+    @JsonProperty("time_limit")
+    public void setTimeLimit(PushTimeLimitStrategy timeLimit) {
+        this.timeLimit = timeLimit;
+    }
+
+    public static class PushLimitStrategyBuilder {
+        private PushRateLimitStrategy rateLimit;
+        private PushTimeLimitStrategy timeLimit;
+
+        PushLimitStrategyBuilder() {
+        }
+
+        @JsonProperty("rate_limit")
+        public PushLimitStrategyBuilder rateLimit(PushRateLimitStrategy rateLimit) {
+            this.rateLimit = rateLimit;
+            return this;
+        }
+
+        @JsonProperty("time_limit")
+        public PushLimitStrategyBuilder timeLimit(PushTimeLimitStrategy timeLimit) {
+            this.timeLimit = timeLimit;
+            return this;
+        }
+
+        public PushLimitStrategy build() {
+            return new PushLimitStrategy(this.rateLimit, this.timeLimit);
+        }
+
+        public String toString() {
+            return "PushLimitStrategy.PushLimitStrategyBuilder(rateLimit=" +
+                   this.rateLimit +
+                   ", timeLimit=" +
+                   this.timeLimit +
+                   ")";
+        }
+    }
 }
-
-
-

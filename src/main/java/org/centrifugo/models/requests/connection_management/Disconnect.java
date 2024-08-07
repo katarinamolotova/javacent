@@ -9,87 +9,103 @@ import java.util.Objects;
  */
 public class Disconnect {
 
-  @JsonProperty("code")
-  private Long code = null;
-  
-  
-  @JsonProperty("reason")
-  private String reason = null;
-  
-  public Disconnect code(Long code) {
-    this.code = code;
-    return this;
-  }
+    @JsonProperty("code")
+    private Long code = null;
 
-  
-  /**
-  * Get code
-  * @return code
-  **/
-  public Long getCode() {
-    return code;
-  }
-  public void setCode(Long code) {
-    this.code = code;
-  }
-  
-  public Disconnect reason(String reason) {
-    this.reason = reason;
-    return this;
-  }
+    @JsonProperty("reason")
+    private String reason = null;
 
-  
-  /**
-  * Get reason
-  * @return reason
-  **/
-  public String getReason() {
-    return reason;
-  }
-  public void setReason(String reason) {
-    this.reason = reason;
-  }
-  
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
+    public Disconnect(Long code, String reason) {
+        this.code = code;
+        this.reason = reason;
     }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
-    }
-    Disconnect disconnect = (Disconnect) o;
-    return Objects.equals(this.code, disconnect.code) &&
-        Objects.equals(this.reason, disconnect.reason);
-  }
 
-  @Override
-  public int hashCode() {
-    return Objects.hash(code, reason);
-  }
-  
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class Disconnect {\n");
-    
-    sb.append("    code: ").append(toIndentedString(code)).append("\n");
-    sb.append("    reason: ").append(toIndentedString(reason)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
-
-  /**
-   * Convert the given object to string with each line indented by 4 spaces
-   * (except the first line).
-   */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
+    public Disconnect() {
     }
-    return o.toString().replace("\n", "\n    ");
-  }
+
+    public static DisconnectBuilder builder() {
+        return new DisconnectBuilder();
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        Disconnect disconnect = (Disconnect) o;
+        return Objects.equals(this.code, disconnect.code) &&
+               Objects.equals(this.reason, disconnect.reason);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(code, reason);
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("class Disconnect {\n");
+
+        sb.append("    code: ").append(toIndentedString(code)).append("\n");
+        sb.append("    reason: ").append(toIndentedString(reason)).append("\n");
+        sb.append("}");
+        return sb.toString();
+    }
+
+    private String toIndentedString(Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    public Long getCode() {
+        return this.code;
+    }
+
+    public String getReason() {
+        return this.reason;
+    }
+
+    @JsonProperty("code")
+    public void setCode(Long code) {
+        this.code = code;
+    }
+
+    @JsonProperty("reason")
+    public void setReason(String reason) {
+        this.reason = reason;
+    }
+
+    public static class DisconnectBuilder {
+        private Long code;
+        private String reason;
+
+        DisconnectBuilder() {
+        }
+
+        @JsonProperty("code")
+        public DisconnectBuilder code(Long code) {
+            this.code = code;
+            return this;
+        }
+
+        @JsonProperty("reason")
+        public DisconnectBuilder reason(String reason) {
+            this.reason = reason;
+            return this;
+        }
+
+        public Disconnect build() {
+            return new Disconnect(this.code, this.reason);
+        }
+
+        public String toString() {
+            return "Disconnect.DisconnectBuilder(code=" + this.code + ", reason=" + this.reason + ")";
+        }
+    }
 }
-
-
-

@@ -11,99 +11,113 @@ import java.util.Objects;
  */
 public class DeviceTopicsUpdate {
 
-  
-  @JsonProperty("op")
-  private String op = null;
-  
-  
-  @JsonProperty("topics")
-  private List<String> topics = null;
-  
-  public DeviceTopicsUpdate op(String op) {
-    this.op = op;
-    return this;
-  }
+    @JsonProperty("op")
+    private String op = null;
 
-  
-  /**
-  * Get op
-  * @return op
-  **/
-  public String getOp() {
-    return op;
-  }
-  public void setOp(String op) {
-    this.op = op;
-  }
-  
-  public DeviceTopicsUpdate topics(List<String> topics) {
-    this.topics = topics;
-    return this;
-  }
+    @JsonProperty("topics")
+    private List<String> topics = null;
 
-  public DeviceTopicsUpdate addTopicsItem(String topicsItem) {
-    
-    if (this.topics == null) {
-      this.topics = new ArrayList<String>();
+    public DeviceTopicsUpdate(String op, List<String> topics) {
+        this.op = op;
+        this.topics = topics;
     }
-    
-    this.topics.add(topicsItem);
-    return this;
-  }
-  
-  /**
-  * Get topics
-  * @return topics
-  **/
-  public List<String> getTopics() {
-    return topics;
-  }
-  public void setTopics(List<String> topics) {
-    this.topics = topics;
-  }
-  
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
-    }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
-    }
-    DeviceTopicsUpdate deviceTopicsUpdate = (DeviceTopicsUpdate) o;
-    return Objects.equals(this.op, deviceTopicsUpdate.op) &&
-        Objects.equals(this.topics, deviceTopicsUpdate.topics);
-  }
 
-  @Override
-  public int hashCode() {
-    return Objects.hash(op, topics);
-  }
-  
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class DeviceTopicsUpdate {\n");
-    
-    sb.append("    op: ").append(toIndentedString(op)).append("\n");
-    sb.append("    topics: ").append(toIndentedString(topics)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
-
-  /**
-   * Convert the given object to string with each line indented by 4 spaces
-   * (except the first line).
-   */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
+    public DeviceTopicsUpdate() {
     }
-    return o.toString().replace("\n", "\n    ");
-  }
 
-  
+    public static DeviceTopicsUpdateBuilder builder() {
+        return new DeviceTopicsUpdateBuilder();
+    }
+
+    public DeviceTopicsUpdate addTopicsItem(String topicsItem) {
+
+        if (this.topics == null) {
+            this.topics = new ArrayList<String>();
+        }
+
+        this.topics.add(topicsItem);
+        return this;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        DeviceTopicsUpdate deviceTopicsUpdate = (DeviceTopicsUpdate) o;
+        return Objects.equals(this.op, deviceTopicsUpdate.op) &&
+               Objects.equals(this.topics, deviceTopicsUpdate.topics);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(op, topics);
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("class DeviceTopicsUpdate {\n");
+
+        sb.append("    op: ").append(toIndentedString(op)).append("\n");
+        sb.append("    topics: ").append(toIndentedString(topics)).append("\n");
+        sb.append("}");
+        return sb.toString();
+    }
+
+    private String toIndentedString(Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    public String getOp() {
+        return this.op;
+    }
+
+    public List<String> getTopics() {
+        return this.topics;
+    }
+
+    @JsonProperty("op")
+    public void setOp(String op) {
+        this.op = op;
+    }
+
+    @JsonProperty("topics")
+    public void setTopics(List<String> topics) {
+        this.topics = topics;
+    }
+
+    public static class DeviceTopicsUpdateBuilder {
+        private String op;
+        private List<String> topics;
+
+        DeviceTopicsUpdateBuilder() {
+        }
+
+        @JsonProperty("op")
+        public DeviceTopicsUpdateBuilder op(String op) {
+            this.op = op;
+            return this;
+        }
+
+        @JsonProperty("topics")
+        public DeviceTopicsUpdateBuilder topics(List<String> topics) {
+            this.topics = topics;
+            return this;
+        }
+
+        public DeviceTopicsUpdate build() {
+            return new DeviceTopicsUpdate(this.op, this.topics);
+        }
+
+        public String toString() {
+            return "DeviceTopicsUpdate.DeviceTopicsUpdateBuilder(op=" + this.op + ", topics=" + this.topics + ")";
+        }
+    }
 }
-
-
-

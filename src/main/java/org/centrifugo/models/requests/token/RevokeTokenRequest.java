@@ -10,90 +10,103 @@ import java.util.Objects;
  */
 public class RevokeTokenRequest implements RequestModel {
 
-  
-  @JsonProperty("expire_at")
-  private Integer expireAt = null;
-  
-  
-  @JsonProperty("uid")
-  private String uid = null;
-  
-  public RevokeTokenRequest expireAt(Integer expireAt) {
-    this.expireAt = expireAt;
-    return this;
-  }
+    @JsonProperty("expire_at")
+    private Integer expireAt = null;
 
-  
-  /**
-  * Get expireAt
-  * @return expireAt
-  **/
-  public Integer getExpireAt() {
-    return expireAt;
-  }
-  public void setExpireAt(Integer expireAt) {
-    this.expireAt = expireAt;
-  }
-  
-  public RevokeTokenRequest uid(String uid) {
-    this.uid = uid;
-    return this;
-  }
+    @JsonProperty("uid")
+    private String uid = null;
 
-  
-  /**
-  * Get uid
-  * @return uid
-  **/
-  public String getUid() {
-    return uid;
-  }
-  public void setUid(String uid) {
-    this.uid = uid;
-  }
-  
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
+    public RevokeTokenRequest(Integer expireAt, String uid) {
+        this.expireAt = expireAt;
+        this.uid = uid;
     }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
+
+    public RevokeTokenRequest() {
     }
-    RevokeTokenRequest revokeTokenRequest = (RevokeTokenRequest) o;
-    return Objects.equals(this.expireAt, revokeTokenRequest.expireAt) &&
-        Objects.equals(this.uid, revokeTokenRequest.uid);
-  }
 
-  @Override
-  public int hashCode() {
-    return Objects.hash(expireAt, uid);
-  }
-  
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class RevokeTokenRequest {\n");
-    
-    sb.append("    expireAt: ").append(toIndentedString(expireAt)).append("\n");
-    sb.append("    uid: ").append(toIndentedString(uid)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
-
-  /**
-   * Convert the given object to string with each line indented by 4 spaces
-   * (except the first line).
-   */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
+    public static RevokeTokenRequestBuilder builder() {
+        return new RevokeTokenRequestBuilder();
     }
-    return o.toString().replace("\n", "\n    ");
-  }
 
-  
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        RevokeTokenRequest revokeTokenRequest = (RevokeTokenRequest) o;
+        return Objects.equals(this.expireAt, revokeTokenRequest.expireAt) &&
+               Objects.equals(this.uid, revokeTokenRequest.uid);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(expireAt, uid);
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("class RevokeTokenRequest {\n");
+
+        sb.append("    expireAt: ").append(toIndentedString(expireAt)).append("\n");
+        sb.append("    uid: ").append(toIndentedString(uid)).append("\n");
+        sb.append("}");
+        return sb.toString();
+    }
+
+    private String toIndentedString(Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    public Integer getExpireAt() {
+        return this.expireAt;
+    }
+
+    public String getUid() {
+        return this.uid;
+    }
+
+    @JsonProperty("expire_at")
+    public void setExpireAt(Integer expireAt) {
+        this.expireAt = expireAt;
+    }
+
+    @JsonProperty("uid")
+    public void setUid(String uid) {
+        this.uid = uid;
+    }
+
+    public static class RevokeTokenRequestBuilder {
+        private Integer expireAt;
+        private String uid;
+
+        RevokeTokenRequestBuilder() {
+        }
+
+        @JsonProperty("expire_at")
+        public RevokeTokenRequestBuilder expireAt(Integer expireAt) {
+            this.expireAt = expireAt;
+            return this;
+        }
+
+        @JsonProperty("uid")
+        public RevokeTokenRequestBuilder uid(String uid) {
+            this.uid = uid;
+            return this;
+        }
+
+        public RevokeTokenRequest build() {
+            return new RevokeTokenRequest(this.expireAt, this.uid);
+        }
+
+        public String toString() {
+            return "RevokeTokenRequest.RevokeTokenRequestBuilder(expireAt=" + this.expireAt + ", uid=" + this.uid + ")";
+        }
+    }
 }
-
-
-
