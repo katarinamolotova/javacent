@@ -15,856 +15,505 @@ import org.centrifugo.models.responses.results.push_notification.send_push_notif
 import org.centrifugo.models.responses.results.push_notification.user_topic_list.UserTopicListResult;
 import org.centrifugo.models.responses.results.stats.channels.ChannelsResult;
 import org.centrifugo.models.responses.results.stats.connections.ConnectionsResult;
-import org.centrifugo.models.responses.results.user_status.GetUserStatusResult;
 import org.centrifugo.models.responses.results.stats.info.InfoResult;
+import org.centrifugo.models.responses.results.user_status.GetUserStatusResult;
 
-import java.util.Objects;
-
-/**
- * Reply
- */
 public class Reply {
 
-  
   @JsonProperty("id")
-  private Long id = null;
-  
-  
+  private Long id;
+
   @JsonProperty("error")
-  private Error error = null;
-  
-  
+  private Error error;
+
   @JsonProperty("result")
-  private Object result = null;
-  
-  
+  private Object result;
+
   @JsonProperty("publish")
-  private PublishResult publish = null;
-  
-  
+  private PublishResult publish;
+
   @JsonProperty("broadcast")
-  private BroadcastResult broadcast = null;
-  
-  
+  private BroadcastResult broadcast;
+
   @JsonProperty("subscribe")
-  private EmptyResult subscribe = null;
-  
-  
+  private EmptyResult subscribe;
+
   @JsonProperty("unsubscribe")
-  private EmptyResult unsubscribe = null;
-  
-  
+  private EmptyResult unsubscribe;
+
   @JsonProperty("disconnect")
-  private EmptyResult disconnect = null;
-  
-  
+  private EmptyResult disconnect;
+
   @JsonProperty("presence")
-  private PresenceResult presence = null;
-  
-  
+  private PresenceResult presence;
+
   @JsonProperty("presence_stats")
-  private PresenceStatsResult presenceStats = null;
-  
-  
+  private PresenceStatsResult presenceStats;
+
   @JsonProperty("history")
-  private HistoryResult history = null;
-  
-  
+  private HistoryResult history;
+
   @JsonProperty("history_remove")
-  private EmptyResult historyRemove = null;
-  
-  
+  private EmptyResult historyRemove;
+
   @JsonProperty("info")
-  private InfoResult info = null;
-  
-  
+  private InfoResult info;
+
   @JsonProperty("rpc")
-  private RPCResult rpc = null;
-  
-  
+  private RPCResult rpc;
+
   @JsonProperty("refresh")
-  private EmptyResult refresh = null;
-  
-  
+  private EmptyResult refresh;
+
   @JsonProperty("channels")
-  private ChannelsResult channels = null;
-  
-  
+  private ChannelsResult channels;
+
   @JsonProperty("connections")
-  private ConnectionsResult connections = null;
-  
-  
+  private ConnectionsResult connections;
+
   @JsonProperty("update_user_status")
-  private EmptyResult updateUserStatus = null;
-  
-  
+  private EmptyResult updateUserStatus;
+
   @JsonProperty("get_user_status")
-  private GetUserStatusResult getUserStatus = null;
-  
-  
+  private GetUserStatusResult getUserStatus;
+
   @JsonProperty("delete_user_status")
-  private EmptyResult deleteUserStatus = null;
-  
-  
+  private EmptyResult deleteUserStatus;
+
   @JsonProperty("block_user")
-  private EmptyResult blockUser = null;
-  
-  
+  private EmptyResult blockUser;
+
   @JsonProperty("unblock_user")
-  private EmptyResult unblockUser = null;
-  
-  
+  private EmptyResult unblockUser;
+
   @JsonProperty("revoke_token")
-  private EmptyResult revokeToken = null;
-  
-  
+  private EmptyResult revokeToken;
+
   @JsonProperty("invalidate_user_tokens")
-  private EmptyResult invalidateUserTokens = null;
-  
-  
+  private EmptyResult invalidateUserTokens;
+
   @JsonProperty("device_register")
-  private DeviceRegisterResult deviceRegister = null;
-  
-  
+  private DeviceRegisterResult deviceRegister;
+
   @JsonProperty("device_update")
-  private EmptyResult deviceUpdate = null;
-  
-  
+  private EmptyResult deviceUpdate;
+
   @JsonProperty("device_remove")
-  private EmptyResult deviceRemove = null;
-  
-  
+  private EmptyResult deviceRemove;
+
   @JsonProperty("device_list")
-  private DeviceListResult deviceList = null;
-  
-  
+  private DeviceListResult deviceList;
+
   @JsonProperty("device_topic_list")
-  private DeviceTopicListResult deviceTopicList = null;
-  
-  
+  private DeviceTopicListResult deviceTopicList;
+
   @JsonProperty("device_topic_update")
-  private EmptyResult deviceTopicUpdate = null;
-  
-  
+  private EmptyResult deviceTopicUpdate;
+
   @JsonProperty("user_topic_list")
-  private UserTopicListResult userTopicList = null;
-  
-  
+  private UserTopicListResult userTopicList;
+
   @JsonProperty("user_topic_update")
-  private EmptyResult userTopicUpdate = null;
-  
-  
+  private EmptyResult userTopicUpdate;
+
   @JsonProperty("send_push_notification")
-  private SendPushNotificationResult sendPushNotification = null;
-  
-  
+  private SendPushNotificationResult sendPushNotification;
+
   @JsonProperty("update_push_status")
-  private EmptyResult updatePushStatus = null;
-  
-  
+  private EmptyResult updatePushStatus;
+
   @JsonProperty("cancel_push")
-  private EmptyResult cancelPush = null;
-  
-  public Reply id(Long id) {
+  private EmptyResult cancelPush;
+
+  public Reply(
+          Long id,
+          Error error,
+          Object result,
+          PublishResult publish,
+          BroadcastResult broadcast,
+          EmptyResult subscribe,
+          EmptyResult unsubscribe,
+          EmptyResult disconnect,
+          PresenceResult presence,
+          PresenceStatsResult presenceStats,
+          HistoryResult history,
+          EmptyResult historyRemove,
+          InfoResult info,
+          RPCResult rpc,
+          EmptyResult refresh,
+          ChannelsResult channels,
+          ConnectionsResult connections,
+          EmptyResult updateUserStatus,
+          GetUserStatusResult getUserStatus,
+          EmptyResult deleteUserStatus,
+          EmptyResult blockUser,
+          EmptyResult unblockUser,
+          EmptyResult revokeToken,
+          EmptyResult invalidateUserTokens,
+          DeviceRegisterResult deviceRegister,
+          EmptyResult deviceUpdate,
+          EmptyResult deviceRemove,
+          DeviceListResult deviceList,
+          DeviceTopicListResult deviceTopicList,
+          EmptyResult deviceTopicUpdate,
+          UserTopicListResult userTopicList,
+          EmptyResult userTopicUpdate,
+          SendPushNotificationResult sendPushNotification,
+          EmptyResult updatePushStatus,
+          EmptyResult cancelPush
+  ) {
     this.id = id;
-    return this;
+    this.error = error;
+    this.result = result;
+    this.publish = publish;
+    this.broadcast = broadcast;
+    this.subscribe = subscribe;
+    this.unsubscribe = unsubscribe;
+    this.disconnect = disconnect;
+    this.presence = presence;
+    this.presenceStats = presenceStats;
+    this.history = history;
+    this.historyRemove = historyRemove;
+    this.info = info;
+    this.rpc = rpc;
+    this.refresh = refresh;
+    this.channels = channels;
+    this.connections = connections;
+    this.updateUserStatus = updateUserStatus;
+    this.getUserStatus = getUserStatus;
+    this.deleteUserStatus = deleteUserStatus;
+    this.blockUser = blockUser;
+    this.unblockUser = unblockUser;
+    this.revokeToken = revokeToken;
+    this.invalidateUserTokens = invalidateUserTokens;
+    this.deviceRegister = deviceRegister;
+    this.deviceUpdate = deviceUpdate;
+    this.deviceRemove = deviceRemove;
+    this.deviceList = deviceList;
+    this.deviceTopicList = deviceTopicList;
+    this.deviceTopicUpdate = deviceTopicUpdate;
+    this.userTopicList = userTopicList;
+    this.userTopicUpdate = userTopicUpdate;
+    this.sendPushNotification = sendPushNotification;
+    this.updatePushStatus = updatePushStatus;
+    this.cancelPush = cancelPush;
   }
 
-  
-  /**
-  * Get id
-  * @return id
-  **/
-  public Long getId() {
-    return id;
+  public Reply() {
   }
+
+  public Long getId() {
+    return this.id;
+  }
+
+  public Error getError() {
+    return this.error;
+  }
+
+  public Object getResult() {
+    return this.result;
+  }
+
+  public PublishResult getPublish() {
+    return this.publish;
+  }
+
+  public BroadcastResult getBroadcast() {
+    return this.broadcast;
+  }
+
+  public EmptyResult getSubscribe() {
+    return this.subscribe;
+  }
+
+  public EmptyResult getUnsubscribe() {
+    return this.unsubscribe;
+  }
+
+  public EmptyResult getDisconnect() {
+    return this.disconnect;
+  }
+
+  public PresenceResult getPresence() {
+    return this.presence;
+  }
+
+  public PresenceStatsResult getPresenceStats() {
+    return this.presenceStats;
+  }
+
+  public HistoryResult getHistory() {
+    return this.history;
+  }
+
+  public EmptyResult getHistoryRemove() {
+    return this.historyRemove;
+  }
+
+  public InfoResult getInfo() {
+    return this.info;
+  }
+
+  public RPCResult getRpc() {
+    return this.rpc;
+  }
+
+  public EmptyResult getRefresh() {
+    return this.refresh;
+  }
+
+  public ChannelsResult getChannels() {
+    return this.channels;
+  }
+
+  public ConnectionsResult getConnections() {
+    return this.connections;
+  }
+
+  public EmptyResult getUpdateUserStatus() {
+    return this.updateUserStatus;
+  }
+
+  public GetUserStatusResult getGetUserStatus() {
+    return this.getUserStatus;
+  }
+
+  public EmptyResult getDeleteUserStatus() {
+    return this.deleteUserStatus;
+  }
+
+  public EmptyResult getBlockUser() {
+    return this.blockUser;
+  }
+
+  public EmptyResult getUnblockUser() {
+    return this.unblockUser;
+  }
+
+  public EmptyResult getRevokeToken() {
+    return this.revokeToken;
+  }
+
+  public EmptyResult getInvalidateUserTokens() {
+    return this.invalidateUserTokens;
+  }
+
+  public DeviceRegisterResult getDeviceRegister() {
+    return this.deviceRegister;
+  }
+
+  public EmptyResult getDeviceUpdate() {
+    return this.deviceUpdate;
+  }
+
+  public EmptyResult getDeviceRemove() {
+    return this.deviceRemove;
+  }
+
+  public DeviceListResult getDeviceList() {
+    return this.deviceList;
+  }
+
+  public DeviceTopicListResult getDeviceTopicList() {
+    return this.deviceTopicList;
+  }
+
+  public EmptyResult getDeviceTopicUpdate() {
+    return this.deviceTopicUpdate;
+  }
+
+  public UserTopicListResult getUserTopicList() {
+    return this.userTopicList;
+  }
+
+  public EmptyResult getUserTopicUpdate() {
+    return this.userTopicUpdate;
+  }
+
+  public SendPushNotificationResult getSendPushNotification() {
+    return this.sendPushNotification;
+  }
+
+  public EmptyResult getUpdatePushStatus() {
+    return this.updatePushStatus;
+  }
+
+  public EmptyResult getCancelPush() {
+    return this.cancelPush;
+  }
+
+  @JsonProperty("id")
   public void setId(Long id) {
     this.id = id;
   }
-  
-  public Reply error(Error error) {
-    this.error = error;
-    return this;
-  }
 
-  
-  /**
-  * Get error
-  * @return error
-  **/
-  public Error getError() {
-    return error;
-  }
+  @JsonProperty("error")
   public void setError(Error error) {
     this.error = error;
   }
-  
-  public Reply result(Object result) {
-    this.result = result;
-    return this;
-  }
 
-  
-  /**
-  * Get result
-  * @return result
-  **/
-  public Object getResult() {
-    return result;
-  }
+  @JsonProperty("result")
   public void setResult(Object result) {
     this.result = result;
   }
-  
-  public Reply publish(PublishResult publish) {
-    this.publish = publish;
-    return this;
-  }
 
-  
-  /**
-  * Get publish
-  * @return publish
-  **/
-  public PublishResult getPublish() {
-    return publish;
-  }
+  @JsonProperty("publish")
   public void setPublish(PublishResult publish) {
     this.publish = publish;
   }
-  
-  public Reply broadcast(BroadcastResult broadcast) {
-    this.broadcast = broadcast;
-    return this;
-  }
 
-  
-  /**
-  * Get broadcast
-  * @return broadcast
-  **/
-  public BroadcastResult getBroadcast() {
-    return broadcast;
-  }
+  @JsonProperty("broadcast")
   public void setBroadcast(BroadcastResult broadcast) {
     this.broadcast = broadcast;
   }
-  
-  public Reply subscribe(EmptyResult subscribe) {
-    this.subscribe = subscribe;
-    return this;
-  }
 
-  
-  /**
-  * Get subscribe
-  * @return subscribe
-  **/
-  public EmptyResult getSubscribe() {
-    return subscribe;
-  }
+  @JsonProperty("subscribe")
   public void setSubscribe(EmptyResult subscribe) {
     this.subscribe = subscribe;
   }
-  
-  public Reply unsubscribe(EmptyResult unsubscribe) {
-    this.unsubscribe = unsubscribe;
-    return this;
-  }
 
-  
-  /**
-  * Get unsubscribe
-  * @return unsubscribe
-  **/
-  public EmptyResult getUnsubscribe() {
-    return unsubscribe;
-  }
+  @JsonProperty("unsubscribe")
   public void setUnsubscribe(EmptyResult unsubscribe) {
     this.unsubscribe = unsubscribe;
   }
-  
-  public Reply disconnect(EmptyResult disconnect) {
-    this.disconnect = disconnect;
-    return this;
-  }
 
-  
-  /**
-  * Get disconnect
-  * @return disconnect
-  **/
-  public EmptyResult getDisconnect() {
-    return disconnect;
-  }
+  @JsonProperty("disconnect")
   public void setDisconnect(EmptyResult disconnect) {
     this.disconnect = disconnect;
   }
-  
-  public Reply presence(PresenceResult presence) {
-    this.presence = presence;
-    return this;
-  }
 
-  
-  /**
-  * Get presence
-  * @return presence
-  **/
-  public PresenceResult getPresence() {
-    return presence;
-  }
+  @JsonProperty("presence")
   public void setPresence(PresenceResult presence) {
     this.presence = presence;
   }
-  
-  public Reply presenceStats(PresenceStatsResult presenceStats) {
-    this.presenceStats = presenceStats;
-    return this;
-  }
 
-  
-  /**
-  * Get presenceStats
-  * @return presenceStats
-  **/
-  public PresenceStatsResult getPresenceStats() {
-    return presenceStats;
-  }
+  @JsonProperty("presence_stats")
   public void setPresenceStats(PresenceStatsResult presenceStats) {
     this.presenceStats = presenceStats;
   }
-  
-  public Reply history(HistoryResult history) {
-    this.history = history;
-    return this;
-  }
 
-  
-  /**
-  * Get history
-  * @return history
-  **/
-  public HistoryResult getHistory() {
-    return history;
-  }
+  @JsonProperty("history")
   public void setHistory(HistoryResult history) {
     this.history = history;
   }
-  
-  public Reply historyRemove(EmptyResult historyRemove) {
-    this.historyRemove = historyRemove;
-    return this;
-  }
 
-  
-  /**
-  * Get historyRemove
-  * @return historyRemove
-  **/
-  public EmptyResult getHistoryRemove() {
-    return historyRemove;
-  }
+  @JsonProperty("history_remove")
   public void setHistoryRemove(EmptyResult historyRemove) {
     this.historyRemove = historyRemove;
   }
-  
-  public Reply info(InfoResult info) {
-    this.info = info;
-    return this;
-  }
 
-  
-  /**
-  * Get info
-  * @return info
-  **/
-  public InfoResult getInfo() {
-    return info;
-  }
+  @JsonProperty("info")
   public void setInfo(InfoResult info) {
     this.info = info;
   }
-  
-  public Reply rpc(RPCResult rpc) {
-    this.rpc = rpc;
-    return this;
-  }
 
-  
-  /**
-  * Get rpc
-  * @return rpc
-  **/
-  public RPCResult getRpc() {
-    return rpc;
-  }
+  @JsonProperty("rpc")
   public void setRpc(RPCResult rpc) {
     this.rpc = rpc;
   }
-  
-  public Reply refresh(EmptyResult refresh) {
-    this.refresh = refresh;
-    return this;
-  }
 
-  
-  /**
-  * Get refresh
-  * @return refresh
-  **/
-  public EmptyResult getRefresh() {
-    return refresh;
-  }
+  @JsonProperty("refresh")
   public void setRefresh(EmptyResult refresh) {
     this.refresh = refresh;
   }
-  
-  public Reply channels(ChannelsResult channels) {
-    this.channels = channels;
-    return this;
-  }
 
-  
-  /**
-  * Get channels
-  * @return channels
-  **/
-  public ChannelsResult getChannels() {
-    return channels;
-  }
+  @JsonProperty("channels")
   public void setChannels(ChannelsResult channels) {
     this.channels = channels;
   }
-  
-  public Reply connections(ConnectionsResult connections) {
-    this.connections = connections;
-    return this;
-  }
 
-  
-  /**
-  * Get connections
-  * @return connections
-  **/
-  public ConnectionsResult getConnections() {
-    return connections;
-  }
+  @JsonProperty("connections")
   public void setConnections(ConnectionsResult connections) {
     this.connections = connections;
   }
-  
-  public Reply updateUserStatus(EmptyResult updateUserStatus) {
-    this.updateUserStatus = updateUserStatus;
-    return this;
-  }
 
-  
-  /**
-  * Get updateUserStatus
-  * @return updateUserStatus
-  **/
-  public EmptyResult getUpdateUserStatus() {
-    return updateUserStatus;
-  }
+  @JsonProperty("update_user_status")
   public void setUpdateUserStatus(EmptyResult updateUserStatus) {
     this.updateUserStatus = updateUserStatus;
   }
-  
-  public Reply getUserStatus(GetUserStatusResult getUserStatus) {
-    this.getUserStatus = getUserStatus;
-    return this;
-  }
 
-  
-  /**
-  * Get getUserStatus
-  * @return getUserStatus
-  **/
-  public GetUserStatusResult getGetUserStatus() {
-    return getUserStatus;
-  }
+  @JsonProperty("get_user_status")
   public void setGetUserStatus(GetUserStatusResult getUserStatus) {
     this.getUserStatus = getUserStatus;
   }
-  
-  public Reply deleteUserStatus(EmptyResult deleteUserStatus) {
-    this.deleteUserStatus = deleteUserStatus;
-    return this;
-  }
 
-  
-  /**
-  * Get deleteUserStatus
-  * @return deleteUserStatus
-  **/
-  public EmptyResult getDeleteUserStatus() {
-    return deleteUserStatus;
-  }
+  @JsonProperty("delete_user_status")
   public void setDeleteUserStatus(EmptyResult deleteUserStatus) {
     this.deleteUserStatus = deleteUserStatus;
   }
-  
-  public Reply blockUser(EmptyResult blockUser) {
-    this.blockUser = blockUser;
-    return this;
-  }
 
-  
-  /**
-  * Get blockUser
-  * @return blockUser
-  **/
-  public EmptyResult getBlockUser() {
-    return blockUser;
-  }
+  @JsonProperty("block_user")
   public void setBlockUser(EmptyResult blockUser) {
     this.blockUser = blockUser;
   }
-  
-  public Reply unblockUser(EmptyResult unblockUser) {
-    this.unblockUser = unblockUser;
-    return this;
-  }
 
-  
-  /**
-  * Get unblockUser
-  * @return unblockUser
-  **/
-  public EmptyResult getUnblockUser() {
-    return unblockUser;
-  }
+  @JsonProperty("unblock_user")
   public void setUnblockUser(EmptyResult unblockUser) {
     this.unblockUser = unblockUser;
   }
-  
-  public Reply revokeToken(EmptyResult revokeToken) {
-    this.revokeToken = revokeToken;
-    return this;
-  }
 
-  
-  /**
-  * Get revokeToken
-  * @return revokeToken
-  **/
-  public EmptyResult getRevokeToken() {
-    return revokeToken;
-  }
+  @JsonProperty("revoke_token")
   public void setRevokeToken(EmptyResult revokeToken) {
     this.revokeToken = revokeToken;
   }
-  
-  public Reply invalidateUserTokens(EmptyResult invalidateUserTokens) {
-    this.invalidateUserTokens = invalidateUserTokens;
-    return this;
-  }
 
-  
-  /**
-  * Get invalidateUserTokens
-  * @return invalidateUserTokens
-  **/
-  public EmptyResult getInvalidateUserTokens() {
-    return invalidateUserTokens;
-  }
+  @JsonProperty("invalidate_user_tokens")
   public void setInvalidateUserTokens(EmptyResult invalidateUserTokens) {
     this.invalidateUserTokens = invalidateUserTokens;
   }
-  
-  public Reply deviceRegister(DeviceRegisterResult deviceRegister) {
-    this.deviceRegister = deviceRegister;
-    return this;
-  }
 
-  
-  /**
-  * Get deviceRegister
-  * @return deviceRegister
-  **/
-  public DeviceRegisterResult getDeviceRegister() {
-    return deviceRegister;
-  }
+  @JsonProperty("device_register")
   public void setDeviceRegister(DeviceRegisterResult deviceRegister) {
     this.deviceRegister = deviceRegister;
   }
-  
-  public Reply deviceUpdate(EmptyResult deviceUpdate) {
-    this.deviceUpdate = deviceUpdate;
-    return this;
-  }
 
-  
-  /**
-  * Get deviceUpdate
-  * @return deviceUpdate
-  **/
-  public EmptyResult getDeviceUpdate() {
-    return deviceUpdate;
-  }
+  @JsonProperty("device_update")
   public void setDeviceUpdate(EmptyResult deviceUpdate) {
     this.deviceUpdate = deviceUpdate;
   }
-  
-  public Reply deviceRemove(EmptyResult deviceRemove) {
-    this.deviceRemove = deviceRemove;
-    return this;
-  }
 
-  
-  /**
-  * Get deviceRemove
-  * @return deviceRemove
-  **/
-  public EmptyResult getDeviceRemove() {
-    return deviceRemove;
-  }
+  @JsonProperty("device_remove")
   public void setDeviceRemove(EmptyResult deviceRemove) {
     this.deviceRemove = deviceRemove;
   }
-  
-  public Reply deviceList(DeviceListResult deviceList) {
-    this.deviceList = deviceList;
-    return this;
-  }
 
-  
-  /**
-  * Get deviceList
-  * @return deviceList
-  **/
-  public DeviceListResult getDeviceList() {
-    return deviceList;
-  }
+  @JsonProperty("device_list")
   public void setDeviceList(DeviceListResult deviceList) {
     this.deviceList = deviceList;
   }
-  
-  public Reply deviceTopicList(DeviceTopicListResult deviceTopicList) {
-    this.deviceTopicList = deviceTopicList;
-    return this;
-  }
 
-  
-  /**
-  * Get deviceTopicList
-  * @return deviceTopicList
-  **/
-  public DeviceTopicListResult getDeviceTopicList() {
-    return deviceTopicList;
-  }
+  @JsonProperty("device_topic_list")
   public void setDeviceTopicList(DeviceTopicListResult deviceTopicList) {
     this.deviceTopicList = deviceTopicList;
   }
-  
-  public Reply deviceTopicUpdate(EmptyResult deviceTopicUpdate) {
-    this.deviceTopicUpdate = deviceTopicUpdate;
-    return this;
-  }
 
-  
-  /**
-  * Get deviceTopicUpdate
-  * @return deviceTopicUpdate
-  **/
-  public EmptyResult getDeviceTopicUpdate() {
-    return deviceTopicUpdate;
-  }
+  @JsonProperty("device_topic_update")
   public void setDeviceTopicUpdate(EmptyResult deviceTopicUpdate) {
     this.deviceTopicUpdate = deviceTopicUpdate;
   }
-  
-  public Reply userTopicList(UserTopicListResult userTopicList) {
-    this.userTopicList = userTopicList;
-    return this;
-  }
 
-  
-  /**
-  * Get userTopicList
-  * @return userTopicList
-  **/
-  public UserTopicListResult getUserTopicList() {
-    return userTopicList;
-  }
+  @JsonProperty("user_topic_list")
   public void setUserTopicList(UserTopicListResult userTopicList) {
     this.userTopicList = userTopicList;
   }
-  
-  public Reply userTopicUpdate(EmptyResult userTopicUpdate) {
-    this.userTopicUpdate = userTopicUpdate;
-    return this;
-  }
 
-  
-  /**
-  * Get userTopicUpdate
-  * @return userTopicUpdate
-  **/
-  public EmptyResult getUserTopicUpdate() {
-    return userTopicUpdate;
-  }
+  @JsonProperty("user_topic_update")
   public void setUserTopicUpdate(EmptyResult userTopicUpdate) {
     this.userTopicUpdate = userTopicUpdate;
   }
-  
-  public Reply sendPushNotification(SendPushNotificationResult sendPushNotification) {
-    this.sendPushNotification = sendPushNotification;
-    return this;
-  }
 
-  
-  /**
-  * Get sendPushNotification
-  * @return sendPushNotification
-  **/
-  public SendPushNotificationResult getSendPushNotification() {
-    return sendPushNotification;
-  }
+  @JsonProperty("send_push_notification")
   public void setSendPushNotification(SendPushNotificationResult sendPushNotification) {
     this.sendPushNotification = sendPushNotification;
   }
-  
-  public Reply updatePushStatus(EmptyResult updatePushStatus) {
-    this.updatePushStatus = updatePushStatus;
-    return this;
-  }
 
-  
-  /**
-  * Get updatePushStatus
-  * @return updatePushStatus
-  **/
-  public EmptyResult getUpdatePushStatus() {
-    return updatePushStatus;
-  }
+  @JsonProperty("update_push_status")
   public void setUpdatePushStatus(EmptyResult updatePushStatus) {
     this.updatePushStatus = updatePushStatus;
   }
-  
-  public Reply cancelPush(EmptyResult cancelPush) {
-    this.cancelPush = cancelPush;
-    return this;
-  }
 
-  
-  /**
-  * Get cancelPush
-  * @return cancelPush
-  **/
-  public EmptyResult getCancelPush() {
-    return cancelPush;
-  }
+  @JsonProperty("cancel_push")
   public void setCancelPush(EmptyResult cancelPush) {
     this.cancelPush = cancelPush;
   }
-  
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
-    }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
-    }
-    Reply reply = (Reply) o;
-    return Objects.equals(this.id, reply.id) &&
-        Objects.equals(this.error, reply.error) &&
-        Objects.equals(this.result, reply.result) &&
-        Objects.equals(this.publish, reply.publish) &&
-        Objects.equals(this.broadcast, reply.broadcast) &&
-        Objects.equals(this.subscribe, reply.subscribe) &&
-        Objects.equals(this.unsubscribe, reply.unsubscribe) &&
-        Objects.equals(this.disconnect, reply.disconnect) &&
-        Objects.equals(this.presence, reply.presence) &&
-        Objects.equals(this.presenceStats, reply.presenceStats) &&
-        Objects.equals(this.history, reply.history) &&
-        Objects.equals(this.historyRemove, reply.historyRemove) &&
-        Objects.equals(this.info, reply.info) &&
-        Objects.equals(this.rpc, reply.rpc) &&
-        Objects.equals(this.refresh, reply.refresh) &&
-        Objects.equals(this.channels, reply.channels) &&
-        Objects.equals(this.connections, reply.connections) &&
-        Objects.equals(this.updateUserStatus, reply.updateUserStatus) &&
-        Objects.equals(this.getUserStatus, reply.getUserStatus) &&
-        Objects.equals(this.deleteUserStatus, reply.deleteUserStatus) &&
-        Objects.equals(this.blockUser, reply.blockUser) &&
-        Objects.equals(this.unblockUser, reply.unblockUser) &&
-        Objects.equals(this.revokeToken, reply.revokeToken) &&
-        Objects.equals(this.invalidateUserTokens, reply.invalidateUserTokens) &&
-        Objects.equals(this.deviceRegister, reply.deviceRegister) &&
-        Objects.equals(this.deviceUpdate, reply.deviceUpdate) &&
-        Objects.equals(this.deviceRemove, reply.deviceRemove) &&
-        Objects.equals(this.deviceList, reply.deviceList) &&
-        Objects.equals(this.deviceTopicList, reply.deviceTopicList) &&
-        Objects.equals(this.deviceTopicUpdate, reply.deviceTopicUpdate) &&
-        Objects.equals(this.userTopicList, reply.userTopicList) &&
-        Objects.equals(this.userTopicUpdate, reply.userTopicUpdate) &&
-        Objects.equals(this.sendPushNotification, reply.sendPushNotification) &&
-        Objects.equals(this.updatePushStatus, reply.updatePushStatus) &&
-        Objects.equals(this.cancelPush, reply.cancelPush);
-  }
-
-  @Override
-  public int hashCode() {
-    return Objects.hash(id, error, result, publish, broadcast, subscribe, unsubscribe, disconnect, presence, presenceStats, history, historyRemove, info, rpc, refresh, channels, connections, updateUserStatus, getUserStatus, deleteUserStatus, blockUser, unblockUser, revokeToken, invalidateUserTokens, deviceRegister, deviceUpdate, deviceRemove, deviceList, deviceTopicList, deviceTopicUpdate, userTopicList, userTopicUpdate, sendPushNotification, updatePushStatus, cancelPush);
-  }
-  
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class Reply {\n");
-    
-    sb.append("    id: ").append(toIndentedString(id)).append("\n");
-    sb.append("    error: ").append(toIndentedString(error)).append("\n");
-    sb.append("    result: ").append(toIndentedString(result)).append("\n");
-    sb.append("    publish: ").append(toIndentedString(publish)).append("\n");
-    sb.append("    broadcast: ").append(toIndentedString(broadcast)).append("\n");
-    sb.append("    subscribe: ").append(toIndentedString(subscribe)).append("\n");
-    sb.append("    unsubscribe: ").append(toIndentedString(unsubscribe)).append("\n");
-    sb.append("    disconnect: ").append(toIndentedString(disconnect)).append("\n");
-    sb.append("    presence: ").append(toIndentedString(presence)).append("\n");
-    sb.append("    presenceStats: ").append(toIndentedString(presenceStats)).append("\n");
-    sb.append("    history: ").append(toIndentedString(history)).append("\n");
-    sb.append("    historyRemove: ").append(toIndentedString(historyRemove)).append("\n");
-    sb.append("    info: ").append(toIndentedString(info)).append("\n");
-    sb.append("    rpc: ").append(toIndentedString(rpc)).append("\n");
-    sb.append("    refresh: ").append(toIndentedString(refresh)).append("\n");
-    sb.append("    channels: ").append(toIndentedString(channels)).append("\n");
-    sb.append("    connections: ").append(toIndentedString(connections)).append("\n");
-    sb.append("    updateUserStatus: ").append(toIndentedString(updateUserStatus)).append("\n");
-    sb.append("    getUserStatus: ").append(toIndentedString(getUserStatus)).append("\n");
-    sb.append("    deleteUserStatus: ").append(toIndentedString(deleteUserStatus)).append("\n");
-    sb.append("    blockUser: ").append(toIndentedString(blockUser)).append("\n");
-    sb.append("    unblockUser: ").append(toIndentedString(unblockUser)).append("\n");
-    sb.append("    revokeToken: ").append(toIndentedString(revokeToken)).append("\n");
-    sb.append("    invalidateUserTokens: ").append(toIndentedString(invalidateUserTokens)).append("\n");
-    sb.append("    deviceRegister: ").append(toIndentedString(deviceRegister)).append("\n");
-    sb.append("    deviceUpdate: ").append(toIndentedString(deviceUpdate)).append("\n");
-    sb.append("    deviceRemove: ").append(toIndentedString(deviceRemove)).append("\n");
-    sb.append("    deviceList: ").append(toIndentedString(deviceList)).append("\n");
-    sb.append("    deviceTopicList: ").append(toIndentedString(deviceTopicList)).append("\n");
-    sb.append("    deviceTopicUpdate: ").append(toIndentedString(deviceTopicUpdate)).append("\n");
-    sb.append("    userTopicList: ").append(toIndentedString(userTopicList)).append("\n");
-    sb.append("    userTopicUpdate: ").append(toIndentedString(userTopicUpdate)).append("\n");
-    sb.append("    sendPushNotification: ").append(toIndentedString(sendPushNotification)).append("\n");
-    sb.append("    updatePushStatus: ").append(toIndentedString(updatePushStatus)).append("\n");
-    sb.append("    cancelPush: ").append(toIndentedString(cancelPush)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
-
-  /**
-   * Convert the given object to string with each line indented by 4 spaces
-   * (except the first line).
-   */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
-  }
-
-  
 }

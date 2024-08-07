@@ -2,281 +2,152 @@ package org.centrifugo.models.responses.results.stats.info;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-import java.util.Objects;
-
-/**
- * NodeResult
- */
 public class NodeResult {
 
-  
   @JsonProperty("uid")
-  private String uid = null;
-  
-  
+  private String uid;
+
   @JsonProperty("name")
-  private String name = null;
-  
-  
+  private String name;
+
   @JsonProperty("version")
-  private String version = null;
-  
-  
+  private String version;
+
   @JsonProperty("num_clients")
-  private Long numClients = null;
-  
-  
+  private Long numClients;
+
   @JsonProperty("num_users")
-  private Long numUsers = null;
-  
-  
+  private Long numUsers;
+
   @JsonProperty("num_channels")
-  private Long numChannels = null;
-  
-  
+  private Long numChannels;
+
   @JsonProperty("uptime")
-  private Long uptime = null;
-  
-  
+  private Long uptime;
+
   @JsonProperty("metrics")
-  private Metrics metrics = null;
-  
-  
+  private Metrics metrics;
+
   @JsonProperty("process")
-  private Process process = null;
-  
-  
+  private Process process;
+
   @JsonProperty("num_subs")
-  private Long numSubs = null;
-  
-  public NodeResult uid(String uid) {
+  private Long numSubs;
+
+  public NodeResult(
+          String uid,
+          String name,
+          String version,
+          Long numClients,
+          Long numUsers,
+          Long numChannels,
+          Long uptime,
+          Metrics metrics,
+          Process process,
+          Long numSubs
+  ) {
     this.uid = uid;
-    return this;
+    this.name = name;
+    this.version = version;
+    this.numClients = numClients;
+    this.numUsers = numUsers;
+    this.numChannels = numChannels;
+    this.uptime = uptime;
+    this.metrics = metrics;
+    this.process = process;
+    this.numSubs = numSubs;
   }
 
-  
-  /**
-  * Get uid
-  * @return uid
-  **/
-  public String getUid() {
-    return uid;
+  public NodeResult() {
   }
+
+  public String getUid() {
+    return this.uid;
+  }
+
+  public String getName() {
+    return this.name;
+  }
+
+  public String getVersion() {
+    return this.version;
+  }
+
+  public Long getNumClients() {
+    return this.numClients;
+  }
+
+  public Long getNumUsers() {
+    return this.numUsers;
+  }
+
+  public Long getNumChannels() {
+    return this.numChannels;
+  }
+
+  public Long getUptime() {
+    return this.uptime;
+  }
+
+  public Metrics getMetrics() {
+    return this.metrics;
+  }
+
+  public Process getProcess() {
+    return this.process;
+  }
+
+  public Long getNumSubs() {
+    return this.numSubs;
+  }
+
+  @JsonProperty("uid")
   public void setUid(String uid) {
     this.uid = uid;
   }
-  
-  public NodeResult name(String name) {
-    this.name = name;
-    return this;
-  }
 
-  
-  /**
-  * Get name
-  * @return name
-  **/
-  public String getName() {
-    return name;
-  }
+  @JsonProperty("name")
   public void setName(String name) {
     this.name = name;
   }
-  
-  public NodeResult version(String version) {
-    this.version = version;
-    return this;
-  }
 
-  
-  /**
-  * Get version
-  * @return version
-  **/
-  public String getVersion() {
-    return version;
-  }
+  @JsonProperty("version")
   public void setVersion(String version) {
     this.version = version;
   }
-  
-  public NodeResult numClients(Long numClients) {
-    this.numClients = numClients;
-    return this;
-  }
 
-  
-  /**
-  * Get numClients
-  * @return numClients
-  **/
-  public Long getNumClients() {
-    return numClients;
-  }
+  @JsonProperty("num_clients")
   public void setNumClients(Long numClients) {
     this.numClients = numClients;
   }
-  
-  public NodeResult numUsers(Long numUsers) {
-    this.numUsers = numUsers;
-    return this;
-  }
 
-  
-  /**
-  * Get numUsers
-  * @return numUsers
-  **/
-  public Long getNumUsers() {
-    return numUsers;
-  }
+  @JsonProperty("num_users")
   public void setNumUsers(Long numUsers) {
     this.numUsers = numUsers;
   }
-  
-  public NodeResult numChannels(Long numChannels) {
-    this.numChannels = numChannels;
-    return this;
-  }
 
-  
-  /**
-  * Get numChannels
-  * @return numChannels
-  **/
-  public Long getNumChannels() {
-    return numChannels;
-  }
+  @JsonProperty("num_channels")
   public void setNumChannels(Long numChannels) {
     this.numChannels = numChannels;
   }
-  
-  public NodeResult uptime(Long uptime) {
-    this.uptime = uptime;
-    return this;
-  }
 
-  
-  /**
-  * Get uptime
-  * @return uptime
-  **/
-  public Long getUptime() {
-    return uptime;
-  }
+  @JsonProperty("uptime")
   public void setUptime(Long uptime) {
     this.uptime = uptime;
   }
-  
-  public NodeResult metrics(Metrics metrics) {
-    this.metrics = metrics;
-    return this;
-  }
 
-  
-  /**
-  * Get metrics
-  * @return metrics
-  **/
-  public Metrics getMetrics() {
-    return metrics;
-  }
+  @JsonProperty("metrics")
   public void setMetrics(Metrics metrics) {
     this.metrics = metrics;
   }
-  
-  public NodeResult process(Process process) {
-    this.process = process;
-    return this;
-  }
 
-  
-  /**
-  * Get process
-  * @return process
-  **/
-  public Process getProcess() {
-    return process;
-  }
+  @JsonProperty("process")
   public void setProcess(Process process) {
     this.process = process;
   }
-  
-  public NodeResult numSubs(Long numSubs) {
-    this.numSubs = numSubs;
-    return this;
-  }
 
-  
-  /**
-  * Get numSubs
-  * @return numSubs
-  **/
-  public Long getNumSubs() {
-    return numSubs;
-  }
+  @JsonProperty("num_subs")
   public void setNumSubs(Long numSubs) {
     this.numSubs = numSubs;
   }
-  
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
-    }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
-    }
-    NodeResult nodeResult = (NodeResult) o;
-    return Objects.equals(this.uid, nodeResult.uid) &&
-        Objects.equals(this.name, nodeResult.name) &&
-        Objects.equals(this.version, nodeResult.version) &&
-        Objects.equals(this.numClients, nodeResult.numClients) &&
-        Objects.equals(this.numUsers, nodeResult.numUsers) &&
-        Objects.equals(this.numChannels, nodeResult.numChannels) &&
-        Objects.equals(this.uptime, nodeResult.uptime) &&
-        Objects.equals(this.metrics, nodeResult.metrics) &&
-        Objects.equals(this.process, nodeResult.process) &&
-        Objects.equals(this.numSubs, nodeResult.numSubs);
-  }
-
-  @Override
-  public int hashCode() {
-    return Objects.hash(uid, name, version, numClients, numUsers, numChannels, uptime, metrics, process, numSubs);
-  }
-  
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class NodeResult {\n");
-    
-    sb.append("    uid: ").append(toIndentedString(uid)).append("\n");
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
-    sb.append("    version: ").append(toIndentedString(version)).append("\n");
-    sb.append("    numClients: ").append(toIndentedString(numClients)).append("\n");
-    sb.append("    numUsers: ").append(toIndentedString(numUsers)).append("\n");
-    sb.append("    numChannels: ").append(toIndentedString(numChannels)).append("\n");
-    sb.append("    uptime: ").append(toIndentedString(uptime)).append("\n");
-    sb.append("    metrics: ").append(toIndentedString(metrics)).append("\n");
-    sb.append("    process: ").append(toIndentedString(process)).append("\n");
-    sb.append("    numSubs: ").append(toIndentedString(numSubs)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
-
-  /**
-   * Convert the given object to string with each line indented by 4 spaces
-   * (except the first line).
-   */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
-  }
-
-  
 }
-
-
-
