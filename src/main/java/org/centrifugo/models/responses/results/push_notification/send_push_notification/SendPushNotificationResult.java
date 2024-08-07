@@ -1,4 +1,4 @@
-package org.centrifugo.models.responses.results.push_notification.send_publish_notification;
+package org.centrifugo.models.responses.results.push_notification.send_push_notification;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 

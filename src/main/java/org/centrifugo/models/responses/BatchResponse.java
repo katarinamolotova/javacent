@@ -1,7 +1,8 @@
 package org.centrifugo.models.responses.results.batch;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import org.centrifugo.models.responses.ResponseModel;
+import org.centrifugo.models.responses.result.batch.RPCResult;
+import org.centrifugo.models.responses.result.batch.Reply;
 
 import java.util.ArrayList;
 import java.util.List;
