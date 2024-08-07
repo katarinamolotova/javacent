@@ -10,68 +10,56 @@ import java.util.Objects;
  */
 public class PresenceRequest implements RequestModel {
 
-  
-  @JsonProperty("channel")
-  private String channel = null;
-  
-  public PresenceRequest channel(String channel) {
-    this.channel = channel;
-    return this;
-  }
+    @JsonProperty("channel")
+    private String channel = null;
 
-  
-  /**
-  * Get channel
-  * @return channel
-  **/
-  public String getChannel() {
-    return channel;
-  }
-  public PresenceRequest setChannel(String channel) {
-    this.channel = channel;
-    return this;
-  }
-  
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
+    public PresenceRequest(String channel) {
+        this.channel = channel;
     }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
+
+    public PresenceRequest() {
     }
-    PresenceRequest presenceRequest = (PresenceRequest) o;
-    return Objects.equals(this.channel, presenceRequest.channel);
-  }
 
-  @Override
-  public int hashCode() {
-    return Objects.hash(channel);
-  }
-  
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class PresenceRequest {\n");
-    
-    sb.append("    channel: ").append(toIndentedString(channel)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
-
-  /**
-   * Convert the given object to string with each line indented by 4 spaces
-   * (except the first line).
-   */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        PresenceRequest presenceRequest = (PresenceRequest) o;
+        return Objects.equals(this.channel, presenceRequest.channel);
     }
-    return o.toString().replace("\n", "\n    ");
-  }
 
-  
+    @Override
+    public int hashCode() {
+        return Objects.hash(channel);
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("class PresenceRequest {\n");
+
+        sb.append("    channel: ").append(toIndentedString(channel)).append("\n");
+        sb.append("}");
+        return sb.toString();
+    }
+
+    private String toIndentedString(Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    public String getChannel() {
+        return this.channel;
+    }
+
+    @JsonProperty("channel")
+    public void setChannel(String channel) {
+        this.channel = channel;
+    }
 }
-
-
-

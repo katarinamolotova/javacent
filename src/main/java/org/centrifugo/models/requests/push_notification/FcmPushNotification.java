@@ -9,67 +9,56 @@ import java.util.Objects;
  */
 public class FcmPushNotification {
 
-  
-  @JsonProperty("message")
-  private Object message = null;
-  
-  public FcmPushNotification message(Object message) {
-    this.message = message;
-    return this;
-  }
+    @JsonProperty("message")
+    private Object message = null;
 
-  
-  /**
-  * Get message
-  * @return message
-  **/
-  public Object getMessage() {
-    return message;
-  }
-  public void setMessage(Object message) {
-    this.message = message;
-  }
-  
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
+    public FcmPushNotification(Object message) {
+        this.message = message;
     }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
+
+    public FcmPushNotification() {
     }
-    FcmPushNotification fcmPushNotification = (FcmPushNotification) o;
-    return Objects.equals(this.message, fcmPushNotification.message);
-  }
 
-  @Override
-  public int hashCode() {
-    return Objects.hash(message);
-  }
-  
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class FcmPushNotification {\n");
-    
-    sb.append("    message: ").append(toIndentedString(message)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
-
-  /**
-   * Convert the given object to string with each line indented by 4 spaces
-   * (except the first line).
-   */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        FcmPushNotification fcmPushNotification = (FcmPushNotification) o;
+        return Objects.equals(this.message, fcmPushNotification.message);
     }
-    return o.toString().replace("\n", "\n    ");
-  }
 
-  
+    @Override
+    public int hashCode() {
+        return Objects.hash(message);
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("class FcmPushNotification {\n");
+
+        sb.append("    message: ").append(toIndentedString(message)).append("\n");
+        sb.append("}");
+        return sb.toString();
+    }
+
+    private String toIndentedString(Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    public Object getMessage() {
+        return this.message;
+    }
+
+    @JsonProperty("message")
+    public void setMessage(Object message) {
+        this.message = message;
+    }
 }
-
-
-

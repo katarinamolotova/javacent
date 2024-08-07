@@ -10,92 +10,107 @@ import java.util.Objects;
  */
 public class ConnectionsRequest implements RequestModel {
 
-  
-  @JsonProperty("user")
-  private String user = null;
-  
-  
-  @JsonProperty("expression")
-  private String expression = null;
-  
-  public ConnectionsRequest user(String user) {
-    this.user = user;
-    return this;
-  }
+    @JsonProperty("user")
+    private String user = null;
 
-  
-  /**
-  * Get user
-  * @return user
-  **/
-  public String getUser() {
-    return user;
-  }
-  public ConnectionsRequest setUser(String user) {
-    this.user = user;
-    return this;
-  }
-  
-  public ConnectionsRequest expression(String expression) {
-    this.expression = expression;
-    return this;
-  }
+    @JsonProperty("expression")
+    private String expression = null;
 
-  
-  /**
-  * Get expression
-  * @return expression
-  **/
-  public String getExpression() {
-    return expression;
-  }
-  public ConnectionsRequest setExpression(String expression) {
-    this.expression = expression;
-    return this;
-  }
-  
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
+    public ConnectionsRequest(String user, String expression) {
+        this.user = user;
+        this.expression = expression;
     }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
+
+    public ConnectionsRequest() {
     }
-    ConnectionsRequest connectionsRequest = (ConnectionsRequest) o;
-    return Objects.equals(this.user, connectionsRequest.user) &&
-        Objects.equals(this.expression, connectionsRequest.expression);
-  }
 
-  @Override
-  public int hashCode() {
-    return Objects.hash(user, expression);
-  }
-  
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class ConnectionsRequest {\n");
-    
-    sb.append("    user: ").append(toIndentedString(user)).append("\n");
-    sb.append("    expression: ").append(toIndentedString(expression)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
-
-  /**
-   * Convert the given object to string with each line indented by 4 spaces
-   * (except the first line).
-   */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
+    public static ConnectionsRequestBuilder builder() {
+        return new ConnectionsRequestBuilder();
     }
-    return o.toString().replace("\n", "\n    ");
-  }
 
-  
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        ConnectionsRequest connectionsRequest = (ConnectionsRequest) o;
+        return Objects.equals(this.user, connectionsRequest.user) &&
+               Objects.equals(this.expression, connectionsRequest.expression);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(user, expression);
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("class ConnectionsRequest {\n");
+
+        sb.append("    user: ").append(toIndentedString(user)).append("\n");
+        sb.append("    expression: ").append(toIndentedString(expression)).append("\n");
+        sb.append("}");
+        return sb.toString();
+    }
+
+    private String toIndentedString(Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    public String getUser() {
+        return this.user;
+    }
+
+    public String getExpression() {
+        return this.expression;
+    }
+
+    @JsonProperty("user")
+    public void setUser(String user) {
+        this.user = user;
+    }
+
+    @JsonProperty("expression")
+    public void setExpression(String expression) {
+        this.expression = expression;
+    }
+
+    public static class ConnectionsRequestBuilder {
+        private String user;
+        private String expression;
+
+        ConnectionsRequestBuilder() {
+        }
+
+        @JsonProperty("user")
+        public ConnectionsRequestBuilder user(String user) {
+            this.user = user;
+            return this;
+        }
+
+        @JsonProperty("expression")
+        public ConnectionsRequestBuilder expression(String expression) {
+            this.expression = expression;
+            return this;
+        }
+
+        public ConnectionsRequest build() {
+            return new ConnectionsRequest(this.user, this.expression);
+        }
+
+        public String toString() {
+            return "ConnectionsRequest.ConnectionsRequestBuilder(user=" +
+                   this.user +
+                   ", expression=" +
+                   this.expression +
+                   ")";
+        }
+    }
 }
-
-
-

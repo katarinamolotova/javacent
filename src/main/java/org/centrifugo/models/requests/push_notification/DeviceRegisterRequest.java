@@ -3,275 +3,331 @@ package org.centrifugo.models.requests.push_notification;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import org.centrifugo.models.requests.RequestModel;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Objects;
 
 /**
  * DeviceRegisterRequest
  */
 public class DeviceRegisterRequest implements RequestModel {
 
-  
-  @JsonProperty("id")
-  private String id = null;
-  
-  
-  @JsonProperty("provider")
-  private String provider = null;
-  
-  
-  @JsonProperty("token")
-  private String token = null;
-  
-  
-  @JsonProperty("platform")
-  private String platform = null;
-  
-  
-  @JsonProperty("user")
-  private String user = null;
-  
-  
-  @JsonProperty("meta")
-  private Map<String, String> meta = null;
-  
-  
-  @JsonProperty("topics")
-  private List<String> topics = null;
-  
-  
-  @JsonProperty("timezone")
-  private String timezone = null;
-  
-  
-  @JsonProperty("locale")
-  private String locale = null;
-  
-  public DeviceRegisterRequest id(String id) {
-    this.id = id;
-    return this;
-  }
+    @JsonProperty("id")
+    private String id = null;
 
-  
-  /**
-  * Get id
-  * @return id
-  **/
-  public String getId() {
-    return id;
-  }
-  public void setId(String id) {
-    this.id = id;
-  }
-  
-  public DeviceRegisterRequest provider(String provider) {
-    this.provider = provider;
-    return this;
-  }
+    @JsonProperty("provider")
+    private String provider = null;
 
-  
-  /**
-  * Get provider
-  * @return provider
-  **/
-  public String getProvider() {
-    return provider;
-  }
-  public void setProvider(String provider) {
-    this.provider = provider;
-  }
-  
-  public DeviceRegisterRequest token(String token) {
-    this.token = token;
-    return this;
-  }
+    @JsonProperty("token")
+    private String token = null;
 
-  
-  /**
-  * Get token
-  * @return token
-  **/
-  public String getToken() {
-    return token;
-  }
-  public void setToken(String token) {
-    this.token = token;
-  }
-  
-  public DeviceRegisterRequest platform(String platform) {
-    this.platform = platform;
-    return this;
-  }
+    @JsonProperty("platform")
+    private String platform = null;
 
-  
-  /**
-  * Get platform
-  * @return platform
-  **/
-  public String getPlatform() {
-    return platform;
-  }
-  public void setPlatform(String platform) {
-    this.platform = platform;
-  }
-  
-  public DeviceRegisterRequest user(String user) {
-    this.user = user;
-    return this;
-  }
+    @JsonProperty("user")
+    private String user = null;
 
-  
-  /**
-  * Get user
-  * @return user
-  **/
-  public String getUser() {
-    return user;
-  }
-  public void setUser(String user) {
-    this.user = user;
-  }
-  
-  public DeviceRegisterRequest meta(Map<String, String> meta) {
-    this.meta = meta;
-    return this;
-  }
+    @JsonProperty("meta")
+    private Map<String, String> meta = null;
 
-  public DeviceRegisterRequest putMetaItem(String key, String metaItem) {
-    
-    if (this.meta == null) {
-      this.meta = new HashMap<String, String>();
+    @JsonProperty("topics")
+    private List<String> topics = null;
+
+    @JsonProperty("timezone")
+    private String timezone = null;
+
+    @JsonProperty("locale")
+    private String locale = null;
+
+    public DeviceRegisterRequest(
+            String id,
+            String provider,
+            String token,
+            String platform,
+            String user,
+            Map<String, String> meta,
+            List<String> topics,
+            String timezone,
+            String locale
+    ) {
+        this.id = id;
+        this.provider = provider;
+        this.token = token;
+        this.platform = platform;
+        this.user = user;
+        this.meta = meta;
+        this.topics = topics;
+        this.timezone = timezone;
+        this.locale = locale;
     }
-    
-    this.meta.put(key, metaItem);
-    return this;
-  }
-  /**
-  * Get meta
-  * @return meta
-  **/
-  public Map<String, String> getMeta() {
-    return meta;
-  }
-  public void setMeta(Map<String, String> meta) {
-    this.meta = meta;
-  }
-  
-  public DeviceRegisterRequest topics(List<String> topics) {
-    this.topics = topics;
-    return this;
-  }
 
-  public DeviceRegisterRequest addTopicsItem(String topicsItem) {
-    
-    if (this.topics == null) {
-      this.topics = new ArrayList<String>();
+    public DeviceRegisterRequest() {
     }
-    
-    this.topics.add(topicsItem);
-    return this;
-  }
-  
-  /**
-  * Get topics
-  * @return topics
-  **/
-  public List<String> getTopics() {
-    return topics;
-  }
-  public void setTopics(List<String> topics) {
-    this.topics = topics;
-  }
-  
-  public DeviceRegisterRequest timezone(String timezone) {
-    this.timezone = timezone;
-    return this;
-  }
 
-  
-  /**
-  * Get timezone
-  * @return timezone
-  **/
-  public String getTimezone() {
-    return timezone;
-  }
-  public void setTimezone(String timezone) {
-    this.timezone = timezone;
-  }
-  
-  public DeviceRegisterRequest locale(String locale) {
-    this.locale = locale;
-    return this;
-  }
-
-  
-  /**
-  * Get locale
-  * @return locale
-  **/
-  public String getLocale() {
-    return locale;
-  }
-  public void setLocale(String locale) {
-    this.locale = locale;
-  }
-  
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
+    public static DeviceRegisterRequestBuilder builder() {
+        return new DeviceRegisterRequestBuilder();
     }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
+
+    public DeviceRegisterRequest meta(Map<String, String> meta) {
+        this.meta = meta;
+        return this;
     }
-    DeviceRegisterRequest deviceRegisterRequest = (DeviceRegisterRequest) o;
-    return Objects.equals(this.id, deviceRegisterRequest.id) &&
-        Objects.equals(this.provider, deviceRegisterRequest.provider) &&
-        Objects.equals(this.token, deviceRegisterRequest.token) &&
-        Objects.equals(this.platform, deviceRegisterRequest.platform) &&
-        Objects.equals(this.user, deviceRegisterRequest.user) &&
-        Objects.equals(this.meta, deviceRegisterRequest.meta) &&
-        Objects.equals(this.topics, deviceRegisterRequest.topics) &&
-        Objects.equals(this.timezone, deviceRegisterRequest.timezone) &&
-        Objects.equals(this.locale, deviceRegisterRequest.locale);
-  }
 
-  @Override
-  public int hashCode() {
-    return Objects.hash(id, provider, token, platform, user, meta, topics, timezone, locale);
-  }
-  
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class DeviceRegisterRequest {\n");
-    
-    sb.append("    id: ").append(toIndentedString(id)).append("\n");
-    sb.append("    provider: ").append(toIndentedString(provider)).append("\n");
-    sb.append("    token: ").append(toIndentedString(token)).append("\n");
-    sb.append("    platform: ").append(toIndentedString(platform)).append("\n");
-    sb.append("    user: ").append(toIndentedString(user)).append("\n");
-    sb.append("    meta: ").append(toIndentedString(meta)).append("\n");
-    sb.append("    topics: ").append(toIndentedString(topics)).append("\n");
-    sb.append("    timezone: ").append(toIndentedString(timezone)).append("\n");
-    sb.append("    locale: ").append(toIndentedString(locale)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
+    public DeviceRegisterRequest putMetaItem(String key, String metaItem) {
 
-  /**
-   * Convert the given object to string with each line indented by 4 spaces
-   * (except the first line).
-   */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
+        if (this.meta == null) {
+            this.meta = new HashMap<String, String>();
+        }
+
+        this.meta.put(key, metaItem);
+        return this;
     }
-    return o.toString().replace("\n", "\n    ");
-  }
 
-  
+    public DeviceRegisterRequest addTopicsItem(String topicsItem) {
+
+        if (this.topics == null) {
+            this.topics = new ArrayList<String>();
+        }
+
+        this.topics.add(topicsItem);
+        return this;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        DeviceRegisterRequest deviceRegisterRequest = (DeviceRegisterRequest) o;
+        return Objects.equals(this.id, deviceRegisterRequest.id) &&
+               Objects.equals(this.provider, deviceRegisterRequest.provider) &&
+               Objects.equals(this.token, deviceRegisterRequest.token) &&
+               Objects.equals(this.platform, deviceRegisterRequest.platform) &&
+               Objects.equals(this.user, deviceRegisterRequest.user) &&
+               Objects.equals(this.meta, deviceRegisterRequest.meta) &&
+               Objects.equals(this.topics, deviceRegisterRequest.topics) &&
+               Objects.equals(this.timezone, deviceRegisterRequest.timezone) &&
+               Objects.equals(this.locale, deviceRegisterRequest.locale);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, provider, token, platform, user, meta, topics, timezone, locale);
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("class DeviceRegisterRequest {\n");
+
+        sb.append("    id: ").append(toIndentedString(id)).append("\n");
+        sb.append("    provider: ").append(toIndentedString(provider)).append("\n");
+        sb.append("    token: ").append(toIndentedString(token)).append("\n");
+        sb.append("    platform: ").append(toIndentedString(platform)).append("\n");
+        sb.append("    user: ").append(toIndentedString(user)).append("\n");
+        sb.append("    meta: ").append(toIndentedString(meta)).append("\n");
+        sb.append("    topics: ").append(toIndentedString(topics)).append("\n");
+        sb.append("    timezone: ").append(toIndentedString(timezone)).append("\n");
+        sb.append("    locale: ").append(toIndentedString(locale)).append("\n");
+        sb.append("}");
+        return sb.toString();
+    }
+
+    private String toIndentedString(Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    public String getId() {
+        return this.id;
+    }
+
+    public String getProvider() {
+        return this.provider;
+    }
+
+    public String getToken() {
+        return this.token;
+    }
+
+    public String getPlatform() {
+        return this.platform;
+    }
+
+    public String getUser() {
+        return this.user;
+    }
+
+    public Map<String, String> getMeta() {
+        return this.meta;
+    }
+
+    public List<String> getTopics() {
+        return this.topics;
+    }
+
+    public String getTimezone() {
+        return this.timezone;
+    }
+
+    public String getLocale() {
+        return this.locale;
+    }
+
+    @JsonProperty("id")
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    @JsonProperty("provider")
+    public void setProvider(String provider) {
+        this.provider = provider;
+    }
+
+    @JsonProperty("token")
+    public void setToken(String token) {
+        this.token = token;
+    }
+
+    @JsonProperty("platform")
+    public void setPlatform(String platform) {
+        this.platform = platform;
+    }
+
+    @JsonProperty("user")
+    public void setUser(String user) {
+        this.user = user;
+    }
+
+    @JsonProperty("meta")
+    public void setMeta(Map<String, String> meta) {
+        this.meta = meta;
+    }
+
+    @JsonProperty("topics")
+    public void setTopics(List<String> topics) {
+        this.topics = topics;
+    }
+
+    @JsonProperty("timezone")
+    public void setTimezone(String timezone) {
+        this.timezone = timezone;
+    }
+
+    @JsonProperty("locale")
+    public void setLocale(String locale) {
+        this.locale = locale;
+    }
+
+    public static class DeviceRegisterRequestBuilder {
+        private String id;
+        private String provider;
+        private String token;
+        private String platform;
+        private String user;
+        private Map<String, String> meta;
+        private List<String> topics;
+        private String timezone;
+        private String locale;
+
+        DeviceRegisterRequestBuilder() {
+        }
+
+        @JsonProperty("id")
+        public DeviceRegisterRequestBuilder id(String id) {
+            this.id = id;
+            return this;
+        }
+
+        @JsonProperty("provider")
+        public DeviceRegisterRequestBuilder provider(String provider) {
+            this.provider = provider;
+            return this;
+        }
+
+        @JsonProperty("token")
+        public DeviceRegisterRequestBuilder token(String token) {
+            this.token = token;
+            return this;
+        }
+
+        @JsonProperty("platform")
+        public DeviceRegisterRequestBuilder platform(String platform) {
+            this.platform = platform;
+            return this;
+        }
+
+        @JsonProperty("user")
+        public DeviceRegisterRequestBuilder user(String user) {
+            this.user = user;
+            return this;
+        }
+
+        @JsonProperty("meta")
+        public DeviceRegisterRequestBuilder meta(Map<String, String> meta) {
+            this.meta = meta;
+            return this;
+        }
+
+        @JsonProperty("topics")
+        public DeviceRegisterRequestBuilder topics(List<String> topics) {
+            this.topics = topics;
+            return this;
+        }
+
+        @JsonProperty("timezone")
+        public DeviceRegisterRequestBuilder timezone(String timezone) {
+            this.timezone = timezone;
+            return this;
+        }
+
+        @JsonProperty("locale")
+        public DeviceRegisterRequestBuilder locale(String locale) {
+            this.locale = locale;
+            return this;
+        }
+
+        public DeviceRegisterRequest build() {
+            return new DeviceRegisterRequest(
+                    this.id,
+                    this.provider,
+                    this.token,
+                    this.platform,
+                    this.user,
+                    this.meta,
+                    this.topics,
+                    this.timezone,
+                    this.locale
+            );
+        }
+
+        public String toString() {
+            return "DeviceRegisterRequest.DeviceRegisterRequestBuilder(id=" +
+                   this.id +
+                   ", provider=" +
+                   this.provider +
+                   ", token=" +
+                   this.token +
+                   ", platform=" +
+                   this.platform +
+                   ", user=" +
+                   this.user +
+                   ", meta=" +
+                   this.meta +
+                   ", topics=" +
+                   this.topics +
+                   ", timezone=" +
+                   this.timezone +
+                   ", locale=" +
+                   this.locale +
+                   ")";
+        }
+    }
 }
-
-
-
