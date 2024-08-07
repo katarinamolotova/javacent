@@ -62,7 +62,6 @@ import org.centrifugo.models.responses.ResponseModel;
 import org.centrifugo.models.responses.SendPushNotificationResponse;
 import org.centrifugo.models.responses.StandardResponse;
 import org.centrifugo.models.responses.UserTopicListResponse;
-import org.centrifugo.models.responses.results.stats.connections.ConnectionsResult;
 import org.centrifugo.services.interfaces.BatchNotificationCommand;
 import org.centrifugo.services.interfaces.ConnectionManagementCommand;
 import org.centrifugo.services.interfaces.HistoryCommand;
@@ -97,8 +96,12 @@ public class CentrifugoService
 
     @Override
     public PublishResponse publish(final String data, final String channel) {
-        final PublishRequest<String> request = new PublishRequest<>();
-        return publish(request.channel(channel).data(data));
+        final PublishRequest<String> request = PublishRequest
+                .<String>builder()
+                .channel(channel)
+                .data(data)
+                .build();
+        return publish(request);
     }
 
     @Override
@@ -109,8 +112,12 @@ public class CentrifugoService
 
     @Override
     public BroadcastResponse broadcast(final String data, final List<String> channels) {
-        final BroadcastRequest<String> request = new BroadcastRequest<>();
-        return broadcast(request.data(data).channels(channels));
+        final BroadcastRequest<String> response = BroadcastRequest
+                .<String>builder()
+                .data(data)
+                .channels(channels)
+                .build();
+        return broadcast(response);
     }
 
     @Override
@@ -121,8 +128,11 @@ public class CentrifugoService
 
     @Override
     public EmptyResponse disconnect(final String user) {
-        final DisconnectRequest request = new DisconnectRequest();
-        return disconnect(request.user(user));
+        final DisconnectRequest request = DisconnectRequest
+                .builder()
+                .user(user)
+                .build();
+        return disconnect(request);
     }
 
     @Override
@@ -133,8 +143,11 @@ public class CentrifugoService
 
     @Override
     public EmptyResponse refresh(final String user) {
-        final RefreshRequest request = new RefreshRequest();
-        return refresh(request.user(user));
+        final RefreshRequest request = RefreshRequest
+                .builder()
+                .user(user)
+                .build();
+        return refresh(request);
     }
 
     @Override
@@ -145,8 +158,12 @@ public class CentrifugoService
 
     @Override
     public EmptyResponse subscribe(final String user, final String channel) {
-        final SubscribeRequest request = new SubscribeRequest();
-        return subscribe(request.user(user).channel(channel));
+        final SubscribeRequest request = SubscribeRequest
+                .builder()
+                .user(user)
+                .channel(channel)
+                .build();
+        return subscribe(request);
     }
 
     @Override
@@ -157,8 +174,12 @@ public class CentrifugoService
 
     @Override
     public EmptyResponse unsubscribe(final String user, final String channel) {
-        final UnsubscribeRequest request = new UnsubscribeRequest();
-        return unsubscribe(request.user(user).channel(channel));
+        final UnsubscribeRequest request = UnsubscribeRequest
+                .builder()
+                .user(user)
+                .channel(channel)
+                .build();
+        return unsubscribe(request);
     }
 
     @Override
@@ -169,8 +190,11 @@ public class CentrifugoService
 
     @Override
     public HistoryResponse history(final String channel) {
-        final HistoryRequest request = new HistoryRequest();
-        return history(request.setChannel(channel));
+        final HistoryRequest request = HistoryRequest
+                .builder()
+                .channel(channel)
+                .build();
+        return history(request);
     }
 
     @Override
@@ -181,8 +205,7 @@ public class CentrifugoService
 
     @Override
     public EmptyResponse historyRemove(final String channel) {
-        final HistoryRemoveRequest request = new HistoryRemoveRequest();
-        return historyRemove(request.setChannel(channel));
+        return historyRemove(new HistoryRemoveRequest(channel));
     }
 
     @Override
@@ -193,8 +216,7 @@ public class CentrifugoService
 
     @Override
     public PresenceResponse presence(final String channel) {
-        final PresenceRequest request = new PresenceRequest();
-        return presence(request.setChannel(channel));
+        return presence(new PresenceRequest(channel));
     }
 
     @Override
@@ -205,8 +227,7 @@ public class CentrifugoService
 
     @Override
     public PresenceStatsResponse presenceStats(final String channel) {
-        final PresenceStatsRequest request = new PresenceStatsRequest();
-        return presenceStats(request.setChannel(channel));
+        return presenceStats(new PresenceStatsRequest(channel));
     }
 
     @Override
@@ -217,21 +238,23 @@ public class CentrifugoService
 
     @Override
     public ChannelsResponse channels(final String pattern) {
-        final ChannelsRequest request = new ChannelsRequest();
-        return channels(request.setPattern(pattern));
+        return channels(new ChannelsRequest(pattern));
     }
 
     @Override
     public ConnectionsResponse connections(final ConnectionsRequest request) {
         final HttpPost httpPost = getHttpPost(request, CentrifugoApiUrl.CONNECTIONS);
-        final StandardResponse<ConnectionsResult> response = new StandardResponse<>();
         return (ConnectionsResponse) sendToCentrifugo(httpPost, ConnectionsResponse.class);
     }
 
     @Override
     public ConnectionsResponse connections(final String user, final String expression) {
-        final ConnectionsRequest request = new ConnectionsRequest();
-        return connections(request.setUser(user).setExpression(expression));
+        final ConnectionsRequest request = ConnectionsRequest
+                .builder()
+                .user(user)
+                .expression(expression)
+                .build();
+        return connections(request);
     }
 
     @Override
@@ -248,8 +271,7 @@ public class CentrifugoService
 
     @Override
     public EmptyResponse deleteUserStatus(final List<String> user) {
-        final DeleteUserStatusRequest request = new DeleteUserStatusRequest();
-        return deleteUserStatus(request.setUsers(user));
+        return deleteUserStatus(new DeleteUserStatusRequest(user));
     }
 
     @Override
@@ -260,8 +282,7 @@ public class CentrifugoService
 
     @Override
     public GetUserStatusResponse getUserStatus(final List<String> user) {
-        final GetUserStatusRequest request = new GetUserStatusRequest();
-        return getUserStatus(request.setUsers(user));
+        return getUserStatus(new GetUserStatusRequest(user));
     }
 
     @Override
@@ -272,8 +293,12 @@ public class CentrifugoService
 
     @Override
     public EmptyResponse updateUserStatus(final List<String> user, final String state) {
-        final UpdateUserStatusRequest request = new UpdateUserStatusRequest();
-        return updateUserStatus(request.setUsers(user).setState(state));
+        final UpdateUserStatusRequest request = UpdateUserStatusRequest
+                .builder()
+                .users(user)
+                .state(state)
+                .build();
+        return updateUserStatus(request);
     }
 
     @Override
