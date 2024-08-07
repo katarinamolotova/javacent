@@ -8,7 +8,7 @@ import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
-import org.centrifugo.configarations.CentrConfigurParams;
+import org.centrifugo.configarations.ConfigurationService;
 import org.centrifugo.constants.CentrifugoApiUrl;
 import org.centrifugo.exceptions.CentrifugoException;
 import org.centrifugo.models.requests.EmptyRequest;
@@ -55,12 +55,15 @@ import org.centrifugo.models.responses.results.user_status.GetUserStatusResult;
 import java.io.IOException;
 import java.util.List;
 
-public class CentrifugoService implements CentrifugoCommand {
-    private final CentrConfigurParams configurations;
+public class CentrifugoService
+        implements BatchNotificationCommand, ConnectionManagementCommand, HistoryCommand, PushNotificationCommand,
+        PresenceCommand, PublicationCommand, TokenCommand, StatStatusCommand, UserBlockCommand, UserStatusCommand
+{
+    private final ConfigurationService configurations;
     private final ObjectMapper mapper;
 
     public CentrifugoService() {
-        this.configurations = new CentrConfigurParams();
+        this.configurations = new ConfigurationService();
         this.mapper = new ObjectMapper();
     }
 
@@ -169,10 +172,11 @@ public class CentrifugoService implements CentrifugoCommand {
         final StandardResponse<PresenceResult> response = new StandardResponse<>();
         sendToCentrifugo(httpPost, response.getClass());
     }
+
     @Override
     public void presence(final String channel) {
-       final PresenceRequest request = new PresenceRequest();
-       presence(request.setChannel(channel));
+        final PresenceRequest request = new PresenceRequest();
+        presence(request.setChannel(channel));
     }
 
     @Override
@@ -253,7 +257,7 @@ public class CentrifugoService implements CentrifugoCommand {
     }
 
     @Override
-    public void updateUserStatus(final List<String> user,final String state) {
+    public void updateUserStatus(final List<String> user, final String state) {
         final UpdateUserStatusRequest request = new UpdateUserStatusRequest();
         updateUserStatus(request.setUsers(user).setState(state));
 
@@ -374,7 +378,10 @@ public class CentrifugoService implements CentrifugoCommand {
         }
     }
 
-    private ResponseModel sendToCentrifugo(final HttpPost httpPost, final Class<? extends ResponseModel> responseClass) {
+    private ResponseModel sendToCentrifugo(
+            final HttpPost httpPost,
+            final Class<? extends ResponseModel> responseClass
+    ) {
         try (
                 final CloseableHttpClient client = HttpClients.createDefault();
                 final CloseableHttpResponse response = client.execute(httpPost)
