@@ -1,6 +1,6 @@
 package org.centrifugo.models.responses;
 
-import org.centrifugo.models.responses.result.push_notification.device_register.DeviceRegisterResult;
+import org.centrifugo.models.responses.results.push_notification.device_register.DeviceRegisterResult;
 
-public interface DeviceRegisterResponse extends StandardResponse<DeviceRegisterResult> {
+public class DeviceRegisterResponse extends StandardResponse<DeviceRegisterResult> {
 }

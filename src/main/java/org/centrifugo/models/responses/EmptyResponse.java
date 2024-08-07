@@ -1,6 +1,6 @@
 package org.centrifugo.models.responses;
 
-import org.centrifugo.models.responses.result.EmptyResult;
+import org.centrifugo.models.responses.results.EmptyResult;
 
-public interface EmptyResponse extends StandardResponse<EmptyResult> {
+public class EmptyResponse extends StandardResponse<EmptyResult> {
 }

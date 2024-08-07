@@ -1,6 +1,6 @@
 package org.centrifugo.models.responses;
 
-import org.centrifugo.models.responses.result.presence.PresenceStatsResult;
+import org.centrifugo.models.responses.results.presence.PresenceStatsResult;
 
-public interface PresenceStatsResponse extends StandardResponse<PresenceStatsResult> {
+public class PresenceStatsResponse extends StandardResponse<PresenceStatsResult> {
 }

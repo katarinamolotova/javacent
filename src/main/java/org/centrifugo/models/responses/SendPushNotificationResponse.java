@@ -1,6 +1,6 @@
 package org.centrifugo.models.responses;
 
-import org.centrifugo.models.responses.result.push_notification.send_push_notification.SendPushNotificationResult;
+import org.centrifugo.models.responses.results.push_notification.send_push_notification.SendPushNotificationResult;
 
-public interface SendPushNotificationResponse extends StandardResponse<SendPushNotificationResult> {
+public class SendPushNotificationResponse extends StandardResponse<SendPushNotificationResult> {
 }

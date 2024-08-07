@@ -1,6 +1,6 @@
 package org.centrifugo.models.responses;
 
-import org.centrifugo.models.responses.result.push_notification.device_topic_list.DeviceTopicListResult;
+import org.centrifugo.models.responses.results.push_notification.device_topic_list.DeviceTopicListResult;
 
-public interface DeviceTopicListResponse extends StandardResponse<DeviceTopicListResult> {
+public class DeviceTopicListResponse extends StandardResponse<DeviceTopicListResult> {
 }

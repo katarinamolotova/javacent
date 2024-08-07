@@ -1,6 +1,6 @@
 package org.centrifugo.models.responses;
 
-import org.centrifugo.models.responses.result.user_status.GetUserStatusResult;
+import org.centrifugo.models.responses.results.user_status.GetUserStatusResult;
 
-public interface GetUserStatusResponse extends StandardResponse<GetUserStatusResult> {
+public class GetUserStatusResponse extends StandardResponse<GetUserStatusResult> {
 }

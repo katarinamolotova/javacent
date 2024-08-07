@@ -1,6 +1,6 @@
 package org.centrifugo.models.responses;
 
-import org.centrifugo.models.responses.result.stats.info.InfoResult;
+import org.centrifugo.models.responses.results.stats.info.InfoResult;
 
-public interface InfoResponse extends StandardResponse<InfoResult> {
+public class InfoResponse extends StandardResponse<InfoResult> {
 }

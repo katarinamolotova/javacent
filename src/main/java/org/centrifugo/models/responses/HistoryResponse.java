@@ -1,6 +1,6 @@
 package org.centrifugo.models.responses;
 
-import org.centrifugo.models.responses.result.history.HistoryResult;
+import org.centrifugo.models.responses.results.history.HistoryResult;
 
-public interface HistoryResponse extends StandardResponse<HistoryResult> {
+public class HistoryResponse extends StandardResponse<HistoryResult> {
 }

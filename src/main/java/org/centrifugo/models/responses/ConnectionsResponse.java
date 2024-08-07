@@ -1,6 +1,6 @@
 package org.centrifugo.models.responses;
 
-import org.centrifugo.models.responses.result.stats.connections.ConnectionsResult;
+import org.centrifugo.models.responses.results.stats.connections.ConnectionsResult;
 
-public interface ConnectionsResponse extends StandardResponse<ConnectionsResult> {
+public class ConnectionsResponse extends StandardResponse<ConnectionsResult> {
 }
