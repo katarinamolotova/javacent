@@ -9,17 +9,17 @@ public class ConfigurationService {
 
     private final String centrifugoApiKey;
     private final String centrifugoApiUrl;
-    private final boolean centrifugoIsInSecure;
+    private final boolean centrifugoIsInsecure;
     private final Properties properties;
 
     public ConfigurationService() {
         this.properties = loadProperties();
         this.centrifugoApiUrl = getApiUrl();
-        this.centrifugoIsInSecure = getInSecureOption();
+        this.centrifugoIsInsecure = getInSecureOption();
         this.centrifugoApiKey = getApiKey();
     }
 
-    public boolean isCentrifugoIsInSecure() {
+    public boolean isCentrifugoInsecure() {
         return centrifugoIsInSecure;
     }
 
@@ -44,7 +44,7 @@ public class ConfigurationService {
     }
 
     private String getApiKey() {
-        if (centrifugoIsInSecure) {
+        if (centrifugoIsInsecure) {
             return AvailableProperties.DEFAULT_API_KEY_VALUE;
         }
         return properties
