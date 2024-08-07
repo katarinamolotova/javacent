@@ -30,5 +30,14 @@ Possible properties:
 ## Usage example
 
 ```
-todo: example
+import org.centrifugo.services.CentrifugoService;
+
+public class DemoApplication {
+
+    public static void main(String[] args) {
+        CentrifugoService centrifugoService = new CentrifugoService();
+        centrifugoService.publish("Hello World!", "channel");
+    }
+
+}
 ```
