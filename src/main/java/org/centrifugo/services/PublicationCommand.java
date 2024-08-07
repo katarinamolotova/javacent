@@ -22,18 +22,4 @@ public interface PublicationCommand {
 
     ResponseModel broadcast(final BroadcastRequest<?> request);
     ResponseModel broadcast(final String data, final List<String> channels);
-
-    // Connection management commands
-
-    ResponseModel disconnect(final DisconnectRequest request);
-    ResponseModel disconnect(final String user);
-
-    void refresh(final RefreshRequest request);
-    void refresh(final String user);
-
-    ResponseModel subscribe(final SubscribeRequest request);
-    ResponseModel subscribe(final String user, final String channel);
-
-    ResponseModel unsubscribe(final UnsubscribeRequest request);
-    ResponseModel unsubscribe(final String user, final String channel);
 }
