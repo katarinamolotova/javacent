@@ -11,7 +11,7 @@ import org.centrifugo.models.responses.results.publication.PublishResult;
 import org.centrifugo.models.responses.results.push_notification.device_list.DeviceListResult;
 import org.centrifugo.models.responses.results.push_notification.device_register.DeviceRegisterResult;
 import org.centrifugo.models.responses.results.push_notification.device_topic_list.DeviceTopicListResult;
-import org.centrifugo.models.responses.results.push_notification.send_publish_notification.SendPushNotificationResult;
+import org.centrifugo.models.responses.results.push_notification.send_push_notification.SendPushNotificationResult;
 import org.centrifugo.models.responses.results.push_notification.user_topic_list.UserTopicListResult;
 import org.centrifugo.models.responses.results.stats.channels.ChannelsResult;
 import org.centrifugo.models.responses.results.stats.connections.ConnectionsResult;
@@ -868,6 +868,3 @@ public class Reply {
 
   
 }
-
-
-
