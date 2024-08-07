@@ -2,96 +2,39 @@ package org.centrifugo.models.responses;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-import java.util.Objects;
-
-/**
- * Error
- */
 public class Error {
 
-  
   @JsonProperty("code")
-  private Long code = null;
-  
-  
+  private Long code;
+
   @JsonProperty("message")
-  private String message = null;
-  
-  public Error code(Long code) {
+  private String message;
+
+  public Error(Long code, String message) {
     this.code = code;
-    return this;
+    this.message = message;
   }
 
-  
-  /**
-  * Get code
-  * @return code
-  **/
-  public Long getCode() {
-    return code;
+  public Error() {
   }
+
+  public Long getCode() {
+    return this.code;
+  }
+
+  public String getMessage() {
+    return this.message;
+  }
+
+  @JsonProperty("code")
   public void setCode(Long code) {
     this.code = code;
   }
-  
-  public Error message(String message) {
-    this.message = message;
-    return this;
-  }
 
-  
-  /**
-  * Get message
-  * @return message
-  **/
-  public String getMessage() {
-    return message;
-  }
+  @JsonProperty("message")
   public void setMessage(String message) {
     this.message = message;
   }
-  
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
-    }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
-    }
-    Error error = (Error) o;
-    return Objects.equals(this.code, error.code) &&
-        Objects.equals(this.message, error.message);
-  }
-
-  @Override
-  public int hashCode() {
-    return Objects.hash(code, message);
-  }
-  
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class Error {\n");
-    
-    sb.append("    code: ").append(toIndentedString(code)).append("\n");
-    sb.append("    message: ").append(toIndentedString(message)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
-
-  /**
-   * Convert the given object to string with each line indented by 4 spaces
-   * (except the first line).
-   */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
-  }
-
-  
 }
 
 

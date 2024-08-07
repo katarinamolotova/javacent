@@ -3,43 +3,40 @@ package org.centrifugo.services.interfaces;
 import org.centrifugo.models.requests.user_status.DeleteUserStatusRequest;
 import org.centrifugo.models.requests.user_status.GetUserStatusRequest;
 import org.centrifugo.models.requests.user_status.UpdateUserStatusRequest;
+import org.centrifugo.models.responses.EmptyResponse;
+import org.centrifugo.models.responses.GetUserStatusResponse;
 
 import java.util.List;
 
 public interface UserStatusCommand {
 
-    // TODO:
-    //  - add documentation
-    //  - change response to current type, e.g. StandardResponse<PublishResult>
-    //  - clear model class
+    /**
+     * Centrifugo PRO. Delete user status
+     */
+    EmptyResponse deleteUserStatus(final DeleteUserStatusRequest request);
 
     /**
-     * Centrifugo PRO. Delete user status 
+     * Centrifugo PRO. Delete user status
      */
-    void deleteUserStatus(final DeleteUserStatusRequest request);
+    EmptyResponse deleteUserStatus(final List<String> user);
 
     /**
-     * Centrifugo PRO. Delete user status 
+     * Centrifugo PRO. Get user status
      */
-    void deleteUserStatus(final List<String> user);
+    GetUserStatusResponse getUserStatus(final GetUserStatusRequest request);
 
     /**
-     * Centrifugo PRO. Get user status 
+     * Centrifugo PRO. Get user status
      */
-    void getUserStatus(final GetUserStatusRequest request);
+    GetUserStatusResponse getUserStatus(final List<String> user);
 
     /**
-     * Centrifugo PRO. Get user status 
+     * Centrifugo PRO. Update user status
      */
-    void getUserStatus(final List<String> user);
+    EmptyResponse updateUserStatus(final UpdateUserStatusRequest request);
 
     /**
-     * Centrifugo PRO. Update user status 
+     * Centrifugo PRO. Update user status
      */
-    void updateUserStatus(final UpdateUserStatusRequest request);
-
-    /**
-     * Centrifugo PRO. Update user status 
-     */
-    void updateUserStatus(final List<String> user, final String state);
+    EmptyResponse updateUserStatus(final List<String> user, final String state);
 }

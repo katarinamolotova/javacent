@@ -2,321 +2,169 @@ package org.centrifugo.models.responses.results.push_notification;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-import java.util.*;
+import java.util.List;
+import java.util.Map;
 
-/**
- * Device
- */
 public class Device {
 
-  
   @JsonProperty("id")
-  private String id = null;
-  
-  
+  private String id;
+
   @JsonProperty("platform")
-  private String platform = null;
-  
-  
+  private String platform;
+
   @JsonProperty("provider")
-  private String provider = null;
-  
-  
+  private String provider;
+
   @JsonProperty("token")
-  private String token = null;
-  
-  
+  private String token;
+
   @JsonProperty("user")
-  private String user = null;
-  
-  
+  private String user;
+
   @JsonProperty("created_at")
-  private Integer createdAt = null;
-  
-  
+  private Integer createdAt;
+
   @JsonProperty("updated_at")
-  private Integer updatedAt = null;
-  
-  
+  private Integer updatedAt;
+
   @JsonProperty("meta")
-  private Map<String, String> meta = null;
-  
-  
+  private Map<String, String> meta;
+
   @JsonProperty("topics")
-  private List<String> topics = null;
-  
-  
+  private List<String> topics;
+
   @JsonProperty("timezone")
-  private String timezone = null;
-  
-  
+  private String timezone;
+
   @JsonProperty("locale")
-  private String locale = null;
-  
-  public Device id(String id) {
+  private String locale;
+
+  public Device(
+          String id,
+          String platform,
+          String provider,
+          String token,
+          String user,
+          Integer createdAt,
+          Integer updatedAt,
+          Map<String, String> meta,
+          List<String> topics,
+          String timezone,
+          String locale
+  ) {
     this.id = id;
-    return this;
+    this.platform = platform;
+    this.provider = provider;
+    this.token = token;
+    this.user = user;
+    this.createdAt = createdAt;
+    this.updatedAt = updatedAt;
+    this.meta = meta;
+    this.topics = topics;
+    this.timezone = timezone;
+    this.locale = locale;
   }
 
-  
-  /**
-  * Get id
-  * @return id
-  **/
-  public String getId() {
-    return id;
+  public Device() {
   }
+
+  public String getId() {
+    return this.id;
+  }
+
+  public String getPlatform() {
+    return this.platform;
+  }
+
+  public String getProvider() {
+    return this.provider;
+  }
+
+  public String getToken() {
+    return this.token;
+  }
+
+  public String getUser() {
+    return this.user;
+  }
+
+  public Integer getCreatedAt() {
+    return this.createdAt;
+  }
+
+  public Integer getUpdatedAt() {
+    return this.updatedAt;
+  }
+
+  public Map<String, String> getMeta() {
+    return this.meta;
+  }
+
+  public List<String> getTopics() {
+    return this.topics;
+  }
+
+  public String getTimezone() {
+    return this.timezone;
+  }
+
+  public String getLocale() {
+    return this.locale;
+  }
+
+  @JsonProperty("id")
   public void setId(String id) {
     this.id = id;
   }
-  
-  public Device platform(String platform) {
-    this.platform = platform;
-    return this;
-  }
 
-  
-  /**
-  * Get platform
-  * @return platform
-  **/
-  public String getPlatform() {
-    return platform;
-  }
+  @JsonProperty("platform")
   public void setPlatform(String platform) {
     this.platform = platform;
   }
-  
-  public Device provider(String provider) {
-    this.provider = provider;
-    return this;
-  }
 
-  
-  /**
-  * Get provider
-  * @return provider
-  **/
-  public String getProvider() {
-    return provider;
-  }
+  @JsonProperty("provider")
   public void setProvider(String provider) {
     this.provider = provider;
   }
-  
-  public Device token(String token) {
-    this.token = token;
-    return this;
-  }
 
-  
-  /**
-  * Get token
-  * @return token
-  **/
-  public String getToken() {
-    return token;
-  }
+  @JsonProperty("token")
   public void setToken(String token) {
     this.token = token;
   }
-  
-  public Device user(String user) {
-    this.user = user;
-    return this;
-  }
 
-  
-  /**
-  * Get user
-  * @return user
-  **/
-  public String getUser() {
-    return user;
-  }
+  @JsonProperty("user")
   public void setUser(String user) {
     this.user = user;
   }
-  
-  public Device createdAt(Integer createdAt) {
-    this.createdAt = createdAt;
-    return this;
-  }
 
-  
-  /**
-  * Get createdAt
-  * @return createdAt
-  **/
-  public Integer getCreatedAt() {
-    return createdAt;
-  }
+  @JsonProperty("created_at")
   public void setCreatedAt(Integer createdAt) {
     this.createdAt = createdAt;
   }
-  
-  public Device updatedAt(Integer updatedAt) {
-    this.updatedAt = updatedAt;
-    return this;
-  }
 
-  
-  /**
-  * Get updatedAt
-  * @return updatedAt
-  **/
-  public Integer getUpdatedAt() {
-    return updatedAt;
-  }
+  @JsonProperty("updated_at")
   public void setUpdatedAt(Integer updatedAt) {
     this.updatedAt = updatedAt;
   }
-  
-  public Device meta(Map<String, String> meta) {
-    this.meta = meta;
-    return this;
-  }
 
-  public Device putMetaItem(String key, String metaItem) {
-    
-    if (this.meta == null) {
-      this.meta = new HashMap<String, String>();
-    }
-    
-    this.meta.put(key, metaItem);
-    return this;
-  }
-  /**
-  * Get meta
-  * @return meta
-  **/
-  public Map<String, String> getMeta() {
-    return meta;
-  }
+  @JsonProperty("meta")
   public void setMeta(Map<String, String> meta) {
     this.meta = meta;
   }
-  
-  public Device topics(List<String> topics) {
-    this.topics = topics;
-    return this;
-  }
 
-  public Device addTopicsItem(String topicsItem) {
-    
-    if (this.topics == null) {
-      this.topics = new ArrayList<String>();
-    }
-    
-    this.topics.add(topicsItem);
-    return this;
-  }
-  
-  /**
-  * Get topics
-  * @return topics
-  **/
-  public List<String> getTopics() {
-    return topics;
-  }
+  @JsonProperty("topics")
   public void setTopics(List<String> topics) {
     this.topics = topics;
   }
-  
-  public Device timezone(String timezone) {
-    this.timezone = timezone;
-    return this;
-  }
 
-  
-  /**
-  * Get timezone
-  * @return timezone
-  **/
-  public String getTimezone() {
-    return timezone;
-  }
+  @JsonProperty("timezone")
   public void setTimezone(String timezone) {
     this.timezone = timezone;
   }
-  
-  public Device locale(String locale) {
-    this.locale = locale;
-    return this;
-  }
 
-  
-  /**
-  * Get locale
-  * @return locale
-  **/
-  public String getLocale() {
-    return locale;
-  }
+  @JsonProperty("locale")
   public void setLocale(String locale) {
     this.locale = locale;
   }
-  
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
-    }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
-    }
-    Device device = (Device) o;
-    return Objects.equals(this.id, device.id) &&
-        Objects.equals(this.platform, device.platform) &&
-        Objects.equals(this.provider, device.provider) &&
-        Objects.equals(this.token, device.token) &&
-        Objects.equals(this.user, device.user) &&
-        Objects.equals(this.createdAt, device.createdAt) &&
-        Objects.equals(this.updatedAt, device.updatedAt) &&
-        Objects.equals(this.meta, device.meta) &&
-        Objects.equals(this.topics, device.topics) &&
-        Objects.equals(this.timezone, device.timezone) &&
-        Objects.equals(this.locale, device.locale);
-  }
-
-  @Override
-  public int hashCode() {
-    return Objects.hash(id, platform, provider, token, user, createdAt, updatedAt, meta, topics, timezone, locale);
-  }
-  
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class Device {\n");
-    
-    sb.append("    id: ").append(toIndentedString(id)).append("\n");
-    sb.append("    platform: ").append(toIndentedString(platform)).append("\n");
-    sb.append("    provider: ").append(toIndentedString(provider)).append("\n");
-    sb.append("    token: ").append(toIndentedString(token)).append("\n");
-    sb.append("    user: ").append(toIndentedString(user)).append("\n");
-    sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
-    sb.append("    updatedAt: ").append(toIndentedString(updatedAt)).append("\n");
-    sb.append("    meta: ").append(toIndentedString(meta)).append("\n");
-    sb.append("    topics: ").append(toIndentedString(topics)).append("\n");
-    sb.append("    timezone: ").append(toIndentedString(timezone)).append("\n");
-    sb.append("    locale: ").append(toIndentedString(locale)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
-
-  /**
-   * Convert the given object to string with each line indented by 4 spaces
-   * (except the first line).
-   */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
-  }
-
-  
 }
-
-
-
