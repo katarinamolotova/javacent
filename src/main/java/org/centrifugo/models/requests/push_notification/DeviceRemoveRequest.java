@@ -13,10 +13,13 @@ import java.util.Objects;
 public class DeviceRemoveRequest implements RequestModel {
 
     @JsonProperty("ids")
-    private List<String> ids = null;
+    private List<String> ids;
 
+    /**
+     * 
+     */
     @JsonProperty("users")
-    private List<String> users = null;
+    private List<String> users;
 
     public DeviceRemoveRequest(List<String> ids, List<String> users) {
         this.ids = ids;

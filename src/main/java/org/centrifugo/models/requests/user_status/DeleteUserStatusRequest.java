@@ -13,7 +13,7 @@ import java.util.Objects;
 public class DeleteUserStatusRequest implements RequestModel {
 
     @JsonProperty("users")
-    private List<String> users = null;
+    private List<String> users;
 
     public DeleteUserStatusRequest(List<String> users) {
         this.users = users;

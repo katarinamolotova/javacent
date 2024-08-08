@@ -12,13 +12,19 @@ import java.util.Objects;
 public class PushRateLimitStrategy {
 
     @JsonProperty("key")
-    private String key = null;
+    private String key;
 
+    /**
+     * 
+     */
     @JsonProperty("policies")
-    private List<RateLimitPolicy> policies = null;
+    private List<RateLimitPolicy> policies;
 
+    /**
+     * 
+     */
     @JsonProperty("drop_if_rate_limited")
-    private Boolean dropIfRateLimited = null;
+    private Boolean dropIfRateLimited;
 
     public PushRateLimitStrategy(String key, List<RateLimitPolicy> policies, Boolean dropIfRateLimited) {
         this.key = key;

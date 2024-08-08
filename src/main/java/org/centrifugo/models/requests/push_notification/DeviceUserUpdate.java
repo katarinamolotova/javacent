@@ -10,7 +10,7 @@ import java.util.Objects;
 public class DeviceUserUpdate {
 
     @JsonProperty("user")
-    private String user = null;
+    private String user;
 
     public DeviceUserUpdate(String user) {
         this.user = user;

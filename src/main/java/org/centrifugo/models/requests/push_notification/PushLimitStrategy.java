@@ -10,10 +10,13 @@ import java.util.Objects;
 public class PushLimitStrategy {
 
     @JsonProperty("rate_limit")
-    private PushRateLimitStrategy rateLimit = null;
+    private PushRateLimitStrategy rateLimit;
 
+    /**
+     * 
+     */
     @JsonProperty("time_limit")
-    private PushTimeLimitStrategy timeLimit = null;
+    private PushTimeLimitStrategy timeLimit;
 
     public PushLimitStrategy(PushRateLimitStrategy rateLimit, PushTimeLimitStrategy timeLimit) {
         this.rateLimit = rateLimit;

@@ -15,31 +15,55 @@ import java.util.Objects;
 public class DeviceRegisterRequest implements RequestModel {
 
     @JsonProperty("id")
-    private String id = null;
+    private String id;
 
+    /**
+     * 
+     */
     @JsonProperty("provider")
-    private String provider = null;
+    private String provider;
 
+    /**
+     * 
+     */
     @JsonProperty("token")
-    private String token = null;
+    private String token;
 
+    /**
+     * 
+     */
     @JsonProperty("platform")
-    private String platform = null;
+    private String platform;
 
+    /**
+     * 
+     */
     @JsonProperty("user")
-    private String user = null;
+    private String user;
 
+    /**
+     * 
+     */
     @JsonProperty("meta")
-    private Map<String, String> meta = null;
+    private Map<String, String> meta;
 
+    /**
+     * 
+     */
     @JsonProperty("topics")
-    private List<String> topics = null;
+    private List<String> topics;
 
+    /**
+     * 
+     */
     @JsonProperty("timezone")
-    private String timezone = null;
+    private String timezone;
 
+    /**
+     * 
+     */
     @JsonProperty("locale")
-    private String locale = null;
+    private String locale;
 
     public DeviceRegisterRequest(
             String id,

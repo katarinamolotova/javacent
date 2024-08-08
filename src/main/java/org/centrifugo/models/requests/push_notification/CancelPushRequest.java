@@ -11,7 +11,7 @@ import java.util.Objects;
 public class CancelPushRequest implements RequestModel {
 
     @JsonProperty("uid")
-    private String uid = null;
+    private String uid;
 
     public CancelPushRequest(String uid) {
         this.uid = uid;

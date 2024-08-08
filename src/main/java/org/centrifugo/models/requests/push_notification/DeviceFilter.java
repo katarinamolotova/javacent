@@ -12,19 +12,31 @@ import java.util.Objects;
 public class DeviceFilter {
 
     @JsonProperty("ids")
-    private List<String> ids = null;
+    private List<String> ids;
 
+    /**
+     * 
+     */
     @JsonProperty("users")
-    private List<String> users = null;
+    private List<String> users;
 
+    /**
+     * 
+     */
     @JsonProperty("topics")
-    private List<String> topics = null;
+    private List<String> topics;
 
+    /**
+     * 
+     */
     @JsonProperty("providers")
-    private List<String> providers = null;
+    private List<String> providers;
 
+    /**
+     * 
+     */
     @JsonProperty("platforms")
-    private List<String> platforms = null;
+    private List<String> platforms;
 
     public DeviceFilter(
             List<String> ids,

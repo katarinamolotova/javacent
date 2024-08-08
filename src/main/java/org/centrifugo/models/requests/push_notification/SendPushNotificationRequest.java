@@ -13,34 +13,61 @@ import java.util.Objects;
 public class SendPushNotificationRequest implements RequestModel {
 
     @JsonProperty("recipient")
-    private PushRecipient recipient = null;
+    private PushRecipient recipient;
 
+    /**
+     * 
+     */
     @JsonProperty("notification")
-    private PushNotification notification = null;
+    private PushNotification notification;
 
+    /**
+     * 
+     */
     @JsonProperty("uid")
-    private String uid = null;
+    private String uid;
 
+    /**
+     * 
+     */
     @JsonProperty("send_at")
-    private Integer sendAt = null;
+    private Integer sendAt;
 
+    /**
+     * 
+     */
     @JsonProperty("optimize_for_reliability")
-    private Boolean optimizeForReliability = null;
+    private Boolean optimizeForReliability;
 
+    /**
+     * 
+     */
     @JsonProperty("limit_strategy")
-    private PushLimitStrategy limitStrategy = null;
+    private PushLimitStrategy limitStrategy;
 
+    /**
+     * 
+     */
     @JsonProperty("analytics_uid")
-    private String analyticsUid = null;
+    private String analyticsUid;
 
+    /**
+     * 
+     */
     @JsonProperty("localizations")
-    private Map<String, PushLocalization> localizations = null;
+    private Map<String, PushLocalization> localizations;
 
+    /**
+     * 
+     */
     @JsonProperty("use_templating")
-    private Boolean useTemplating = null;
+    private Boolean useTemplating;
 
+    /**
+     * 
+     */
     @JsonProperty("use_meta")
-    private Boolean useMeta = null;
+    private Boolean useMeta;
 
     public SendPushNotificationRequest(
             PushRecipient recipient,

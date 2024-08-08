@@ -2,36 +2,60 @@
 package org.centrifugo.models.requests.publication;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import org.centrifugo.models.requests.RequestModel;
 
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 
 /**
- * PublishRequest
+ * Publish Request
  */
-public class PublishRequest<T> extends DataRequestAbstract<T> {
+public class PublishRequest<T> implements RequestModel {
 
+    /**
+     * <b>Required.</b> Name of channel to publish
+     */
     @JsonProperty("channel")
-    private String channel = null;
+    private String channel;
 
+    /**
+     * <b>Required.</b> Custom JSON data to publish into a channel
+     */
     @JsonProperty("data")
-    private T data = null;
+    private T data;
 
+    /**
+     * Custom binary data to publish into a channel encoded to base64 so it's possible to use HTTP API to send binary to clients.
+     */
     @JsonProperty("b64data")
-    private String b64data = null;
+    private String b64data;
 
+    /**
+     * Skip adding publication to history for this request
+     */
     @JsonProperty("skip_history")
-    private Boolean skipHistory = null;
+    private Boolean skipHistory;
 
+    /**
+     * Publication tags - map with arbitrary string keys and values which is attached to publication and will be delivered to clients
+     */
     @JsonProperty("tags")
-    private Map<String, String> tags = null;
+    private Map<String, String> tags;
 
+    /**
+     * Optional idempotency key to drop duplicate publications upon retries. It acts per channel. <br>
+     * Available since Centrifugo v5.2.0, supported only by Memory and Redis engines
+     */
     @JsonProperty("idempotency_key")
-    private String idempotencyKey = null;
+    private String idempotencyKey;
 
+    /**
+     * When set to true tells Centrifugo to construct delta update if possible when broadcasting message to subscribers. <br>
+     * Available since Centrifugo v5.4.0
+     */
     @JsonProperty("delta")
-    private Boolean delta = null;
+    private Boolean delta;
 
     public PublishRequest(
             String channel,

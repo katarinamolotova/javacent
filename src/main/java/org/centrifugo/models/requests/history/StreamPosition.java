@@ -5,15 +5,21 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.Objects;
 
 /**
- * StreamPosition
+ * Stream Position
  */
 public class StreamPosition {
 
+    /**
+     * <b>Required.</b> Offset in a stream
+     */
     @JsonProperty("offset")
-    private Integer offset = null;
+    private Integer offset;
 
+    /**
+     * <b>Required.</b> Stream epoch
+     */
     @JsonProperty("epoch")
-    private String epoch = null;
+    private String epoch;
 
     public StreamPosition(Integer offset, String epoch) {
         this.offset = offset;

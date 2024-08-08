@@ -13,10 +13,13 @@ import java.util.Objects;
 public class UpdateUserStatusRequest implements RequestModel {
 
     @JsonProperty("users")
-    private List<String> users = null;
+    private List<String> users;
 
+    /**
+     * 
+     */
     @JsonProperty("state")
-    private String state = null;
+    private String state;
 
     public UpdateUserStatusRequest(List<String> users, String state) {
         this.users = users;

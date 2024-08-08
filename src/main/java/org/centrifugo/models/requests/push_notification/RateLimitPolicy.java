@@ -10,10 +10,13 @@ import java.util.Objects;
 public class RateLimitPolicy {
 
     @JsonProperty("rate")
-    private Integer rate = null;
+    private Integer rate;
 
+    /**
+     * 
+     */
     @JsonProperty("interval_ms")
-    private Integer intervalMs = null;
+    private Integer intervalMs;
 
     public RateLimitPolicy(Integer rate, Integer intervalMs) {
         this.rate = rate;

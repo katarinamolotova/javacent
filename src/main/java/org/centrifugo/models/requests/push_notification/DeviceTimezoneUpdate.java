@@ -10,7 +10,7 @@ import java.util.Objects;
 public class DeviceTimezoneUpdate {
 
     @JsonProperty("timezone")
-    private String timezone = null;
+    private String timezone;
 
     public DeviceTimezoneUpdate(String timezone) {
         this.timezone = timezone;

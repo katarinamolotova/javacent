@@ -10,16 +10,25 @@ import java.util.Objects;
 public class PushNotification {
 
     @JsonProperty("fcm")
-    private FcmPushNotification fcm = null;
+    private FcmPushNotification fcm;
 
+    /**
+     * 
+     */
     @JsonProperty("hms")
-    private HmsPushNotification hms = null;
+    private HmsPushNotification hms;
 
+    /**
+     * 
+     */
     @JsonProperty("apns")
-    private ApnsPushNotification apns = null;
+    private ApnsPushNotification apns;
 
+    /**
+     * 
+     */
     @JsonProperty("expire_at")
-    private Integer expireAt = null;
+    private Integer expireAt;
 
     public PushNotification(
             FcmPushNotification fcm,

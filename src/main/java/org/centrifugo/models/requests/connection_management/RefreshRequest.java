@@ -11,22 +11,37 @@ import java.util.Objects;
 public class RefreshRequest implements RequestModel {
 
     @JsonProperty("user")
-    private String user = null;
+    private String user;
 
+    /**
+     * 
+     */
     @JsonProperty("client")
-    private String client = null;
+    private String client;
 
+    /**
+     * 
+     */
     @JsonProperty("expired")
-    private Boolean expired = null;
+    private Boolean expired;
 
+    /**
+     * 
+     */
     @JsonProperty("expire_at")
-    private Integer expireAt = null;
+    private Integer expireAt;
 
+    /**
+     * 
+     */
     @JsonProperty("info")
-    private Object info = null;
+    private Object info;
 
+    /**
+     * 
+     */
     @JsonProperty("session")
-    private String session = null;
+    private String session;
 
     public RefreshRequest(String user, String client, Boolean expired, Integer expireAt, Object info, String session) {
         this.user = user;

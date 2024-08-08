@@ -13,25 +13,43 @@ import java.util.Objects;
 public class DeviceUpdateRequest implements RequestModel {
 
     @JsonProperty("ids")
-    private List<String> ids = null;
+    private List<String> ids;
 
+    /**
+     * 
+     */
     @JsonProperty("users")
-    private List<String> users = null;
+    private List<String> users;
 
+    /**
+     * 
+     */
     @JsonProperty("user_update")
-    private DeviceUserUpdate userUpdate = null;
+    private DeviceUserUpdate userUpdate;
 
+    /**
+     * 
+     */
     @JsonProperty("meta_update")
-    private DeviceMetaUpdate metaUpdate = null;
+    private DeviceMetaUpdate metaUpdate;
 
+    /**
+     * 
+     */
     @JsonProperty("topics_update")
-    private DeviceTopicsUpdate topicsUpdate = null;
+    private DeviceTopicsUpdate topicsUpdate;
 
+    /**
+     * 
+     */
     @JsonProperty("timezone_update")
-    private DeviceTimezoneUpdate timezoneUpdate = null;
+    private DeviceTimezoneUpdate timezoneUpdate;
 
+    /**
+     * 
+     */
     @JsonProperty("locale_update")
-    private DeviceLocaleUpdate localeUpdate = null;
+    private DeviceLocaleUpdate localeUpdate;
 
     public DeviceUpdateRequest(
             List<String> ids,

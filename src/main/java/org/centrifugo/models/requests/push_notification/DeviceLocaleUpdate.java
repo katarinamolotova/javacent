@@ -10,7 +10,7 @@ import java.util.Objects;
 public class DeviceLocaleUpdate {
 
     @JsonProperty("locale")
-    private String locale = null;
+    private String locale;
 
     public DeviceLocaleUpdate(String locale) {
         this.locale = locale;

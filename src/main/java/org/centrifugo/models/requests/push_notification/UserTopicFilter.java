@@ -12,13 +12,19 @@ import java.util.Objects;
 public class UserTopicFilter {
 
     @JsonProperty("users")
-    private List<String> users = null;
+    private List<String> users;
 
+    /**
+     * 
+     */
     @JsonProperty("topics")
-    private List<String> topics = null;
+    private List<String> topics;
 
+    /**
+     * 
+     */
     @JsonProperty("topic_prefix")
-    private String topicPrefix = null;
+    private String topicPrefix;
 
     public UserTopicFilter(List<String> users, List<String> topics, String topicPrefix) {
         this.users = users;

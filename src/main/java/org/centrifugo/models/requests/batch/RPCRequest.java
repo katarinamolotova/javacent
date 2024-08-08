@@ -10,10 +10,13 @@ import java.util.Objects;
 public class RPCRequest {
 
     @JsonProperty("method")
-    private String method = null;
+    private String method;
 
+    /**
+     * 
+     */
     @JsonProperty("params")
-    private Object params = null;
+    private Object params;
 
     public RPCRequest(String method, Object params) {
         this.method = method;

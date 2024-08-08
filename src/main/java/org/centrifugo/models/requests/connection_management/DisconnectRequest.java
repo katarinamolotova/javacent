@@ -12,19 +12,31 @@ import java.util.Objects;
 public class DisconnectRequest implements RequestModel {
 
     @JsonProperty("user")
-    private String user = null;
+    private String user;
 
+    /**
+     * 
+     */
     @JsonProperty("disconnect")
-    private Disconnect disconnect = null;
+    private Disconnect disconnect;
 
+    /**
+     * 
+     */
     @JsonProperty("client")
-    private String client = null;
+    private String client;
 
+    /**
+     * 
+     */
     @JsonProperty("whitelist")
-    private List<String> whitelist = null;
+    private List<String> whitelist;
 
+    /**
+     * 
+     */
     @JsonProperty("session")
-    private String session = null;
+    private String session;
 
     public DisconnectRequest(
             String user,

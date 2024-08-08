@@ -11,10 +11,13 @@ import java.util.Objects;
 public class RevokeTokenRequest implements RequestModel {
 
     @JsonProperty("expire_at")
-    private Integer expireAt = null;
+    private Integer expireAt;
 
+    /**
+     * 
+     */
     @JsonProperty("uid")
-    private String uid = null;
+    private String uid;
 
     public RevokeTokenRequest(Integer expireAt, String uid) {
         this.expireAt = expireAt;

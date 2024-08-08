@@ -11,10 +11,13 @@ import java.util.Objects;
 public class ConnectionsRequest implements RequestModel {
 
     @JsonProperty("user")
-    private String user = null;
+    private String user;
 
+    /**
+     * 
+     */
     @JsonProperty("expression")
-    private String expression = null;
+    private String expression;
 
     public ConnectionsRequest(String user, String expression) {
         this.user = user;

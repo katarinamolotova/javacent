@@ -11,10 +11,13 @@ import java.util.Objects;
 public class BlockUserRequest implements RequestModel {
 
     @JsonProperty("expire_at")
-    private Integer expireAt = null;
+    private Integer expireAt;
 
+    /**
+     * 
+     */
     @JsonProperty("user")
-    private String user = null;
+    private String user;
 
     public BlockUserRequest(Integer expireAt, String user) {
         this.expireAt = expireAt;

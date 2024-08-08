@@ -12,7 +12,7 @@ import java.util.Objects;
 public class DeviceMetaUpdate {
 
     @JsonProperty("meta")
-    private Map<String, String> meta = null;
+    private Map<String, String> meta;
 
     public DeviceMetaUpdate(Map<String, String> meta) {
         this.meta = meta;

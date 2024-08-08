@@ -10,10 +10,13 @@ import java.util.Objects;
 public class Disconnect {
 
     @JsonProperty("code")
-    private Long code = null;
+    private Long code;
 
+    /**
+     * 
+     */
     @JsonProperty("reason")
-    private String reason = null;
+    private String reason;
 
     public Disconnect(Long code, String reason) {
         this.code = code;

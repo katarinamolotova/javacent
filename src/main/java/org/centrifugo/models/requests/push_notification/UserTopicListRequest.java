@@ -11,16 +11,25 @@ import java.util.Objects;
 public class UserTopicListRequest implements RequestModel {
 
     @JsonProperty("filter")
-    private UserTopicFilter filter = null;
+    private UserTopicFilter filter;
 
+    /**
+     * 
+     */
     @JsonProperty("include_total_count")
-    private Boolean includeTotalCount = null;
+    private Boolean includeTotalCount;
 
+    /**
+     * 
+     */
     @JsonProperty("cursor")
-    private String cursor = null;
+    private String cursor;
 
+    /**
+     * 
+     */
     @JsonProperty("limit")
-    private Integer limit = null;
+    private Integer limit;
 
     public UserTopicListRequest(UserTopicFilter filter, Boolean includeTotalCount, String cursor, Integer limit) {
         this.filter = filter;

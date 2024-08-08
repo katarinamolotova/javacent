@@ -12,10 +12,13 @@ import java.util.Objects;
 public class DeviceTopicsUpdate {
 
     @JsonProperty("op")
-    private String op = null;
+    private String op;
 
+    /**
+     * 
+     */
     @JsonProperty("topics")
-    private List<String> topics = null;
+    private List<String> topics;
 
     public DeviceTopicsUpdate(String op, List<String> topics) {
         this.op = op;

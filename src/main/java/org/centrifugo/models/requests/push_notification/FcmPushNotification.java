@@ -10,7 +10,7 @@ import java.util.Objects;
 public class FcmPushNotification {
 
     @JsonProperty("message")
-    private Object message = null;
+    private Object message;
 
     public FcmPushNotification(Object message) {
         this.message = message;

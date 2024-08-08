@@ -10,13 +10,19 @@ import java.util.Objects;
 public class PushTimeLimitStrategy {
 
     @JsonProperty("send_after_time")
-    private String sendAfterTime = null;
+    private String sendAfterTime;
 
+    /**
+     * 
+     */
     @JsonProperty("send_before_time")
-    private String sendBeforeTime = null;
+    private String sendBeforeTime;
 
+    /**
+     * 
+     */
     @JsonProperty("no_tz_send_now")
-    private Boolean noTzSendNow = null;
+    private Boolean noTzSendNow;
 
     public PushTimeLimitStrategy(String sendAfterTime, String sendBeforeTime, Boolean noTzSendNow) {
         this.sendAfterTime = sendAfterTime;

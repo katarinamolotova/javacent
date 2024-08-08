@@ -13,10 +13,13 @@ import java.util.Objects;
 public class BatchRequest implements RequestModel {
 
     @JsonProperty("commands")
-    private List<Command> commands = null;
+    private List<Command> commands;
 
+    /**
+     * 
+     */
     @JsonProperty("parallel")
-    private Boolean parallel = null;
+    private Boolean parallel;
 
     public BatchRequest(List<Command> commands, Boolean parallel) {
         this.commands = commands;

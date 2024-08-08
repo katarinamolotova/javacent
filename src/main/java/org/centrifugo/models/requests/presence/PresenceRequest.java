@@ -6,12 +6,15 @@ import org.centrifugo.models.requests.RequestModel;
 import java.util.Objects;
 
 /**
- * PresenceRequest
+ * Presence Request
  */
 public class PresenceRequest implements RequestModel {
 
+    /**
+     * <b>Required.</b> Name of channel to call presence from
+     */
     @JsonProperty("channel")
-    private String channel = null;
+    private String channel;
 
     public PresenceRequest(String channel) {
         this.channel = channel;

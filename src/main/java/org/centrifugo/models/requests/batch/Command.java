@@ -41,100 +41,193 @@ import java.util.Objects;
 public class Command {
 
     @JsonProperty("publish")
-    private PublishRequest publish = null;
+    private PublishRequest publish;
 
+    /**
+     * 
+     */
     @JsonProperty("broadcast")
-    private BroadcastRequest broadcast = null;
+    private BroadcastRequest broadcast;
 
+    /**
+     * 
+     */
     @JsonProperty("subscribe")
-    private SubscribeRequest subscribe = null;
+    private SubscribeRequest subscribe;
 
+    /**
+     * 
+     */
     @JsonProperty("unsubscribe")
-    private UnsubscribeRequest unsubscribe = null;
+    private UnsubscribeRequest unsubscribe;
 
+    /**
+     * 
+     */
     @JsonProperty("disconnect")
-    private DisconnectRequest disconnect = null;
+    private DisconnectRequest disconnect;
 
+    /**
+     * 
+     */
     @JsonProperty("presence")
-    private PresenceRequest presence = null;
+    private PresenceRequest presence;
 
+    /**
+     * 
+     */
     @JsonProperty("presence_stats")
-    private PresenceStatsRequest presenceStats = null;
+    private PresenceStatsRequest presenceStats;
 
+    /**
+     * 
+     */
     @JsonProperty("history")
-    private HistoryRequest history = null;
+    private HistoryRequest history;
 
+    /**
+     * 
+     */
     @JsonProperty("history_remove")
-    private HistoryRemoveRequest historyRemove = null;
+    private HistoryRemoveRequest historyRemove;
 
+    /**
+     * 
+     */
     @JsonProperty("info")
-    private EmptyRequest info = null;
+    private EmptyRequest info;
 
+    /**
+     * 
+     */
     @JsonProperty("rpc")
-    private RPCRequest rpc = null;
+    private RPCRequest rpc;
 
+    /**
+     * 
+     */
     @JsonProperty("refresh")
-    private RefreshRequest refresh = null;
+    private RefreshRequest refresh;
 
+    /**
+     * 
+     */
     @JsonProperty("channels")
-    private ChannelsRequest channels = null;
+    private ChannelsRequest channels;
 
+    /**
+     * 
+     */
     @JsonProperty("connections")
-    private ConnectionsRequest connections = null;
+    private ConnectionsRequest connections;
 
+    /**
+     * 
+     */
     @JsonProperty("update_user_status")
-    private UpdateUserStatusRequest updateUserStatus = null;
+    private UpdateUserStatusRequest updateUserStatus;
 
+    /**
+     * 
+     */
     @JsonProperty("get_user_status")
-    private GetUserStatusRequest getUserStatus = null;
+    private GetUserStatusRequest getUserStatus;
 
+    /**
+     * 
+     */
     @JsonProperty("delete_user_status")
-    private DeleteUserStatusRequest deleteUserStatus = null;
+    private DeleteUserStatusRequest deleteUserStatus;
 
+    /**
+     * 
+     */
     @JsonProperty("block_user")
-    private BlockUserRequest blockUser = null;
+    private BlockUserRequest blockUser;
 
+    /**
+     * 
+     */
     @JsonProperty("unblock_user")
-    private UnblockUserRequest unblockUser = null;
+    private UnblockUserRequest unblockUser;
 
+    /**
+     * 
+     */
     @JsonProperty("revoke_token")
-    private RevokeTokenRequest revokeToken = null;
+    private RevokeTokenRequest revokeToken;
 
+    /**
+     * 
+     */
     @JsonProperty("invalidate_user_tokens")
-    private InvalidateUserTokensRequest invalidateUserTokens = null;
+    private InvalidateUserTokensRequest invalidateUserTokens;
 
+    /**
+     * 
+     */
     @JsonProperty("device_register")
-    private DeviceRegisterRequest deviceRegister = null;
+    private DeviceRegisterRequest deviceRegister;
 
+    /**
+     * 
+     */
     @JsonProperty("device_update")
-    private DeviceUpdateRequest deviceUpdate = null;
+    private DeviceUpdateRequest deviceUpdate;
 
+    /**
+     * 
+     */
     @JsonProperty("device_remove")
-    private DeviceRemoveRequest deviceRemove = null;
+    private DeviceRemoveRequest deviceRemove;
 
+    /**
+     * 
+     */
     @JsonProperty("device_list")
-    private DeviceListRequest deviceList = null;
+    private DeviceListRequest deviceList;
 
+    /**
+     * 
+     */
     @JsonProperty("device_topic_list")
-    private DeviceTopicListRequest deviceTopicList = null;
+    private DeviceTopicListRequest deviceTopicList;
 
+    /**
+     * 
+     */
     @JsonProperty("device_topic_update")
-    private DeviceTopicUpdateRequest deviceTopicUpdate = null;
+    private DeviceTopicUpdateRequest deviceTopicUpdate;
 
+    /**
+     * 
+     */
     @JsonProperty("user_topic_list")
-    private UserTopicListRequest userTopicList = null;
+    private UserTopicListRequest userTopicList;
 
+    /**
+     * 
+     */
     @JsonProperty("user_topic_update")
-    private UserTopicUpdateRequest userTopicUpdate = null;
+    private UserTopicUpdateRequest userTopicUpdate;
 
+    /**
+     * 
+     */
     @JsonProperty("send_push_notification")
-    private SendPushNotificationRequest sendPushNotification = null;
+    private SendPushNotificationRequest sendPushNotification;
 
+    /**
+     * 
+     */
     @JsonProperty("update_push_status")
-    private UpdatePushStatusRequest updatePushStatus = null;
+    private UpdatePushStatusRequest updatePushStatus;
 
+    /**
+     * 
+     */
     @JsonProperty("cancel_push")
-    private CancelPushRequest cancelPush = null;
+    private CancelPushRequest cancelPush;
 
     public Command(
             PublishRequest publish,

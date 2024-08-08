@@ -12,28 +12,49 @@ import java.util.Objects;
 public class PushRecipient {
 
     @JsonProperty("filter")
-    private DeviceFilter filter = null;
+    private DeviceFilter filter;
 
+    /**
+     * 
+     */
     @JsonProperty("fcm_tokens")
-    private List<String> fcmTokens = null;
+    private List<String> fcmTokens;
 
+    /**
+     * 
+     */
     @JsonProperty("fcm_topic")
-    private String fcmTopic = null;
+    private String fcmTopic;
 
+    /**
+     * 
+     */
     @JsonProperty("fcm_condition")
-    private String fcmCondition = null;
+    private String fcmCondition;
 
+    /**
+     * 
+     */
     @JsonProperty("hms_tokens")
-    private List<String> hmsTokens = null;
+    private List<String> hmsTokens;
 
+    /**
+     * 
+     */
     @JsonProperty("hms_topic")
-    private String hmsTopic = null;
+    private String hmsTopic;
 
+    /**
+     * 
+     */
     @JsonProperty("hms_condition")
-    private String hmsCondition = null;
+    private String hmsCondition;
 
+    /**
+     * 
+     */
     @JsonProperty("apns_tokens")
-    private List<String> apnsTokens = null;
+    private List<String> apnsTokens;
 
     public PushRecipient(
             DeviceFilter filter,

@@ -12,22 +12,37 @@ import java.util.Objects;
 public class DeviceTopicFilter {
 
     @JsonProperty("device_ids")
-    private List<String> deviceIds = null;
+    private List<String> deviceIds;
 
+    /**
+     * 
+     */
     @JsonProperty("device_providers")
-    private List<String> deviceProviders = null;
+    private List<String> deviceProviders;
 
+    /**
+     * 
+     */
     @JsonProperty("device_platforms")
-    private List<String> devicePlatforms = null;
+    private List<String> devicePlatforms;
 
+    /**
+     * 
+     */
     @JsonProperty("device_users")
-    private List<String> deviceUsers = null;
+    private List<String> deviceUsers;
 
+    /**
+     * 
+     */
     @JsonProperty("topics")
-    private List<String> topics = null;
+    private List<String> topics;
 
+    /**
+     * 
+     */
     @JsonProperty("topic_prefix")
-    private String topicPrefix = null;
+    private String topicPrefix;
 
     public DeviceTopicFilter(
             List<String> deviceIds,

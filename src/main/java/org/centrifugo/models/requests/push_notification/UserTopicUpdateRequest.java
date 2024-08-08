@@ -13,13 +13,19 @@ import java.util.Objects;
 public class UserTopicUpdateRequest implements RequestModel {
 
     @JsonProperty("user")
-    private String user = null;
+    private String user;
 
+    /**
+     * 
+     */
     @JsonProperty("op")
-    private String op = null;
+    private String op;
 
+    /**
+     * 
+     */
     @JsonProperty("topics")
-    private List<String> topics = null;
+    private List<String> topics;
 
     public UserTopicUpdateRequest(String user, String op, List<String> topics) {
         this.user = user;

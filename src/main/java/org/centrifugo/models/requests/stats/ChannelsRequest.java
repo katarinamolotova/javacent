@@ -11,7 +11,7 @@ import java.util.Objects;
 public class ChannelsRequest implements RequestModel {
 
     @JsonProperty("pattern")
-    private String pattern = null;
+    private String pattern;
 
     public ChannelsRequest(String pattern) {
         this.pattern = pattern;

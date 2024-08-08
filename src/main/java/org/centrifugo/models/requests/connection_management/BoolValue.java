@@ -5,12 +5,15 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.Objects;
 
 /**
- * BoolValue
+ * Bool Value
  */
 public class BoolValue {
 
+    /**
+     * Boolean value
+     */
     @JsonProperty("value")
-    private Boolean value = null;
+    private Boolean value;
 
     public BoolValue(Boolean value) {
         this.value = value;

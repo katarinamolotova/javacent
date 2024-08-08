@@ -13,13 +13,19 @@ import java.util.Objects;
 public class DeviceTopicUpdateRequest implements RequestModel {
 
     @JsonProperty("device_id")
-    private String deviceId = null;
+    private String deviceId;
 
+    /**
+     * 
+     */
     @JsonProperty("op")
-    private String op = null;
+    private String op;
 
+    /**
+     * 
+     */
     @JsonProperty("topics")
-    private List<String> topics = null;
+    private List<String> topics;
 
     public DeviceTopicUpdateRequest(String deviceId, String op, List<String> topics) {
         this.deviceId = deviceId;

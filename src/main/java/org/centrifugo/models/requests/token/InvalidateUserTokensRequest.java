@@ -11,16 +11,25 @@ import java.util.Objects;
 public class InvalidateUserTokensRequest implements RequestModel {
 
     @JsonProperty("expire_at")
-    private Integer expireAt = null;
+    private Integer expireAt;
 
+    /**
+     * 
+     */
     @JsonProperty("user")
-    private String user = null;
+    private String user;
 
+    /**
+     * 
+     */
     @JsonProperty("issued_before")
-    private Integer issuedBefore = null;
+    private Integer issuedBefore;
 
+    /**
+     * 
+     */
     @JsonProperty("channel")
-    private String channel = null;
+    private String channel;
 
     public InvalidateUserTokensRequest(Integer expireAt, String user, Integer issuedBefore, String channel) {
         this.expireAt = expireAt;

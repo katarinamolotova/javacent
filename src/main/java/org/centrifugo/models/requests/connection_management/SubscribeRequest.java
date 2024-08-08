@@ -7,42 +7,75 @@ import org.centrifugo.models.requests.history.StreamPosition;
 import java.util.Objects;
 
 /**
- * SubscribeRequest
+ * Subscribe Request
  */
 public class SubscribeRequest implements RequestModel {
 
+    /**
+     * <b>Required.</b> Name of channel to subscribe user to
+     */
     @JsonProperty("channel")
-    private String channel = null;
+    private String channel;
 
+    /**
+     * <b>Required.</b> User ID to subscribe
+     */
     @JsonProperty("user")
-    private String user = null;
+    private String user;
 
+    /**
+     * Subscribe expiration time
+     */
     @JsonProperty("expire_at")
-    private Integer expireAt = null;
+    private Integer expireAt;
 
+    /**
+     * Attach custom data to subscription (will be used in presence and join/leave messages)
+     */
     @JsonProperty("info")
-    private Object info = null;
+    private Object info;
 
+    /**
+     * Same as data but in base64 format (will be decoded by Centrifugo)
+     */
     @JsonProperty("b64info")
-    private String b64info = null;
+    private String b64info;
 
+    /**
+     * Specific client ID to subscribe (user still required to be set, will ignore other user connections with different client IDs)
+     */
     @JsonProperty("client")
-    private String client = null;
+    private String client;
 
+    /**
+     * Custom subscription data (will be sent to client in Subscribe push)
+     */
     @JsonProperty("data")
-    private Object data = null;
+    private Object data;
 
+    /**
+     * Same as data but in base64 format (will be decoded by Centrifugo)
+     */
     @JsonProperty("b64data")
-    private String b64data = null;
+    private String b64data;
 
+    /**
+     * Stream position to recover from
+     */
     @JsonProperty("recover_since")
-    private StreamPosition recoverSince = null;
+    private StreamPosition recoverSince;
 
+    /**
+     * Allows dynamically override some channel options defined in Centrifugo configuration
+     */
     @JsonProperty("override")
-    private SubscribeOptionOverride override = null;
+    private SubscribeOptionOverride override;
 
+    /**
+     * 
+     */
     @JsonProperty("session")
-    private String session = null;
+    private String session;
 
     public SubscribeRequest(
             String channel,

@@ -11,16 +11,25 @@ import java.util.Objects;
 public class UpdatePushStatusRequest implements RequestModel {
 
     @JsonProperty("analytics_uid")
-    private String analyticsUid = null;
+    private String analyticsUid;
 
+    /**
+     * 
+     */
     @JsonProperty("status")
-    private String status = null;
+    private String status;
 
+    /**
+     * 
+     */
     @JsonProperty("device_id")
-    private String deviceId = null;
+    private String deviceId;
 
+    /**
+     * 
+     */
     @JsonProperty("msg_id")
-    private String msgId = null;
+    private String msgId;
 
     public UpdatePushStatusRequest(String analyticsUid, String status, String deviceId, String msgId) {
         this.analyticsUid = analyticsUid;

@@ -11,19 +11,31 @@ import java.util.Objects;
 public class DeviceTopicListRequest implements RequestModel {
 
     @JsonProperty("filter")
-    private DeviceTopicFilter filter = null;
+    private DeviceTopicFilter filter;
 
+    /**
+     * 
+     */
     @JsonProperty("include_total_count")
-    private Boolean includeTotalCount = null;
+    private Boolean includeTotalCount;
 
+    /**
+     * 
+     */
     @JsonProperty("include_device")
-    private Boolean includeDevice = null;
+    private Boolean includeDevice;
 
+    /**
+     * 
+     */
     @JsonProperty("cursor")
-    private String cursor = null;
+    private String cursor;
 
+    /**
+     * 
+     */
     @JsonProperty("limit")
-    private Integer limit = null;
+    private Integer limit;
 
     public DeviceTopicListRequest(
             DeviceTopicFilter filter,

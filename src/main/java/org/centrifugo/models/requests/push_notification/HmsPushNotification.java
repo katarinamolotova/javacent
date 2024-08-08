@@ -10,7 +10,7 @@ import java.util.Objects;
 public class HmsPushNotification {
 
     @JsonProperty("message")
-    private Object message = null;
+    private Object message;
 
     public HmsPushNotification(Object message) {
         this.message = message;

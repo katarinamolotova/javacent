@@ -12,10 +12,13 @@ import java.util.Objects;
 public class ApnsPushNotification {
 
     @JsonProperty("headers")
-    private Map<String, String> headers = null;
+    private Map<String, String> headers;
 
+    /**
+     * 
+     */
     @JsonProperty("payload")
-    private Object payload = null;
+    private Object payload;
 
     public ApnsPushNotification(Map<String, String> headers, Object payload) {
         this.headers = headers;

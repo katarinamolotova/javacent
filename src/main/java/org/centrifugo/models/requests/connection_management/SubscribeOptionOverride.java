@@ -5,24 +5,39 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.Objects;
 
 /**
- * SubscribeOptionOverride
+ * Subscribe Option Override
  */
 public class SubscribeOptionOverride {
 
+    /**
+     * <b>Required.</b> Override presence
+     */
     @JsonProperty("presence")
-    private BoolValue presence = null;
+    private BoolValue presence;
 
+    /**
+     * <b>Required.</b> Override join_leave
+     */
     @JsonProperty("join_leave")
-    private BoolValue joinLeave = null;
+    private BoolValue joinLeave;
 
+    /**
+     * <b>Required.</b> Override force_recovery
+     */
     @JsonProperty("force_recovery")
-    private BoolValue forceRecovery = null;
+    private BoolValue forceRecovery;
 
+    /**
+     * <b>Required.</b> Override force_positioning
+     */
     @JsonProperty("force_positioning")
-    private BoolValue forcePositioning = null;
+    private BoolValue forcePositioning;
 
+    /**
+     * <b>Required.</b> Override force_push_join_leave
+     */
     @JsonProperty("force_push_join_leave")
-    private BoolValue forcePushJoinLeave = null;
+    private BoolValue forcePushJoinLeave;
 
     public SubscribeOptionOverride(
             BoolValue presence,

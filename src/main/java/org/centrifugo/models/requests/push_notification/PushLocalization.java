@@ -12,7 +12,7 @@ import java.util.Objects;
 public class PushLocalization {
 
     @JsonProperty("translations")
-    private Map<String, String> translations = null;
+    private Map<String, String> translations;
 
     public PushLocalization(Map<String, String> translations) {
         this.translations = translations;

@@ -11,7 +11,7 @@ import java.util.Objects;
 public class UnblockUserRequest implements RequestModel {
 
     @JsonProperty("user")
-    private String user = null;
+    private String user;
 
     public UnblockUserRequest(String user) {
         this.user = user;
