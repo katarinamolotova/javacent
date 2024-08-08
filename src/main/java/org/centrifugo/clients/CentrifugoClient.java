@@ -76,14 +76,14 @@ import org.centrifugo.clients.interfaces.UserStatusCommand;
 import java.io.IOException;
 import java.util.List;
 
-public class CentrifugoService
+public class CentrifugoClient
         implements BatchNotificationCommand, ConnectionManagementCommand, HistoryCommand, PushNotificationCommand,
         PresenceCommand, PublicationCommand, TokenCommand, StatisticsCommand, UserBlockCommand, UserStatusCommand
 {
     private final ConfigurationService configurations;
     private final ObjectMapper mapper;
 
-    public CentrifugoService() {
+    public CentrifugoClient() {
         this.configurations = new ConfigurationService();
         this.mapper = new ObjectMapper();
     }
