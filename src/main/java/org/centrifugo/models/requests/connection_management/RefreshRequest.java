@@ -6,39 +6,42 @@ import org.centrifugo.models.requests.RequestModel;
 import java.util.Objects;
 
 /**
- * RefreshRequest
+ * Refresh Request
  */
 public class RefreshRequest implements RequestModel {
 
+    /**
+     * <b>Required.</b> User ID to refresh
+     */
     @JsonProperty("user")
     private String user;
 
     /**
-     * 
+     * Client ID to refresh
      */
     @JsonProperty("client")
     private String client;
 
     /**
-     * 
+     * Mark connection as expired and close with Disconnect Expired reason
      */
     @JsonProperty("expired")
     private Boolean expired;
 
     /**
-     * 
+     * Unix time (in seconds) in the future when the connection will expire
      */
     @JsonProperty("expire_at")
     private Integer expireAt;
 
     /**
-     * 
+     * Custom data to refresh
      */
     @JsonProperty("info")
     private Object info;
 
     /**
-     * 
+     * Specific client session to refresh
      */
     @JsonProperty("session")
     private String session;

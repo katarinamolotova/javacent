@@ -7,33 +7,36 @@ import java.util.List;
 import java.util.Objects;
 
 /**
- * DisconnectRequest
+ * Disconnect Request
  */
 public class DisconnectRequest implements RequestModel {
 
+    /**
+     * <b>Required.</b> User ID to disconnect
+     */
     @JsonProperty("user")
     private String user;
 
     /**
-     * 
+     * Provide custom disconnect object
      */
     @JsonProperty("disconnect")
     private Disconnect disconnect;
 
     /**
-     * 
+     * Specific client ID to disconnect
      */
     @JsonProperty("client")
     private String client;
 
     /**
-     * 
+     * 	Array of client IDs to keep
      */
     @JsonProperty("whitelist")
     private List<String> whitelist;
 
     /**
-     * 
+     * Specific client session to disconnect
      */
     @JsonProperty("session")
     private String session;
