@@ -1,0 +1,519 @@
+package org.opensolutionlab.httpclients.javacent.models.responses.results.batch;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
+import org.opensolutionlab.httpclients.javacent.models.responses.Error;
+import org.opensolutionlab.httpclients.javacent.models.responses.results.EmptyResult;
+import org.opensolutionlab.httpclients.javacent.models.responses.results.history.HistoryResult;
+import org.opensolutionlab.httpclients.javacent.models.responses.results.presence.PresenceResult;
+import org.opensolutionlab.httpclients.javacent.models.responses.results.presence.PresenceStatsResult;
+import org.opensolutionlab.httpclients.javacent.models.responses.results.publication.BroadcastResult;
+import org.opensolutionlab.httpclients.javacent.models.responses.results.publication.PublishResult;
+import org.opensolutionlab.httpclients.javacent.models.responses.results.push_notification.device_list.DeviceListResult;
+import org.opensolutionlab.httpclients.javacent.models.responses.results.push_notification.device_register.DeviceRegisterResult;
+import org.opensolutionlab.httpclients.javacent.models.responses.results.push_notification.device_topic_list.DeviceTopicListResult;
+import org.opensolutionlab.httpclients.javacent.models.responses.results.push_notification.send_push_notification.SendPushNotificationResult;
+import org.opensolutionlab.httpclients.javacent.models.responses.results.push_notification.user_topic_list.UserTopicListResult;
+import org.opensolutionlab.httpclients.javacent.models.responses.results.stats.channels.ChannelsResult;
+import org.opensolutionlab.httpclients.javacent.models.responses.results.stats.connections.ConnectionsResult;
+import org.opensolutionlab.httpclients.javacent.models.responses.results.stats.info.InfoResult;
+import org.opensolutionlab.httpclients.javacent.models.responses.results.user_status.GetUserStatusResult;
+
+public class Reply {
+
+  @JsonProperty("id")
+  private Long id;
+
+  @JsonProperty("error")
+  private Error error;
+
+  @JsonProperty("result")
+  private Object result;
+
+  @JsonProperty("publish")
+  private PublishResult publish;
+
+  @JsonProperty("broadcast")
+  private BroadcastResult broadcast;
+
+  @JsonProperty("subscribe")
+  private EmptyResult subscribe;
+
+  @JsonProperty("unsubscribe")
+  private EmptyResult unsubscribe;
+
+  @JsonProperty("disconnect")
+  private EmptyResult disconnect;
+
+  @JsonProperty("presence")
+  private PresenceResult presence;
+
+  @JsonProperty("presence_stats")
+  private PresenceStatsResult presenceStats;
+
+  @JsonProperty("history")
+  private HistoryResult history;
+
+  @JsonProperty("history_remove")
+  private EmptyResult historyRemove;
+
+  @JsonProperty("info")
+  private InfoResult info;
+
+  @JsonProperty("rpc")
+  private RPCResult rpc;
+
+  @JsonProperty("refresh")
+  private EmptyResult refresh;
+
+  @JsonProperty("channels")
+  private ChannelsResult channels;
+
+  @JsonProperty("connections")
+  private ConnectionsResult connections;
+
+  @JsonProperty("update_user_status")
+  private EmptyResult updateUserStatus;
+
+  @JsonProperty("get_user_status")
+  private GetUserStatusResult getUserStatus;
+
+  @JsonProperty("delete_user_status")
+  private EmptyResult deleteUserStatus;
+
+  @JsonProperty("block_user")
+  private EmptyResult blockUser;
+
+  @JsonProperty("unblock_user")
+  private EmptyResult unblockUser;
+
+  @JsonProperty("revoke_token")
+  private EmptyResult revokeToken;
+
+  @JsonProperty("invalidate_user_tokens")
+  private EmptyResult invalidateUserTokens;
+
+  @JsonProperty("device_register")
+  private DeviceRegisterResult deviceRegister;
+
+  @JsonProperty("device_update")
+  private EmptyResult deviceUpdate;
+
+  @JsonProperty("device_remove")
+  private EmptyResult deviceRemove;
+
+  @JsonProperty("device_list")
+  private DeviceListResult deviceList;
+
+  @JsonProperty("device_topic_list")
+  private DeviceTopicListResult deviceTopicList;
+
+  @JsonProperty("device_topic_update")
+  private EmptyResult deviceTopicUpdate;
+
+  @JsonProperty("user_topic_list")
+  private UserTopicListResult userTopicList;
+
+  @JsonProperty("user_topic_update")
+  private EmptyResult userTopicUpdate;
+
+  @JsonProperty("send_push_notification")
+  private SendPushNotificationResult sendPushNotification;
+
+  @JsonProperty("update_push_status")
+  private EmptyResult updatePushStatus;
+
+  @JsonProperty("cancel_push")
+  private EmptyResult cancelPush;
+
+  public Reply(
+          Long id,
+          Error error,
+          Object result,
+          PublishResult publish,
+          BroadcastResult broadcast,
+          EmptyResult subscribe,
+          EmptyResult unsubscribe,
+          EmptyResult disconnect,
+          PresenceResult presence,
+          PresenceStatsResult presenceStats,
+          HistoryResult history,
+          EmptyResult historyRemove,
+          InfoResult info,
+          RPCResult rpc,
+          EmptyResult refresh,
+          ChannelsResult channels,
+          ConnectionsResult connections,
+          EmptyResult updateUserStatus,
+          GetUserStatusResult getUserStatus,
+          EmptyResult deleteUserStatus,
+          EmptyResult blockUser,
+          EmptyResult unblockUser,
+          EmptyResult revokeToken,
+          EmptyResult invalidateUserTokens,
+          DeviceRegisterResult deviceRegister,
+          EmptyResult deviceUpdate,
+          EmptyResult deviceRemove,
+          DeviceListResult deviceList,
+          DeviceTopicListResult deviceTopicList,
+          EmptyResult deviceTopicUpdate,
+          UserTopicListResult userTopicList,
+          EmptyResult userTopicUpdate,
+          SendPushNotificationResult sendPushNotification,
+          EmptyResult updatePushStatus,
+          EmptyResult cancelPush
+  ) {
+    this.id = id;
+    this.error = error;
+    this.result = result;
+    this.publish = publish;
+    this.broadcast = broadcast;
+    this.subscribe = subscribe;
+    this.unsubscribe = unsubscribe;
+    this.disconnect = disconnect;
+    this.presence = presence;
+    this.presenceStats = presenceStats;
+    this.history = history;
+    this.historyRemove = historyRemove;
+    this.info = info;
+    this.rpc = rpc;
+    this.refresh = refresh;
+    this.channels = channels;
+    this.connections = connections;
+    this.updateUserStatus = updateUserStatus;
+    this.getUserStatus = getUserStatus;
+    this.deleteUserStatus = deleteUserStatus;
+    this.blockUser = blockUser;
+    this.unblockUser = unblockUser;
+    this.revokeToken = revokeToken;
+    this.invalidateUserTokens = invalidateUserTokens;
+    this.deviceRegister = deviceRegister;
+    this.deviceUpdate = deviceUpdate;
+    this.deviceRemove = deviceRemove;
+    this.deviceList = deviceList;
+    this.deviceTopicList = deviceTopicList;
+    this.deviceTopicUpdate = deviceTopicUpdate;
+    this.userTopicList = userTopicList;
+    this.userTopicUpdate = userTopicUpdate;
+    this.sendPushNotification = sendPushNotification;
+    this.updatePushStatus = updatePushStatus;
+    this.cancelPush = cancelPush;
+  }
+
+  public Reply() {
+  }
+
+  public Long getId() {
+    return this.id;
+  }
+
+  public Error getError() {
+    return this.error;
+  }
+
+  public Object getResult() {
+    return this.result;
+  }
+
+  public PublishResult getPublish() {
+    return this.publish;
+  }
+
+  public BroadcastResult getBroadcast() {
+    return this.broadcast;
+  }
+
+  public EmptyResult getSubscribe() {
+    return this.subscribe;
+  }
+
+  public EmptyResult getUnsubscribe() {
+    return this.unsubscribe;
+  }
+
+  public EmptyResult getDisconnect() {
+    return this.disconnect;
+  }
+
+  public PresenceResult getPresence() {
+    return this.presence;
+  }
+
+  public PresenceStatsResult getPresenceStats() {
+    return this.presenceStats;
+  }
+
+  public HistoryResult getHistory() {
+    return this.history;
+  }
+
+  public EmptyResult getHistoryRemove() {
+    return this.historyRemove;
+  }
+
+  public InfoResult getInfo() {
+    return this.info;
+  }
+
+  public RPCResult getRpc() {
+    return this.rpc;
+  }
+
+  public EmptyResult getRefresh() {
+    return this.refresh;
+  }
+
+  public ChannelsResult getChannels() {
+    return this.channels;
+  }
+
+  public ConnectionsResult getConnections() {
+    return this.connections;
+  }
+
+  public EmptyResult getUpdateUserStatus() {
+    return this.updateUserStatus;
+  }
+
+  public GetUserStatusResult getGetUserStatus() {
+    return this.getUserStatus;
+  }
+
+  public EmptyResult getDeleteUserStatus() {
+    return this.deleteUserStatus;
+  }
+
+  public EmptyResult getBlockUser() {
+    return this.blockUser;
+  }
+
+  public EmptyResult getUnblockUser() {
+    return this.unblockUser;
+  }
+
+  public EmptyResult getRevokeToken() {
+    return this.revokeToken;
+  }
+
+  public EmptyResult getInvalidateUserTokens() {
+    return this.invalidateUserTokens;
+  }
+
+  public DeviceRegisterResult getDeviceRegister() {
+    return this.deviceRegister;
+  }
+
+  public EmptyResult getDeviceUpdate() {
+    return this.deviceUpdate;
+  }
+
+  public EmptyResult getDeviceRemove() {
+    return this.deviceRemove;
+  }
+
+  public DeviceListResult getDeviceList() {
+    return this.deviceList;
+  }
+
+  public DeviceTopicListResult getDeviceTopicList() {
+    return this.deviceTopicList;
+  }
+
+  public EmptyResult getDeviceTopicUpdate() {
+    return this.deviceTopicUpdate;
+  }
+
+  public UserTopicListResult getUserTopicList() {
+    return this.userTopicList;
+  }
+
+  public EmptyResult getUserTopicUpdate() {
+    return this.userTopicUpdate;
+  }
+
+  public SendPushNotificationResult getSendPushNotification() {
+    return this.sendPushNotification;
+  }
+
+  public EmptyResult getUpdatePushStatus() {
+    return this.updatePushStatus;
+  }
+
+  public EmptyResult getCancelPush() {
+    return this.cancelPush;
+  }
+
+  @JsonProperty("id")
+  public void setId(Long id) {
+    this.id = id;
+  }
+
+  @JsonProperty("error")
+  public void setError(Error error) {
+    this.error = error;
+  }
+
+  @JsonProperty("result")
+  public void setResult(Object result) {
+    this.result = result;
+  }
+
+  @JsonProperty("publish")
+  public void setPublish(PublishResult publish) {
+    this.publish = publish;
+  }
+
+  @JsonProperty("broadcast")
+  public void setBroadcast(BroadcastResult broadcast) {
+    this.broadcast = broadcast;
+  }
+
+  @JsonProperty("subscribe")
+  public void setSubscribe(EmptyResult subscribe) {
+    this.subscribe = subscribe;
+  }
+
+  @JsonProperty("unsubscribe")
+  public void setUnsubscribe(EmptyResult unsubscribe) {
+    this.unsubscribe = unsubscribe;
+  }
+
+  @JsonProperty("disconnect")
+  public void setDisconnect(EmptyResult disconnect) {
+    this.disconnect = disconnect;
+  }
+
+  @JsonProperty("presence")
+  public void setPresence(PresenceResult presence) {
+    this.presence = presence;
+  }
+
+  @JsonProperty("presence_stats")
+  public void setPresenceStats(PresenceStatsResult presenceStats) {
+    this.presenceStats = presenceStats;
+  }
+
+  @JsonProperty("history")
+  public void setHistory(HistoryResult history) {
+    this.history = history;
+  }
+
+  @JsonProperty("history_remove")
+  public void setHistoryRemove(EmptyResult historyRemove) {
+    this.historyRemove = historyRemove;
+  }
+
+  @JsonProperty("info")
+  public void setInfo(InfoResult info) {
+    this.info = info;
+  }
+
+  @JsonProperty("rpc")
+  public void setRpc(RPCResult rpc) {
+    this.rpc = rpc;
+  }
+
+  @JsonProperty("refresh")
+  public void setRefresh(EmptyResult refresh) {
+    this.refresh = refresh;
+  }
+
+  @JsonProperty("channels")
+  public void setChannels(ChannelsResult channels) {
+    this.channels = channels;
+  }
+
+  @JsonProperty("connections")
+  public void setConnections(ConnectionsResult connections) {
+    this.connections = connections;
+  }
+
+  @JsonProperty("update_user_status")
+  public void setUpdateUserStatus(EmptyResult updateUserStatus) {
+    this.updateUserStatus = updateUserStatus;
+  }
+
+  @JsonProperty("get_user_status")
+  public void setGetUserStatus(GetUserStatusResult getUserStatus) {
+    this.getUserStatus = getUserStatus;
+  }
+
+  @JsonProperty("delete_user_status")
+  public void setDeleteUserStatus(EmptyResult deleteUserStatus) {
+    this.deleteUserStatus = deleteUserStatus;
+  }
+
+  @JsonProperty("block_user")
+  public void setBlockUser(EmptyResult blockUser) {
+    this.blockUser = blockUser;
+  }
+
+  @JsonProperty("unblock_user")
+  public void setUnblockUser(EmptyResult unblockUser) {
+    this.unblockUser = unblockUser;
+  }
+
+  @JsonProperty("revoke_token")
+  public void setRevokeToken(EmptyResult revokeToken) {
+    this.revokeToken = revokeToken;
+  }
+
+  @JsonProperty("invalidate_user_tokens")
+  public void setInvalidateUserTokens(EmptyResult invalidateUserTokens) {
+    this.invalidateUserTokens = invalidateUserTokens;
+  }
+
+  @JsonProperty("device_register")
+  public void setDeviceRegister(DeviceRegisterResult deviceRegister) {
+    this.deviceRegister = deviceRegister;
+  }
+
+  @JsonProperty("device_update")
+  public void setDeviceUpdate(EmptyResult deviceUpdate) {
+    this.deviceUpdate = deviceUpdate;
+  }
+
+  @JsonProperty("device_remove")
+  public void setDeviceRemove(EmptyResult deviceRemove) {
+    this.deviceRemove = deviceRemove;
+  }
+
+  @JsonProperty("device_list")
+  public void setDeviceList(DeviceListResult deviceList) {
+    this.deviceList = deviceList;
+  }
+
+  @JsonProperty("device_topic_list")
+  public void setDeviceTopicList(DeviceTopicListResult deviceTopicList) {
+    this.deviceTopicList = deviceTopicList;
+  }
+
+  @JsonProperty("device_topic_update")
+  public void setDeviceTopicUpdate(EmptyResult deviceTopicUpdate) {
+    this.deviceTopicUpdate = deviceTopicUpdate;
+  }
+
+  @JsonProperty("user_topic_list")
+  public void setUserTopicList(UserTopicListResult userTopicList) {
+    this.userTopicList = userTopicList;
+  }
+
+  @JsonProperty("user_topic_update")
+  public void setUserTopicUpdate(EmptyResult userTopicUpdate) {
+    this.userTopicUpdate = userTopicUpdate;
+  }
+
+  @JsonProperty("send_push_notification")
+  public void setSendPushNotification(SendPushNotificationResult sendPushNotification) {
+    this.sendPushNotification = sendPushNotification;
+  }
+
+  @JsonProperty("update_push_status")
+  public void setUpdatePushStatus(EmptyResult updatePushStatus) {
+    this.updatePushStatus = updatePushStatus;
+  }
+
+  @JsonProperty("cancel_push")
+  public void setCancelPush(EmptyResult cancelPush) {
+    this.cancelPush = cancelPush;
+  }
+}

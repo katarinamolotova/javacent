@@ -1,0 +1,25 @@
+package org.opensolutionlab.httpclients.javacent.models.responses.results.push_notification.device_register;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+public class DeviceRegisterResult {
+
+  @JsonProperty("id")
+  private String id;
+
+  public DeviceRegisterResult(String id) {
+    this.id = id;
+  }
+
+  public DeviceRegisterResult() {
+  }
+
+  public String getId() {
+    return this.id;
+  }
+
+  @JsonProperty("id")
+  public void setId(String id) {
+    this.id = id;
+  }
+}
