@@ -7,16 +7,12 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-/**
- * BatchRequest
- */
+
 public class BatchRequest implements RequestModel {
 
-  
   @JsonProperty("commands")
   private List<Command> commands = null;
-  
-  
+
   @JsonProperty("parallel")
   private Boolean parallel = null;
   
@@ -105,6 +101,3 @@ public class BatchRequest implements RequestModel {
 
   
 }
-
-
-

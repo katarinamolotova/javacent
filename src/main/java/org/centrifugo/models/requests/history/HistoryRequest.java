@@ -12,19 +12,19 @@ public class HistoryRequest implements RequestModel {
 
   
   @JsonProperty("channel")
-  private String channel = null;
+  private String channel;
   
   
   @JsonProperty("limit")
-  private Integer limit = null;
+  private Integer limit;
   
   
   @JsonProperty("since")
-  private StreamPosition since = null;
+  private StreamPosition since;
   
   
   @JsonProperty("reverse")
-  private Boolean reverse = null;
+  private Boolean reverse;
   
   public HistoryRequest channel(String channel) {
     this.channel = channel;
@@ -144,6 +144,3 @@ public class HistoryRequest implements RequestModel {
 
   
 }
-
-
-
