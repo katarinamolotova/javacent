@@ -6,15 +6,18 @@ import org.centrifugo.models.requests.RequestModel;
 import java.util.Objects;
 
 /**
- * RevokeTokenRequest
+ * Revoke Token Request
  */
 public class RevokeTokenRequest implements RequestModel {
 
+    /**
+     * Unix time in the future when revocation information should expire (Unix seconds)
+     */
     @JsonProperty("expire_at")
     private Integer expireAt;
 
     /**
-     * 
+     * <b>Required.</b> Token unique ID (JTI claim in case of JWT)
      */
     @JsonProperty("uid")
     private String uid;

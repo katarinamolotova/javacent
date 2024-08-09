@@ -6,27 +6,30 @@ import org.centrifugo.models.requests.RequestModel;
 import java.util.Objects;
 
 /**
- * UserTopicListRequest
+ * User Topic List Request
  */
 public class UserTopicListRequest implements RequestModel {
 
+    /**
+     * Filter object
+     */
     @JsonProperty("filter")
     private UserTopicFilter filter;
 
     /**
-     * 
+     * Flag indicating whether to include total count info to response
      */
     @JsonProperty("include_total_count")
     private Boolean includeTotalCount;
 
     /**
-     * 
+     * Cursor for pagination (last id in previous batch, empty for first page)
      */
     @JsonProperty("cursor")
     private String cursor;
 
     /**
-     * 
+     * Maximum number of UserTopic objects to retrieve
      */
     @JsonProperty("limit")
     private Integer limit;

@@ -5,15 +5,18 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.Objects;
 
 /**
- * RateLimitPolicy
+ * Rate Limit Policy
  */
 public class RateLimitPolicy {
 
+    /**
+     * Allowed rate
+     */
     @JsonProperty("rate")
     private Integer rate;
 
     /**
-     * 
+     * Interval over which rate is allowed
      */
     @JsonProperty("interval_ms")
     private Integer intervalMs;

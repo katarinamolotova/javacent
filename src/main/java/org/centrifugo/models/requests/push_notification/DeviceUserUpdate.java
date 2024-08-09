@@ -5,10 +5,13 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.Objects;
 
 /**
- * DeviceUserUpdate
+ * Device User Update
  */
 public class DeviceUserUpdate {
 
+    /**
+     * User to set
+     */
     @JsonProperty("user")
     private String user;
 

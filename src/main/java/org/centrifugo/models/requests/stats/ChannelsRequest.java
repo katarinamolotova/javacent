@@ -6,10 +6,13 @@ import org.centrifugo.models.requests.RequestModel;
 import java.util.Objects;
 
 /**
- * ChannelsRequest
+ * Channels Request
  */
 public class ChannelsRequest implements RequestModel {
 
+    /**
+     * Pattern to filter channels
+     */
     @JsonProperty("pattern")
     private String pattern;
 

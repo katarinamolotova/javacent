@@ -5,10 +5,13 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.Objects;
 
 /**
- * DeviceLocaleUpdate
+ * Device Locale Update
  */
 public class DeviceLocaleUpdate {
 
+    /**
+     * Locale to set
+     */
     @JsonProperty("locale")
     private String locale;
 

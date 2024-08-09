@@ -6,15 +6,18 @@ import org.centrifugo.models.requests.RequestModel;
 import java.util.Objects;
 
 /**
- * ConnectionsRequest
+ * Connections Request
  */
 public class ConnectionsRequest implements RequestModel {
 
+    /**
+     * Fast filter by User ID
+     */
     @JsonProperty("user")
     private String user;
 
     /**
-     * 
+     * CEL expression to filter users
      */
     @JsonProperty("expression")
     private String expression;

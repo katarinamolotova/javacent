@@ -7,15 +7,18 @@ import java.util.Map;
 import java.util.Objects;
 
 /**
- * ApnsPushNotification
+ * Apns Push Notification
  */
 public class ApnsPushNotification {
 
+    /**
+     * APNs headers
+     */
     @JsonProperty("headers")
     private Map<String, String> headers;
 
     /**
-     * 
+     * APNs payload
      */
     @JsonProperty("payload")
     private Object payload;

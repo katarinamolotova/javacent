@@ -8,21 +8,24 @@ import java.util.List;
 import java.util.Objects;
 
 /**
- * UserTopicUpdateRequest
+ * User Topic Update Request
  */
 public class UserTopicUpdateRequest implements RequestModel {
 
+    /**
+     * <b>Required.</b> User ID
+     */
     @JsonProperty("user")
     private String user;
 
     /**
-     * 
+     * <b>Required.</b> add or remove or set
      */
     @JsonProperty("op")
     private String op;
 
     /**
-     * 
+     * List of topics
      */
     @JsonProperty("topics")
     private List<String> topics;

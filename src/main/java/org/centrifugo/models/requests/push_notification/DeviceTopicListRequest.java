@@ -6,33 +6,36 @@ import org.centrifugo.models.requests.RequestModel;
 import java.util.Objects;
 
 /**
- * DeviceTopicListRequest
+ * Device Topic List Request
  */
 public class DeviceTopicListRequest implements RequestModel {
 
+    /**
+     * List of device IDs to filter results
+     */
     @JsonProperty("filter")
     private DeviceTopicFilter filter;
 
     /**
-     * 
+     * Flag indicating whether to include total count info to response
      */
     @JsonProperty("include_total_count")
     private Boolean includeTotalCount;
 
     /**
-     * 
+     * Flag indicating whether to include Device information for each object
      */
     @JsonProperty("include_device")
     private Boolean includeDevice;
 
     /**
-     * 
+     * Cursor for pagination (last device id in previous batch, empty for first page)
      */
     @JsonProperty("cursor")
     private String cursor;
 
     /**
-     * 
+     * Maximum number of devices to retrieve
      */
     @JsonProperty("limit")
     private Integer limit;

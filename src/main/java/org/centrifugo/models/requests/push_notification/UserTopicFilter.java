@@ -7,21 +7,24 @@ import java.util.List;
 import java.util.Objects;
 
 /**
- * UserTopicFilter
+ * User Topic Filter
  */
 public class UserTopicFilter {
 
+    /**
+     * List of users to filter results
+     */
     @JsonProperty("users")
     private List<String> users;
 
     /**
-     * 
+     * List of topics to filter results
      */
     @JsonProperty("topics")
     private List<String> topics;
 
     /**
-     * 
+     * Channel prefix to filter results
      */
     @JsonProperty("topic_prefix")
     private String topicPrefix;

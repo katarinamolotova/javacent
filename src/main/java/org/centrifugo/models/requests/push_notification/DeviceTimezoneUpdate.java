@@ -5,10 +5,13 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.Objects;
 
 /**
- * DeviceTimezoneUpdate
+ * Device Timezone Update
  */
 public class DeviceTimezoneUpdate {
 
+    /**
+     * Timezone to set
+     */
     @JsonProperty("timezone")
     private String timezone;
 

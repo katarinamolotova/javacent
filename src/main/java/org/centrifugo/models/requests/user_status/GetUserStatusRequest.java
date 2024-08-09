@@ -8,10 +8,13 @@ import java.util.List;
 import java.util.Objects;
 
 /**
- * GetUserStatusRequest
+ * Get User Status Request
  */
 public class GetUserStatusRequest implements RequestModel {
 
+    /**
+     * <b>Required.</b> List of users to get status for
+     */
     @JsonProperty("users")
     private List<String> users;
 

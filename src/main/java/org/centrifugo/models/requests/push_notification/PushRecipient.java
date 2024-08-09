@@ -7,51 +7,54 @@ import java.util.List;
 import java.util.Objects;
 
 /**
- * PushRecipient
+ * Push Recipient
  */
 public class PushRecipient {
 
+    /**
+     * Send to device IDs based on Centrifugo device storage filter
+     */
     @JsonProperty("filter")
     private DeviceFilter filter;
 
     /**
-     * 
+     * Send to a list of FCM native tokens
      */
     @JsonProperty("fcm_tokens")
     private List<String> fcmTokens;
 
     /**
-     * 
+     * Send to a FCM native topic
      */
     @JsonProperty("fcm_topic")
     private String fcmTopic;
 
     /**
-     * 
+     * Send to a FCM native condition
      */
     @JsonProperty("fcm_condition")
     private String fcmCondition;
 
     /**
-     * 
+     * Send to a list of HMS native tokens
      */
     @JsonProperty("hms_tokens")
     private List<String> hmsTokens;
 
     /**
-     * 
+     * Send to a HMS native topic
      */
     @JsonProperty("hms_topic")
     private String hmsTopic;
 
     /**
-     * 
+     * Send to a HMS native condition
      */
     @JsonProperty("hms_condition")
     private String hmsCondition;
 
     /**
-     * 
+     * Send to a list of APNs native tokens
      */
     @JsonProperty("apns_tokens")
     private List<String> apnsTokens;

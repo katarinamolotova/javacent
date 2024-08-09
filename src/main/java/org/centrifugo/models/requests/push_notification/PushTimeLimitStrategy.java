@@ -5,21 +5,24 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.Objects;
 
 /**
- * PushTimeLimitStrategy
+ * Push Time Limit Strategy
  */
 public class PushTimeLimitStrategy {
 
+    /**
+     * Local time in format HH:MM:SS after which push must be sent
+     */
     @JsonProperty("send_after_time")
     private String sendAfterTime;
 
     /**
-     * 
+     * Local time in format HH:MM:SS before which push must be sent
      */
     @JsonProperty("send_before_time")
     private String sendBeforeTime;
 
     /**
-     * 
+     * If device does not have timezone send push immediately, be default - will be dropped
      */
     @JsonProperty("no_tz_send_now")
     private Boolean noTzSendNow;

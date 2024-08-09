@@ -5,15 +5,18 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.Objects;
 
 /**
- * PushLimitStrategy
+ * Push Limit Strategy
  */
 public class PushLimitStrategy {
 
+    /**
+     * Set rate limit policies
+     */
     @JsonProperty("rate_limit")
     private PushRateLimitStrategy rateLimit;
 
     /**
-     * 
+     * Set time limit policy
      */
     @JsonProperty("time_limit")
     private PushTimeLimitStrategy timeLimit;

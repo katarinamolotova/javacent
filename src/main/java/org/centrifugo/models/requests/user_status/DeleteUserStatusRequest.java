@@ -8,10 +8,13 @@ import java.util.List;
 import java.util.Objects;
 
 /**
- * DeleteUserStatusRequest
+ * Delete User Status Request
  */
 public class DeleteUserStatusRequest implements RequestModel {
 
+    /**
+     * <b>Required.</b> List of users to delete status for
+     */
     @JsonProperty("users")
     private List<String> users;
 

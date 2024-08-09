@@ -8,15 +8,18 @@ import java.util.List;
 import java.util.Objects;
 
 /**
- * UpdateUserStatusRequest
+ * Update User Status Request
  */
 public class UpdateUserStatusRequest implements RequestModel {
 
+    /**
+     * <b>Required.</b> List of users to update status for
+     */
     @JsonProperty("users")
     private List<String> users;
 
     /**
-     * 
+     * New state value
      */
     @JsonProperty("state")
     private String state;

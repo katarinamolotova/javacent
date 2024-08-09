@@ -10,57 +10,61 @@ import java.util.Map;
 import java.util.Objects;
 
 /**
- * DeviceRegisterRequest
+ * Device Register Request
  */
 public class DeviceRegisterRequest implements RequestModel {
 
+    /**
+     * ID of the device being registered (provide it when updating)
+     */
     @JsonProperty("id")
     private String id;
 
     /**
-     * 
+     * <b>Required.</b> Provider of the device token (valid choices: fcm, hms, apns)
      */
     @JsonProperty("provider")
     private String provider;
 
     /**
-     * 
+     * <b>Required.</b> Push notification token for the device
      */
     @JsonProperty("token")
     private String token;
 
     /**
-     * 
+     * <b>Required.</b> Platform of the device (valid choices: ios, android, web)
      */
     @JsonProperty("platform")
     private String platform;
 
     /**
-     * 
+     * User associated with the device
      */
     @JsonProperty("user")
     private String user;
 
     /**
-     * 
+     * Additional custom metadata for the device
      */
     @JsonProperty("meta")
     private Map<String, String> meta;
 
     /**
-     * 
+     * Device topic subscriptions. 
+     * This should be a full list which replaces all the topics previously accociated with the device
      */
     @JsonProperty("topics")
     private List<String> topics;
 
     /**
-     * 
+     * Timezone of device user
      */
     @JsonProperty("timezone")
     private String timezone;
 
     /**
-     * 
+     * Locale of device user
      */
     @JsonProperty("locale")
     private String locale;

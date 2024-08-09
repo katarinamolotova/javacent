@@ -7,10 +7,13 @@ import java.util.Map;
 import java.util.Objects;
 
 /**
- * PushLocalization
+ * Push Localization
  */
 public class PushLocalization {
 
+    /**
+     * Variable name to value for the specific language
+     */
     @JsonProperty("translations")
     private Map<String, String> translations;
 

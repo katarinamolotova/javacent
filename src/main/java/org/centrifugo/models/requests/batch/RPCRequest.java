@@ -5,15 +5,18 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.Objects;
 
 /**
- * RPCRequest
+ * RPC Request
  */
 public class RPCRequest {
 
+    /**
+     * An RPC method string
+     */
     @JsonProperty("method")
     private String method;
 
     /**
-     * 
+     * An RPC params string
      */
     @JsonProperty("params")
     private Object params;
