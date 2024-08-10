@@ -30,7 +30,6 @@ jobs:
     - name: Build with Maven
       run: mvn -B package --file pom.xml
     - name: Send messege
-    - shell: bash
       env:
         TOKEN: ${{ secrets.TG_KEY_TOKEN }}
         CHANNEL: ${{ secrets.TG_CHANNEL }}
