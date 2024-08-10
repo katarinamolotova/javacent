@@ -35,4 +35,5 @@ jobs:
         CHAT_ID: ${{ secrets.TG_CHANNEL }}
         TREAD_ID: ${{secrets.TG_TREAD_ID }}
         MESSEGE: ${{ secrets.TG_MESSEGE }}
-      run: curl -s -d "message_thread_id=$TREAD_ID&chat_id=$CHAT_ID&disable_web_page_preview=1&text=$MESSEGE" "https://api.telegram.org/bot$TOKEN/sendMessage" > /dev/null
+      run: echo $CHAT_ID
+      # run: curl -s -d "message_thread_id=$TREAD_ID&chat_id=$CHAT_ID&disable_web_page_preview=1&text=$MESSEGE" "https://api.telegram.org/bot$TOKEN/sendMessage" > /dev/null
