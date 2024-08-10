@@ -6,21 +6,35 @@ import org.centrifugo.models.requests.RequestModel;
 import java.util.Objects;
 
 /**
- * HistoryRequest
+ * History Request
  */
 public class HistoryRequest implements RequestModel {
 
+    /**
+     * <b>Required.</b> Name of channel to call history from
+     */
     @JsonProperty("channel")
-    private String channel = null;
+    private String channel;
 
+    /**
+     * Limit number of returned publications,
+     * if not set in request then only current stream position information will present in result
+     * (without any publications)
+     */
     @JsonProperty("limit")
-    private Integer limit = null;
+    private Integer limit;
 
+    /**
+     * To return publications after this position
+     */
     @JsonProperty("since")
-    private StreamPosition since = null;
+    private StreamPosition since;
 
+    /**
+     * Iterate in reversed order (from latest to earliest)
+     */
     @JsonProperty("reverse")
-    private Boolean reverse = null;
+    private Boolean reverse;
 
     public HistoryRequest(String channel, Integer limit, StreamPosition since, Boolean reverse) {
         this.channel = channel;

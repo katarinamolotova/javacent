@@ -2,8 +2,14 @@ package org.centrifugo.models.responses.results.push_notification.device_registe
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+/**
+ * Device register result
+ */
 public class DeviceRegisterResult {
 
+  /**
+   * The device ID that was registered/updated
+   */
   @JsonProperty("id")
   private String id;
 

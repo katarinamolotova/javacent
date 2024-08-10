@@ -4,14 +4,26 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.util.List;
 
+/**
+ * Device topic list result
+ */
 public class DeviceTopicListResult {
 
+  /**
+   * A list of DeviceChannel objects
+   */
   @JsonProperty("items")
   private List<DeviceTopic> items;
 
+  /**
+   * Cursor string for retreiving the next page, if not set - then no next page exists
+   */
   @JsonProperty("next_cursor")
   private String nextCursor;
 
+  /**
+   * Total count value (if include_total_count used)
+   */
   @JsonProperty("total_count")
   private Integer totalCount;
 

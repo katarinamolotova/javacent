@@ -2,8 +2,14 @@ package org.centrifugo.models.responses.results.push_notification.send_push_noti
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+/**
+ * Send push notification result
+ */
 public class SendPushNotificationResult {
 
+  /**
+   * uid of push notification to cancel
+   */
   @JsonProperty("uid")
   private String uid;
 

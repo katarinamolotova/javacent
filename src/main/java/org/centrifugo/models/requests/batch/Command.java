@@ -40,101 +40,197 @@ import java.util.Objects;
  */
 public class Command {
 
+    /**
+     * Publish request
+     */
     @JsonProperty("publish")
-    private PublishRequest publish = null;
+    private PublishRequest publish;
 
+    /**
+     * Broadcast request
+     */
     @JsonProperty("broadcast")
-    private BroadcastRequest broadcast = null;
+    private BroadcastRequest broadcast;
 
+    /**
+     * Subscribe request
+     */
     @JsonProperty("subscribe")
-    private SubscribeRequest subscribe = null;
+    private SubscribeRequest subscribe;
 
+    /**
+     * Unsubscribe request
+     */
     @JsonProperty("unsubscribe")
-    private UnsubscribeRequest unsubscribe = null;
+    private UnsubscribeRequest unsubscribe;
 
+    /**
+     * Disconnect request
+     */
     @JsonProperty("disconnect")
-    private DisconnectRequest disconnect = null;
+    private DisconnectRequest disconnect;
 
+    /**
+     * Presence request
+     */
     @JsonProperty("presence")
-    private PresenceRequest presence = null;
+    private PresenceRequest presence;
 
+    /**
+     * Presence statistics request
+     */
     @JsonProperty("presence_stats")
-    private PresenceStatsRequest presenceStats = null;
+    private PresenceStatsRequest presenceStats;
 
+    /**
+     * History request
+     */
     @JsonProperty("history")
-    private HistoryRequest history = null;
+    private HistoryRequest history;
 
+    /**
+     * History remove request
+     */
     @JsonProperty("history_remove")
-    private HistoryRemoveRequest historyRemove = null;
+    private HistoryRemoveRequest historyRemove;
 
+    /**
+     * Info request
+     */
     @JsonProperty("info")
-    private EmptyRequest info = null;
+    private EmptyRequest info;
 
+    /**
+     * RPC request
+     */
     @JsonProperty("rpc")
-    private RPCRequest rpc = null;
+    private RPCRequest rpc;
 
+    /**
+     * Refresh request
+     */
     @JsonProperty("refresh")
-    private RefreshRequest refresh = null;
+    private RefreshRequest refresh;
 
+    /**
+     * Channels request
+     */
     @JsonProperty("channels")
-    private ChannelsRequest channels = null;
+    private ChannelsRequest channels;
 
+    /**
+     * Connections request
+     */
     @JsonProperty("connections")
-    private ConnectionsRequest connections = null;
+    private ConnectionsRequest connections;
 
+    /**
+     * Update user status request
+     */
     @JsonProperty("update_user_status")
-    private UpdateUserStatusRequest updateUserStatus = null;
+    private UpdateUserStatusRequest updateUserStatus;
 
+    /**
+     * Get user status request
+     */
     @JsonProperty("get_user_status")
-    private GetUserStatusRequest getUserStatus = null;
+    private GetUserStatusRequest getUserStatus;
 
+    /**
+     * Delete user status request
+     */
     @JsonProperty("delete_user_status")
-    private DeleteUserStatusRequest deleteUserStatus = null;
+    private DeleteUserStatusRequest deleteUserStatus;
 
+    /**
+     * Block user request
+     */
     @JsonProperty("block_user")
-    private BlockUserRequest blockUser = null;
+    private BlockUserRequest blockUser;
 
+    /**
+     * Unblock user request
+     */
     @JsonProperty("unblock_user")
-    private UnblockUserRequest unblockUser = null;
+    private UnblockUserRequest unblockUser;
 
+    /**
+     * Revoke token request
+     */
     @JsonProperty("revoke_token")
-    private RevokeTokenRequest revokeToken = null;
+    private RevokeTokenRequest revokeToken;
 
+    /**
+     * Invalidate user token request
+     */
     @JsonProperty("invalidate_user_tokens")
-    private InvalidateUserTokensRequest invalidateUserTokens = null;
+    private InvalidateUserTokensRequest invalidateUserTokens;
 
+    /**
+     * Device register request
+     */
     @JsonProperty("device_register")
-    private DeviceRegisterRequest deviceRegister = null;
+    private DeviceRegisterRequest deviceRegister;
 
+    /**
+     * Device update request
+     */
     @JsonProperty("device_update")
-    private DeviceUpdateRequest deviceUpdate = null;
+    private DeviceUpdateRequest deviceUpdate;
 
+    /**
+     * Device remove request
+     */
     @JsonProperty("device_remove")
-    private DeviceRemoveRequest deviceRemove = null;
+    private DeviceRemoveRequest deviceRemove;
 
+    /**
+     * Device list request
+     */
     @JsonProperty("device_list")
-    private DeviceListRequest deviceList = null;
+    private DeviceListRequest deviceList;
 
+    /**
+     * Device topic list request
+     */
     @JsonProperty("device_topic_list")
-    private DeviceTopicListRequest deviceTopicList = null;
+    private DeviceTopicListRequest deviceTopicList;
 
+    /**
+     * Device topic update request
+     */
     @JsonProperty("device_topic_update")
-    private DeviceTopicUpdateRequest deviceTopicUpdate = null;
+    private DeviceTopicUpdateRequest deviceTopicUpdate;
 
+    /**
+     * User topic list request
+     */
     @JsonProperty("user_topic_list")
-    private UserTopicListRequest userTopicList = null;
+    private UserTopicListRequest userTopicList;
 
+    /**
+     * User topic update request
+     */
     @JsonProperty("user_topic_update")
-    private UserTopicUpdateRequest userTopicUpdate = null;
+    private UserTopicUpdateRequest userTopicUpdate;
 
+    /**
+     * Sen push notification request
+     */
     @JsonProperty("send_push_notification")
-    private SendPushNotificationRequest sendPushNotification = null;
+    private SendPushNotificationRequest sendPushNotification;
 
+    /**
+     * Update push status request
+     */
     @JsonProperty("update_push_status")
-    private UpdatePushStatusRequest updatePushStatus = null;
+    private UpdatePushStatusRequest updatePushStatus;
 
+    /**
+     * Cancel push request
+     */
     @JsonProperty("cancel_push")
-    private CancelPushRequest cancelPush = null;
+    private CancelPushRequest cancelPush;
 
     public Command(
             PublishRequest publish,

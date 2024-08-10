@@ -6,21 +6,33 @@ import org.centrifugo.models.requests.RequestModel;
 import java.util.Objects;
 
 /**
- * UnsubscribeRequest
+ * Unsubscribe Request
  */
 public class UnsubscribeRequest implements RequestModel {
-    
-    @JsonProperty("channel")
-    private String channel = null;
 
+    /**
+     * <b>Required.</b> User ID to unsubscribe
+     */
+    @JsonProperty("channel")
+    private String channel;
+
+    /**
+     * <b>Required.</b> Name of channel to unsubscribe user to
+     */
     @JsonProperty("user")
-    private String user = null;
-    
+    private String user;
+
+    /**
+     * Specific client ID to unsubscribe (user still required to be set)
+     */
     @JsonProperty("client")
-    private String client = null;
-    
+    private String client;
+
+    /**
+     * Specific client session to disconnect (user still required to be set).
+     */
     @JsonProperty("session")
-    private String session = null;
+    private String session;
 
     public UnsubscribeRequest(String channel, String user, String client, String session) {
         this.channel = channel;

@@ -7,18 +7,27 @@ import java.util.List;
 import java.util.Objects;
 
 /**
- * PushRateLimitStrategy
+ * Push Rate Limit Strategy
  */
 public class PushRateLimitStrategy {
 
+    /**
+     * Optional key for rate limit policy, supports variables (devide.id and device.user)
+     */
     @JsonProperty("key")
-    private String key = null;
+    private String key;
 
+    /**
+     * Set time limit policy
+     */
     @JsonProperty("policies")
-    private List<RateLimitPolicy> policies = null;
+    private List<RateLimitPolicy> policies;
 
+    /**
+     * Drop push if rate limited, otherwise queue for later
+     */
     @JsonProperty("drop_if_rate_limited")
-    private Boolean dropIfRateLimited = null;
+    private Boolean dropIfRateLimited;
 
     public PushRateLimitStrategy(String key, List<RateLimitPolicy> policies, Boolean dropIfRateLimited) {
         this.key = key;

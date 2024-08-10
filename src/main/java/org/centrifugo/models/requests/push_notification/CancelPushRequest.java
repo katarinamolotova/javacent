@@ -6,12 +6,15 @@ import org.centrifugo.models.requests.RequestModel;
 import java.util.Objects;
 
 /**
- * CancelPushRequest
+ * Cancel Push Request
  */
 public class CancelPushRequest implements RequestModel {
 
+    /**
+     * <b>Required.</b> uid of push notification to cancel
+     */
     @JsonProperty("uid")
-    private String uid = null;
+    private String uid;
 
     public CancelPushRequest(String uid) {
         this.uid = uid;

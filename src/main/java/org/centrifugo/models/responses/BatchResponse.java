@@ -8,13 +8,15 @@ import java.util.List;
 import java.util.Objects;
 
 /**
- * BatchResponse
+ * Batch response
  */
 public class BatchResponse implements ResponseModel {
 
-  
+  /**
+   * List of replies
+   */
   @JsonProperty("replies")
-  private List<Reply> replies = null;
+  private List<Reply> replies;
   
   public BatchResponse replies(List<Reply> replies) {
     this.replies = replies;

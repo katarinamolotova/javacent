@@ -7,27 +7,45 @@ import java.util.List;
 import java.util.Objects;
 
 /**
- * DeviceTopicFilter
+ * Device Topic Filter
  */
 public class DeviceTopicFilter {
 
+    /**
+     * List of device IDs to filter results
+     */
     @JsonProperty("device_ids")
-    private List<String> deviceIds = null;
+    private List<String> deviceIds;
 
+    /**
+     * List of device token providers to filter results
+     */
     @JsonProperty("device_providers")
-    private List<String> deviceProviders = null;
+    private List<String> deviceProviders;
 
+    /**
+     * List of device platforms to filter results
+     */
     @JsonProperty("device_platforms")
-    private List<String> devicePlatforms = null;
+    private List<String> devicePlatforms;
 
+    /**
+     * List of device users to filter results
+     */
     @JsonProperty("device_users")
-    private List<String> deviceUsers = null;
+    private List<String> deviceUsers;
 
+    /**
+     * List of topics to filter results
+     */
     @JsonProperty("topics")
-    private List<String> topics = null;
+    private List<String> topics;
 
+    /**
+     * Topic prefix to filter results
+     */
     @JsonProperty("topic_prefix")
-    private String topicPrefix = null;
+    private String topicPrefix;
 
     public DeviceTopicFilter(
             List<String> deviceIds,

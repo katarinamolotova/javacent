@@ -5,12 +5,15 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.Objects;
 
 /**
- * FcmPushNotification
+ * Fcm Push Notification
  */
 public class FcmPushNotification {
 
+    /**
+     * FCM Message described in FCM docs
+     */
     @JsonProperty("message")
-    private Object message = null;
+    private Object message;
 
     public FcmPushNotification(Object message) {
         this.message = message;

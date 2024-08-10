@@ -4,14 +4,26 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.util.List;
 
+/**
+ * User topic list result
+ */
 public class UserTopicListResult {
 
+  /**
+   * A list of UserTopic objects
+   */
   @JsonProperty("items")
   private List<UserTopic> items;
 
+  /**
+   * Cursor string for retreiving the next page, if not set - then no next page exists
+   */
   @JsonProperty("next_cursor")
   private String nextCursor;
 
+  /**
+   * Total count value
+   */
   @JsonProperty("total_count")
   private Integer totalCount;
 

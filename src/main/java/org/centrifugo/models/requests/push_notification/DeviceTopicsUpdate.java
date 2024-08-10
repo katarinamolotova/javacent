@@ -7,15 +7,21 @@ import java.util.List;
 import java.util.Objects;
 
 /**
- * DeviceTopicsUpdate
+ * Device Topics Update
  */
 public class DeviceTopicsUpdate {
 
+    /**
+     * Operation to make: add, remove or set
+     */
     @JsonProperty("op")
-    private String op = null;
+    private String op;
 
+    /**
+     * Topics for the operation
+     */
     @JsonProperty("topics")
-    private List<String> topics = null;
+    private List<String> topics;
 
     public DeviceTopicsUpdate(String op, List<String> topics) {
         this.op = op;

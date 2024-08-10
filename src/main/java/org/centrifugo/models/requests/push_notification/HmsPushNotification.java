@@ -5,12 +5,15 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.Objects;
 
 /**
- * HmsPushNotification
+ * Hms Push Notification
  */
 public class HmsPushNotification {
 
+    /**
+     * HMS Message described in HMS Push Kit docs
+     */
     @JsonProperty("message")
-    private Object message = null;
+    private Object message;
 
     public HmsPushNotification(Object message) {
         this.message = message;

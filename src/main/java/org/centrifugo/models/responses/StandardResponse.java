@@ -2,11 +2,20 @@ package org.centrifugo.models.responses;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+/**
+ * Standard response class
+ */
 public class StandardResponse<T> implements ResponseModel {
 
+    /**
+     * Error object
+     */
     @JsonProperty("error")
     private Error error;
 
+    /**
+     * Execution result
+     */
     @JsonProperty("result")
     private T result;
 

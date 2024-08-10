@@ -6,12 +6,15 @@ import org.centrifugo.models.requests.RequestModel;
 import java.util.Objects;
 
 /**
- * UnblockUserRequest
+ * Unblock User Request
  */
 public class UnblockUserRequest implements RequestModel {
 
+    /**
+     * <b>Required.</b> User ID to unblock
+     */
     @JsonProperty("user")
-    private String user = null;
+    private String user;
 
     public UnblockUserRequest(String user) {
         this.user = user;

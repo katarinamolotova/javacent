@@ -8,15 +8,21 @@ import java.util.List;
 import java.util.Objects;
 
 /**
- * DeviceRemoveRequest
+ * Device Remove Request
  */
 public class DeviceRemoveRequest implements RequestModel {
 
+    /**
+     * A list of device IDs to be removed
+     */
     @JsonProperty("ids")
-    private List<String> ids = null;
+    private List<String> ids;
 
+    /**
+     * A list of device user IDs to filter devices to remove
+     */
     @JsonProperty("users")
-    private List<String> users = null;
+    private List<String> users;
 
     public DeviceRemoveRequest(List<String> ids, List<String> users) {
         this.ids = ids;

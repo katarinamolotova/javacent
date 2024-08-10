@@ -4,8 +4,14 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.util.Map;
 
+/**
+ * Channels result
+ */
 public class ChannelsResult {
 
+  /**
+   * Map where key is channel and value is ChannelInfo
+   */
   @JsonProperty("channels")
   private Map<String, ChannelInfo> channels;
 

@@ -5,38 +5,74 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * Device
+ */
 public class Device {
 
+  /**
+   * The device's ID
+   */
   @JsonProperty("id")
   private String id;
 
+  /**
+   * The device's platform
+   */
   @JsonProperty("platform")
   private String platform;
 
+  /**
+   * The device's token provider
+   */
   @JsonProperty("provider")
   private String provider;
 
+  /**
+   * The device's token
+   */
   @JsonProperty("token")
   private String token;
 
+  /**
+   * The user associated with the device
+   */
   @JsonProperty("user")
   private String user;
 
+  /**
+   * The device creation time
+   */
   @JsonProperty("created_at")
   private Integer createdAt;
 
+  /**
+   * Device update time
+   */
   @JsonProperty("updated_at")
   private Integer updatedAt;
 
+  /**
+   * Only included if include_meta was true
+   */
   @JsonProperty("meta")
   private Map<String, String> meta;
 
+  /**
+   * Only included if include_topics was true
+   */
   @JsonProperty("topics")
   private List<String> topics;
 
+  /**
+   * The device's timezone
+   */
   @JsonProperty("timezone")
   private String timezone;
 
+  /**
+   * The device's locale
+   */
   @JsonProperty("locale")
   private String locale;
 

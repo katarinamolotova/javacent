@@ -4,8 +4,14 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.util.List;
 
+/**
+ * Info result
+ */
 public class InfoResult {
 
+  /**
+   * Information about all nodes in a cluster
+   */
   @JsonProperty("nodes")
   private List<NodeResult> nodes;
 

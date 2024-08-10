@@ -5,14 +5,26 @@ import org.centrifugo.models.responses.results.push_notification.Device;
 
 import java.util.List;
 
+/**
+ * Device list result
+ */
 public class DeviceListResult {
 
+  /**
+   * A list of devices
+   */
   @JsonProperty("items")
   private List<Device> items;
 
+  /**
+   * Cursor string for retreiving the next page, if not set - then no next page exists
+   */
   @JsonProperty("next_cursor")
   private String nextCursor;
 
+  /**
+   * Total count value (if include_total_count used)
+   */
   @JsonProperty("total_count")
   private Integer totalCount;
 

@@ -5,21 +5,33 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.Objects;
 
 /**
- * PushNotification
+ * Push Notification
  */
 public class PushNotification {
 
+    /**
+     * Notification for FCM
+     */
     @JsonProperty("fcm")
-    private FcmPushNotification fcm = null;
+    private FcmPushNotification fcm;
 
+    /**
+     * Notification for HMS
+     */
     @JsonProperty("hms")
-    private HmsPushNotification hms = null;
+    private HmsPushNotification hms;
 
+    /**
+     * Notification for APNs
+     */
     @JsonProperty("apns")
-    private ApnsPushNotification apns = null;
+    private ApnsPushNotification apns;
 
+    /**
+     * Unix timestamp when Centrifugo stops attempting to send this notification
+     */
     @JsonProperty("expire_at")
-    private Integer expireAt = null;
+    private Integer expireAt;
 
     public PushNotification(
             FcmPushNotification fcm,

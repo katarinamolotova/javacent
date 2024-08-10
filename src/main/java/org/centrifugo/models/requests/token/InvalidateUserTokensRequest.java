@@ -6,21 +6,34 @@ import org.centrifugo.models.requests.RequestModel;
 import java.util.Objects;
 
 /**
- * InvalidateUserTokensRequest
+ * Invalidate User Tokens Request
  */
 public class InvalidateUserTokensRequest implements RequestModel {
 
+    /**
+     * Unix time in the future when revocation information should expire (Unix seconds)
+     */
     @JsonProperty("expire_at")
-    private Integer expireAt = null;
+    private Integer expireAt;
 
+    /**
+     * <b>Required.</b> User ID to invalidate tokens for
+     */
     @JsonProperty("user")
-    private String user = null;
+    private String user;
 
+    /**
+     * All tokens issued at before this Unix time will be considered revoked (in case of JWT this requires iat to be properly set in JWT), 
+     * if not provided server uses current time
+     */
     @JsonProperty("issued_before")
-    private Integer issuedBefore = null;
+    private Integer issuedBefore;
 
+    /**
+     * The channel name
+     */
     @JsonProperty("channel")
-    private String channel = null;
+    private String channel;
 
     public InvalidateUserTokensRequest(Integer expireAt, String user, Integer issuedBefore, String channel) {
         this.expireAt = expireAt;

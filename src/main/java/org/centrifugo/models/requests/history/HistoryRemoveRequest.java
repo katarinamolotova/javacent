@@ -6,12 +6,15 @@ import org.centrifugo.models.requests.RequestModel;
 import java.util.Objects;
 
 /**
- * HistoryRemoveRequest
+ * History Remove Request
  */
 public class HistoryRemoveRequest implements RequestModel {
 
+    /**
+     * <b>Required.</b> Name of channel to remove history
+     */
     @JsonProperty("channel")
-    private String channel = null;
+    private String channel;
 
     public HistoryRemoveRequest(String channel) {
         this.channel = channel;

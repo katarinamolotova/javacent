@@ -1,4 +1,4 @@
-package org.centrifugo.configarations;
+package org.centrifugo.configurations;
 
 import java.io.FileReader;
 import java.io.IOException;

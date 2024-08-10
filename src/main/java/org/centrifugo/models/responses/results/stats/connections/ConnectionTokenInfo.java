@@ -2,11 +2,20 @@ package org.centrifugo.models.responses.results.stats.connections;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+/**
+ * Connection token info
+ */
 public class ConnectionTokenInfo {
 
+  /**
+   * Unique token ID (jti)
+   */
   @JsonProperty("uid")
   private String uid;
 
+  /**
+   * Time (Unix seconds) when token was issued
+   */
   @JsonProperty("issued_at")
   private Integer issuedAt;
 

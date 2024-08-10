@@ -6,15 +6,21 @@ import org.centrifugo.models.requests.RequestModel;
 import java.util.Objects;
 
 /**
- * BlockUserRequest
+ * Block User Request
  */
 public class BlockUserRequest implements RequestModel {
 
+    /**
+     * Unix time in the future when user blocking information should expire (Unix seconds)
+     */
     @JsonProperty("expire_at")
-    private Integer expireAt = null;
+    private Integer expireAt;
 
+    /**
+     * <b>Required.</b> User ID to block
+     */
     @JsonProperty("user")
-    private String user = null;
+    private String user;
 
     public BlockUserRequest(Integer expireAt, String user) {
         this.expireAt = expireAt;

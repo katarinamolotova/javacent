@@ -8,15 +8,21 @@ import java.util.List;
 import java.util.Objects;
 
 /**
- * BatchRequest
+ * Batch Request
  */
 public class BatchRequest implements RequestModel {
 
+    /**
+     * List of commands
+     */
     @JsonProperty("commands")
-    private List<Command> commands = null;
+    private List<Command> commands;
 
+    /**
+     * To make batch commands processing parallel on Centrifugo side
+     */
     @JsonProperty("parallel")
-    private Boolean parallel = null;
+    private Boolean parallel;
 
     public BatchRequest(List<Command> commands, Boolean parallel) {
         this.commands = commands;

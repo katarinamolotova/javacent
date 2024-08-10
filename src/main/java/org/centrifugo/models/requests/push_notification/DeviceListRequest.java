@@ -6,27 +6,45 @@ import org.centrifugo.models.requests.RequestModel;
 import java.util.Objects;
 
 /**
- * DeviceListRequest
+ * Device List Request
  */
 public class DeviceListRequest implements RequestModel {
 
+    /**
+     * <b>Required.</b> How to filter results
+     */
     @JsonProperty("filter")
-    private DeviceFilter filter = null;
+    private DeviceFilter filter;
 
+    /**
+     * Flag indicating whether to include total count for the current filter
+     */
     @JsonProperty("include_total_count")
-    private Boolean includeTotalCount = null;
+    private Boolean includeTotalCount;
 
+    /**
+     * Flag indicating whether to include meta information for each device
+     */
     @JsonProperty("include_meta")
-    private Boolean includeMeta = null;
+    private Boolean includeMeta;
 
+    /**
+     * Flag indicating whether to include topics information for each device
+     */
     @JsonProperty("include_topics")
-    private Boolean includeTopics = null;
+    private Boolean includeTopics;
 
+    /**
+     * Cursor for pagination (last device id in previous batch, empty for first page)
+     */
     @JsonProperty("cursor")
-    private String cursor = null;
+    private String cursor;
 
+    /**
+     * Maximum number of devices to retrieve
+     */
     @JsonProperty("limit")
-    private Integer limit = null;
+    private Integer limit;
 
     public DeviceListRequest(
             DeviceFilter filter,

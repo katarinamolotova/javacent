@@ -8,39 +8,70 @@ import java.util.Map;
 import java.util.Objects;
 
 /**
- * SendPushNotificationRequest
+ * Send Push Notification Request
  */
 public class SendPushNotificationRequest implements RequestModel {
 
+    /**
+     * <b>Required.</b> Recipient of push notification
+     */
     @JsonProperty("recipient")
-    private PushRecipient recipient = null;
+    private PushRecipient recipient;
 
+    /**
+     * <b>Required.</b> Push notification to send
+     */
     @JsonProperty("notification")
-    private PushNotification notification = null;
+    private PushNotification notification;
 
+    /**
+     * Unique identifier for each push notification request, can be used to cancel push
+     */
     @JsonProperty("uid")
-    private String uid = null;
+    private String uid;
 
+    /**
+     * Optional Unix time in the future (in seconds) when to send push notification, push will be queued until that time
+     */
     @JsonProperty("send_at")
-    private Integer sendAt = null;
+    private Integer sendAt;
 
+    /**
+     * Makes processing heavier, but tolerates edge cases, like not loosing inflight pushes due to temporary queue unavailability
+     */
     @JsonProperty("optimize_for_reliability")
-    private Boolean optimizeForReliability = null;
+    private Boolean optimizeForReliability;
 
+    /**
+     * Can be used to set push time constraints (based on device timezone) adnd rate limits
+     */
     @JsonProperty("limit_strategy")
-    private PushLimitStrategy limitStrategy = null;
+    private PushLimitStrategy limitStrategy;
 
+    /**
+     * Identifier for push notification analytics, if not set - Centrifugo will use uid field
+     */
     @JsonProperty("analytics_uid")
-    private String analyticsUid = null;
+    private String analyticsUid;
 
+    /**
+     * Optional per language localizations for push notification
+     */
     @JsonProperty("localizations")
-    private Map<String, PushLocalization> localizations = null;
+    private Map<String, PushLocalization> localizations;
 
+    /**
+     * If set - Centrifugo will use templating for push notification. 
+     * Note that setting localizations enables templating automatically
+     */
     @JsonProperty("use_templating")
-    private Boolean useTemplating = null;
+    private Boolean useTemplating;
 
+    /**
+     * If set - Centrifugo will additionally load device meta during push sending, this meta becomes available in templating.
+     */
     @JsonProperty("use_meta")
-    private Boolean useMeta = null;
+    private Boolean useMeta;
 
     public SendPushNotificationRequest(
             PushRecipient recipient,

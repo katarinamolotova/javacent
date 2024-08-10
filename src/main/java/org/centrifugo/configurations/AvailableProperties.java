@@ -1,4 +1,4 @@
-package org.centrifugo.configarations;
+package org.centrifugo.configurations;
 
 public class AvailableProperties {
 

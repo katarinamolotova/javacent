@@ -2,8 +2,14 @@ package org.centrifugo.models.responses.results.stats.connections;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+/**
+ * Channel context
+ */
 public class ChannelContext {
 
+  /**
+   * The source of channel subscription
+   */
   @JsonProperty("source")
   private Long source;
 

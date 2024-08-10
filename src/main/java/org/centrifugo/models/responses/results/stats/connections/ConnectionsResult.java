@@ -4,8 +4,14 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.util.Map;
 
+/**
+ * Connections result
+ */
 public class ConnectionsResult {
 
+  /**
+   * Active user connections map where key is client ID and value is ConnectionInfo
+   */
   @JsonProperty("connections")
   private Map<String, ConnectionInfo> connections;
 

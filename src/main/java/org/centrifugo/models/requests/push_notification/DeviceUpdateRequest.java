@@ -8,30 +8,51 @@ import java.util.List;
 import java.util.Objects;
 
 /**
- * DeviceUpdateRequest
+ * Device Update Request
  */
 public class DeviceUpdateRequest implements RequestModel {
 
+    /**
+     * Device ids to filter
+     */
     @JsonProperty("ids")
-    private List<String> ids = null;
+    private List<String> ids;
 
+    /**
+     * Device users filter
+     */
     @JsonProperty("users")
-    private List<String> users = null;
+    private List<String> users;
 
+    /**
+     * Optional user update object
+     */
     @JsonProperty("user_update")
-    private DeviceUserUpdate userUpdate = null;
+    private DeviceUserUpdate userUpdate;
 
+    /**
+     * Optional device meta update object
+     */
     @JsonProperty("meta_update")
-    private DeviceMetaUpdate metaUpdate = null;
+    private DeviceMetaUpdate metaUpdate;
 
+    /**
+     * Optional topics update object
+     */
     @JsonProperty("topics_update")
-    private DeviceTopicsUpdate topicsUpdate = null;
+    private DeviceTopicsUpdate topicsUpdate;
 
+    /**
+     * Optional timezone update object
+     */
     @JsonProperty("timezone_update")
-    private DeviceTimezoneUpdate timezoneUpdate = null;
+    private DeviceTimezoneUpdate timezoneUpdate;
 
+    /**
+     * Optional locale update object
+     */
     @JsonProperty("locale_update")
-    private DeviceLocaleUpdate localeUpdate = null;
+    private DeviceLocaleUpdate localeUpdate;
 
     public DeviceUpdateRequest(
             List<String> ids,

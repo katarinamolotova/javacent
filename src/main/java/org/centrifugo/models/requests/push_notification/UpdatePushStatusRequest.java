@@ -6,21 +6,33 @@ import org.centrifugo.models.requests.RequestModel;
 import java.util.Objects;
 
 /**
- * UpdatePushStatusRequest
+ * Update Push Status Request
  */
 public class UpdatePushStatusRequest implements RequestModel {
 
+    /**
+     * <b>Required.</b> analytics_uid from send_push_notification
+     */
     @JsonProperty("analytics_uid")
-    private String analyticsUid = null;
+    private String analyticsUid;
 
+    /**
+     * <b>Required.</b> Status of push notification - delivered or interacted
+     */
     @JsonProperty("status")
-    private String status = null;
+    private String status;
 
+    /**
+     * <b>Required.</b> Device ID
+     */
     @JsonProperty("device_id")
-    private String deviceId = null;
+    private String deviceId;
 
+    /**
+     * Optional Message ID of push notification issued by used provider
+     */
     @JsonProperty("msg_id")
-    private String msgId = null;
+    private String msgId;
 
     public UpdatePushStatusRequest(String analyticsUid, String status, String deviceId, String msgId) {
         this.analyticsUid = analyticsUid;

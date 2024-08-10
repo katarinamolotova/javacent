@@ -2,17 +2,32 @@ package org.centrifugo.models.responses.results.user_status;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+/**
+ * User status
+ */
 public class UserStatus {
 
+  /**
+   * User ID
+   */
   @JsonProperty("user")
   private String user;
 
+  /**
+   * Last active time (Unix seconds)
+   */
   @JsonProperty("active")
   private Integer active;
 
+  /**
+   * Last online time (Unix seconds)
+   */
   @JsonProperty("online")
   private Integer online;
 
+  /**
+   * User state
+   */
   @JsonProperty("state")
   private String state;
 

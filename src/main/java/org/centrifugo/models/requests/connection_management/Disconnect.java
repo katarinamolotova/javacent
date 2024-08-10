@@ -9,11 +9,17 @@ import java.util.Objects;
  */
 public class Disconnect {
 
+    /**
+     * <b>Required.</b> Disconnect code
+     */
     @JsonProperty("code")
-    private Long code = null;
+    private Long code;
 
+    /**
+     * <b>Required.</b> Disconnect reason
+     */
     @JsonProperty("reason")
-    private String reason = null;
+    private String reason;
 
     public Disconnect(Long code, String reason) {
         this.code = code;

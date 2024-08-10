@@ -8,18 +8,27 @@ import java.util.List;
 import java.util.Objects;
 
 /**
- * DeviceTopicUpdateRequest
+ * Device Topic Update Request
  */
 public class DeviceTopicUpdateRequest implements RequestModel {
 
+    /**
+     * <b>Required.</b> Device ID
+     */
     @JsonProperty("device_id")
-    private String deviceId = null;
+    private String deviceId;
 
+    /**
+     * <b>Required.</b> add or remove or set
+     */
     @JsonProperty("op")
-    private String op = null;
+    private String op;
 
+    /**
+     * List of topics
+     */
     @JsonProperty("topics")
-    private List<String> topics = null;
+    private List<String> topics;
 
     public DeviceTopicUpdateRequest(String deviceId, String op, List<String> topics) {
         this.deviceId = deviceId;

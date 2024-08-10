@@ -2,11 +2,20 @@ package org.centrifugo.models.responses.results.presence;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+/**
+ * Presence stats result
+ */
 public class PresenceStatsResult {
 
+  /**
+   * Total number of clients in channel
+   */
   @JsonProperty("num_clients")
   private Long numClients;
 
+  /**
+   * Total number of unique users in channel
+   */
   @JsonProperty("num_users")
   private Long numUsers;
 

@@ -5,8 +5,14 @@ import org.centrifugo.models.responses.results.history.ClientInfo;
 
 import java.util.Map;
 
+/**
+ * Presence result
+ */
 public class PresenceResult {
 
+  /**
+   * Offset of publication in history stream
+   */
   @JsonProperty("presence")
   private Map<String, ClientInfo> presence;
 

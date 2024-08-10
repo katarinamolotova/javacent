@@ -7,12 +7,15 @@ import java.util.Map;
 import java.util.Objects;
 
 /**
- * DeviceMetaUpdate
+ * Devic Meta Update
  */
 public class DeviceMetaUpdate {
 
+    /**
+     * Meta to set
+     */
     @JsonProperty("meta")
-    private Map<String, String> meta = null;
+    private Map<String, String> meta;
 
     public DeviceMetaUpdate(Map<String, String> meta) {
         this.meta = meta;
