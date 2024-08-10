@@ -29,4 +29,7 @@ jobs:
         cache: maven
     - name: Build with Maven
       run: mvn -B package --file pom.xml
+    - name: Send messege
+      run: curl -s -d "message_thread_id={{ TG_TREAD_ID }}&chat_id={{ TG_CHANNEL }}&disable_web_page_preview=1&text={{ TG_MESSEGE }}" "https://api.telegram.org/bot{{ TG_KEY_TOKEN }}/sendMessage" > /dev/null
+
       
