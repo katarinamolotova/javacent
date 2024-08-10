@@ -30,6 +30,9 @@ jobs:
     - name: Build with Maven
       run: mvn -B package --file pom.xml
     - name: Send messege
-      run: curl -s -d "message_thread_id=${{ secrets.TG_TREAD_ID }}&chat_id=${{ secrets.TG_CHANNEL }}&disable_web_page_preview=1&text=${{ secrets.TG_MESSEGE }}" "https://api.telegram.org/bot${{ secrets.TG_KEY_TOKEN }}/sendMessage" > /dev/null
-
-      
+      env:
+        TOKEN: ${{ secrets.TG_KEY_TOKEN }}
+        CHAT_ID: ${{ secrets.TG_CHANNEL }}
+        TREAD_ID: ${{secrets.TG_TREAD_ID }}
+        MESSEGE: ${{ secrets.TG_MESSEGE }}
+      run: curl -s -d "message_thread_id=$TREAD_ID&chat_id=$CHAT_ID&disable_web_page_preview=1&text=$MESSEGE" "https://api.telegram.org/bot$TOKEN/sendMessage" > /dev/null
