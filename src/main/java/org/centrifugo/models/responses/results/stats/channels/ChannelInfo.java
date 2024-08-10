@@ -2,8 +2,15 @@ package org.centrifugo.models.responses.results.stats.channels;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+
+/**
+ * Channel info
+ */
 public class ChannelInfo {
 
+  /**
+   * Total number of connections currently subscribed to a channel
+   */
   @JsonProperty("num_clients")
   private Long numClients;
 

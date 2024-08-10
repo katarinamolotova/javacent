@@ -4,11 +4,20 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.util.Map;
 
+/**
+ * Node metrics
+ */
 public class Metrics {
 
+  /**
+   * Time interval
+   */
   @JsonProperty("interval")
   private Double interval;
 
+  /**
+   * Map of metric name to value
+   */
   @JsonProperty("items")
   private Map<String, Double> items;
 

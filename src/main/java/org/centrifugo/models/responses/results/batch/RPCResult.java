@@ -2,8 +2,14 @@ package org.centrifugo.models.responses.results.batch;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+/**
+ * RPC result
+ */
 public class RPCResult {
 
+  /**
+   * Data object
+   */
   @JsonProperty("data")
   private Object data;
 

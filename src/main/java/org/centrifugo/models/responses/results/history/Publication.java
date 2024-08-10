@@ -4,17 +4,32 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.util.Map;
 
+/**
+ * Publication in the channels
+ */
 public class Publication {
 
+  /**
+   * Custom data of publication
+   */
   @JsonProperty("data")
   private Object data;
 
+  /**
+   * Client info
+   */
   @JsonProperty("info")
   private ClientInfo info;
 
+  /**
+   * Offset in a stream
+   */
   @JsonProperty("offset")
   private Integer offset;
 
+  /**
+   * Custom tags
+   */
   @JsonProperty("tags")
   private Map<String, String> tags;
 

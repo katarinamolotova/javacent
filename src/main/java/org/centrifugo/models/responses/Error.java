@@ -2,11 +2,20 @@ package org.centrifugo.models.responses;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+/**
+ * Centrifugo error
+ */
 public class Error {
 
+  /**
+   * Error code
+   */
   @JsonProperty("code")
   private Long code;
 
+  /**
+   * Error message
+   */
   @JsonProperty("message")
   private String message;
 

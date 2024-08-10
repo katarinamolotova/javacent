@@ -2,17 +2,32 @@ package org.centrifugo.models.responses.results.history;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+/**
+ * Client info
+ */
 public class ClientInfo {
 
+  /**
+   * User ID
+   */
   @JsonProperty("user")
   private String user;
 
+  /**
+   * Client ID
+   */
   @JsonProperty("client")
   private String client;
 
+  /**
+   * Optional connection info
+   */
   @JsonProperty("conn_info")
   private Object connInfo;
 
+  /**
+   * Optional channel info
+   */
   @JsonProperty("chan_info")
   private Object chanInfo;
 

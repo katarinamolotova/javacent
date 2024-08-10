@@ -4,8 +4,14 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.util.List;
 
+/**
+ * Get user status result
+ */
 public class GetUserStatusResult {
 
+  /**
+   * Statuses for each user in params (same order)
+   */
   @JsonProperty("statuses")
   private List<UserStatus> statuses;
 

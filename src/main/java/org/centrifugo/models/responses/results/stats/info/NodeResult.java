@@ -2,35 +2,68 @@ package org.centrifugo.models.responses.results.stats.info;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+/**
+ * Node result
+ */
 public class NodeResult {
 
+  /**
+   * Node uid
+   */
   @JsonProperty("uid")
   private String uid;
 
+  /**
+   * Node name
+   */
   @JsonProperty("name")
   private String name;
 
+  /**
+   * Node version
+   */
   @JsonProperty("version")
   private String version;
 
+  /**
+   * Total number of clients
+   */
   @JsonProperty("num_clients")
   private Long numClients;
 
+  /**
+   * Total number of unique users
+   */
   @JsonProperty("num_users")
   private Long numUsers;
 
+  /**
+   * Total number of channels
+   */
   @JsonProperty("num_channels")
   private Long numChannels;
 
+  /**
+   * Working time
+   */
   @JsonProperty("uptime")
   private Long uptime;
 
+  /**
+   * Metrics object
+   */
   @JsonProperty("metrics")
   private Metrics metrics;
 
+  /**
+   * Process object
+   */
   @JsonProperty("process")
   private Process process;
 
+  /**
+   * Total number of subs
+   */
   @JsonProperty("num_subs")
   private Long numSubs;
 

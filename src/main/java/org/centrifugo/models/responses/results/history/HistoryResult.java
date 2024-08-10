@@ -4,14 +4,26 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.util.List;
 
+/**
+ * History result
+ */
 public class HistoryResult {
 
+  /**
+   * List of publications in channel
+   */
   @JsonProperty("publications")
   private List<Publication> publications;
 
+  /**
+   * Epoch of current stream
+   */
   @JsonProperty("epoch")
   private String epoch;
   
+  /**
+   * Top offset in history stream
+   */
   @JsonProperty("offset")
   private Integer offset;
 

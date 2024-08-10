@@ -2,23 +2,44 @@ package org.centrifugo.models.responses.results.stats.connections;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+/**
+ * Connection info
+ */
 public class ConnectionInfo {
 
+  /**
+   * Client app name (if provided by client)
+   */
   @JsonProperty("app_name")
   private String appName;
 
+  /**
+   * Client app version (if provided by client)
+   */
   @JsonProperty("app_version")
   private String appVersion;
 
+  /**
+   * Client connection transport
+   */
   @JsonProperty("transport")
   private String transport;
 
+  /**
+   * Client connection protocol (json or protobuf)
+   */
   @JsonProperty("protocol")
   private String protocol;
 
+  /**
+   * Client user ID
+   */
   @JsonProperty("user")
   private String user;
 
+  /**
+   * Connection state object
+   */
   @JsonProperty("state")
   private ConnectionState state;
 

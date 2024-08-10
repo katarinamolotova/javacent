@@ -18,110 +18,218 @@ import org.centrifugo.models.responses.results.stats.connections.ConnectionsResu
 import org.centrifugo.models.responses.results.stats.info.InfoResult;
 import org.centrifugo.models.responses.results.user_status.GetUserStatusResult;
 
+/**
+ * The reply all possible requests
+ */
 public class Reply {
 
+  /**
+   * Reply ID
+   */
   @JsonProperty("id")
   private Long id;
 
+  /**
+   * Error object
+   */
   @JsonProperty("error")
   private Error error;
 
+  /**
+   * Common result object
+   */
   @JsonProperty("result")
   private Object result;
 
+  /**
+   * Publish result
+   */
   @JsonProperty("publish")
   private PublishResult publish;
 
+  /**
+   * Broadcast result
+   */
   @JsonProperty("broadcast")
   private BroadcastResult broadcast;
 
+  /**
+   * Subscribe result
+   */
   @JsonProperty("subscribe")
   private EmptyResult subscribe;
 
+  /**
+   * Unsubscribe result
+   */
   @JsonProperty("unsubscribe")
   private EmptyResult unsubscribe;
 
+  /**
+   * Disconnect result
+   */
   @JsonProperty("disconnect")
   private EmptyResult disconnect;
 
+  /**
+   * Presence result
+   */
   @JsonProperty("presence")
   private PresenceResult presence;
 
+  /**
+   * Presence stats result
+   */
   @JsonProperty("presence_stats")
   private PresenceStatsResult presenceStats;
 
+  /**
+   * History result
+   */
   @JsonProperty("history")
   private HistoryResult history;
 
+  /**
+   * History remove result
+   */
   @JsonProperty("history_remove")
   private EmptyResult historyRemove;
 
+  /**
+   * Info result
+   */
   @JsonProperty("info")
   private InfoResult info;
 
+  /**
+   * RPC result
+   */
   @JsonProperty("rpc")
   private RPCResult rpc;
 
+  /**
+   * Refresh result
+   */
   @JsonProperty("refresh")
   private EmptyResult refresh;
 
+  /**
+   * Channels result
+   */
   @JsonProperty("channels")
   private ChannelsResult channels;
 
+  /**
+   * Connections result
+   */
   @JsonProperty("connections")
   private ConnectionsResult connections;
 
+  /**
+   * Update user status result
+   */
   @JsonProperty("update_user_status")
   private EmptyResult updateUserStatus;
 
+  /**
+   * Get user status result
+   */
   @JsonProperty("get_user_status")
   private GetUserStatusResult getUserStatus;
 
+  /**
+   * Delete user status result
+   */
   @JsonProperty("delete_user_status")
   private EmptyResult deleteUserStatus;
 
+  /**
+   * Block user result
+   */
   @JsonProperty("block_user")
   private EmptyResult blockUser;
 
+  /**
+   * Unblock user result
+   */
   @JsonProperty("unblock_user")
   private EmptyResult unblockUser;
 
+  /**
+   * Revoke token result
+   */
   @JsonProperty("revoke_token")
   private EmptyResult revokeToken;
 
+  /**
+   * Invalidate user token result
+   */
   @JsonProperty("invalidate_user_tokens")
   private EmptyResult invalidateUserTokens;
 
+  /**
+   * Device register result
+   */
   @JsonProperty("device_register")
   private DeviceRegisterResult deviceRegister;
 
+  /**
+   * Device update result
+   */
   @JsonProperty("device_update")
   private EmptyResult deviceUpdate;
 
+  /**
+   * Device remove result
+   */
   @JsonProperty("device_remove")
   private EmptyResult deviceRemove;
 
+  /**
+   * Device list result
+   */
   @JsonProperty("device_list")
   private DeviceListResult deviceList;
 
+  /**
+   * Device topic list result
+   */
   @JsonProperty("device_topic_list")
   private DeviceTopicListResult deviceTopicList;
 
+  /**
+   * Device topic update result
+   */
   @JsonProperty("device_topic_update")
   private EmptyResult deviceTopicUpdate;
 
+  /**
+   * User topic list result
+   */
   @JsonProperty("user_topic_list")
   private UserTopicListResult userTopicList;
 
+  /**
+   * User topic update result
+   */
   @JsonProperty("user_topic_update")
   private EmptyResult userTopicUpdate;
 
+  /**
+   * Send push notification result
+   */
   @JsonProperty("send_push_notification")
   private SendPushNotificationResult sendPushNotification;
 
+  /**
+   * Update push status result
+   */
   @JsonProperty("update_push_status")
   private EmptyResult updatePushStatus;
 
+  /**
+   * Cancel push result
+   */
   @JsonProperty("cancel_push")
   private EmptyResult cancelPush;
 

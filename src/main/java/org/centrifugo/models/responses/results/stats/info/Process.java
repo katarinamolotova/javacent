@@ -2,11 +2,20 @@ package org.centrifugo.models.responses.results.stats.info;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+/**
+ * Node process
+ */
 public class Process {
 
+  /**
+   * CPU value
+   */
   @JsonProperty("cpu")
   private Double cpu;
 
+  /**
+   * Resident set size (RSS) is the portion of memory occupied by a process
+   */
   @JsonProperty("rss")
   private Integer rss;
 

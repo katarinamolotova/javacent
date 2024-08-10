@@ -2,14 +2,26 @@ package org.centrifugo.models.responses.results.push_notification.user_topic_lis
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+/**
+ * User topic
+ */
 public class UserTopic {
 
+  /**
+   * ID of UserTopic
+   */
   @JsonProperty("id")
   private String id;
 
+  /**
+   * User ID
+   */
   @JsonProperty("user")
   private String user;
 
+  /**
+   * Topic
+   */
   @JsonProperty("topic")
   private String topic;
 

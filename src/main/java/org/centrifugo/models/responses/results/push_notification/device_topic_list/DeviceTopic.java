@@ -3,14 +3,26 @@ package org.centrifugo.models.responses.results.push_notification.device_topic_l
 import com.fasterxml.jackson.annotation.JsonProperty;
 import org.centrifugo.models.responses.results.push_notification.Device;
 
+/**
+ * Device topic
+ */
 public class DeviceTopic {
 
+  /**
+   * ID of DeviceTopic object
+   */
   @JsonProperty("id")
   private String id;
 
+  /**
+   * Topic
+   */
   @JsonProperty("topic")
   private String topic;
 
+  /**
+   * Device object
+   */
   @JsonProperty("device")
   private Device device;
 

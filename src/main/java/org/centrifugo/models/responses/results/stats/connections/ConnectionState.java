@@ -4,17 +4,32 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.util.Map;
 
+/**
+ * Connection state
+ */
 public class ConnectionState {
 
+  /**
+   * Channels client subscribed to
+   */
   @JsonProperty("channels")
   private Map<String, ChannelContext> channels;
 
+  /**
+   * Information about connection token
+   */
   @JsonProperty("connection_token")
   private ConnectionTokenInfo connectionToken;
 
+  /**
+   * Information about channel tokens used to subscribe
+   */
   @JsonProperty("subscription_tokens")
   private Map<String, SubscriptionTokenInfo> subscriptionTokens;
 
+  /**
+   * Meta information attached to a connection
+   */
   @JsonProperty("meta")
   private Object meta;
 
