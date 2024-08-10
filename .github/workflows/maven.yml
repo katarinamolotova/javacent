@@ -30,7 +30,15 @@ jobs:
     - name: Build with Maven
       run: mvn -B package --file pom.xml
     - name: Send messege
+    - shell: bash
+      env:
+        TOKEN: ${{ secrets.TG_KEY_TOKEN }}
+        CHANNEL: ${{ secrets.TG_CHANNEL }}
+        MESSEGE: ${{ secrets.TG_MESSEGE }}
+        TREAD: ${{ secrets.TG_TREAD_ID }}
       run: |
-        curl -X POST -H 'Content-Type: application/json' \
-        -d '{"message_thread_id": "69", "chat_id": "-1002019006592", "text": "test"}' \
-        https://api.telegram.org/bot7347374705:AAGyqdarqHM_j5WBcEWAh7OBgjZoe8_PVg0/sendMessage
+        example-command "$SUPER_SECRET"
+        run: |
+          curl -X POST -H 'Content-Type: application/json' \
+          -d '{"message_thread_id": $TREAD, "chat_id": $CHANNEL, "text": $MESSEGE}' \
+          https://api.telegram.org/bot$TOKEN/sendMessage
