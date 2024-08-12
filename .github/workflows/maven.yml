@@ -40,5 +40,5 @@ jobs:
 
       run: |
         curl -X POST -H 'Content-Type: application/json' \
-        -d '{"message_thread_id": "$TREAD", "chat_id": "$CHANNEL", "text": "test message"}' \
+        -d '{"message_thread_id": "69", "chat_id": "-1002019006592", "text": "test message"}' \
         https://api.telegram.org/bot$TOKEN/sendMessage
