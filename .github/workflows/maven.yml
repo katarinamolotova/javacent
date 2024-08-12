@@ -34,10 +34,6 @@ jobs:
     - name: Send messege
       env:
         TOKEN: ${{ secrets.TG_KEY_TOKEN }}
-        CHANNEL: ${{ secrets.TG_CHANNEL }}
-        MESSEGE: ${{ secrets.TG_MESSEGE }}
-        TREAD: ${{ secrets.TG_TREAD_ID }}
-
       run: |
         curl -X POST -H 'Content-Type: application/json' \
         -d '{"message_thread_id": "69", "chat_id": "-1002019006592", "text": "test message"}' \
