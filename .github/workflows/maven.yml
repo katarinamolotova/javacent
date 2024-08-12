@@ -30,6 +30,8 @@ jobs:
         cache: maven
     - name: Build with Maven
       run: mvn -B package --file pom.xml
+    - name: Build with Maven
+      run: mvn test
     # - name: Build and check style
     #   run: mvn checkstyle:check
     - name: Send messege
