@@ -1,6 +1,7 @@
 package org.centrifugo.clients;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationFeature;
 import org.apache.commons.io.IOUtils;
 import org.apache.http.HttpEntity;
 import org.apache.http.client.methods.CloseableHttpResponse;
@@ -86,6 +87,7 @@ public class CentrifugoClient
     public CentrifugoClient() {
         this.configurations = new ConfigurationService();
         this.mapper = new ObjectMapper();
+        mapper.configure(SerializationFeature.FAIL_ON_EMPTY_BEANS, false);
     }
 
     /**
@@ -568,7 +570,7 @@ public class CentrifugoClient
             final String json = IOUtils.toString(entity.getContent(), "UTF-8");
             return mapper.readValue(json, responseClass);
         } catch (final IOException e) {
-            throw new CentrifugoException("Error sending the request");
+            throw new CentrifugoException(e.getMessage());
         }
     }
 }
