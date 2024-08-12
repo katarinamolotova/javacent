@@ -36,7 +36,7 @@ centrifugo.api.port=8000
 centrifugo.api.insecure=FALSE
 ```
 
-## Usage example
+## Usage example 
 
 ```
 import org.centrifugo.services.CentrifugoService;
