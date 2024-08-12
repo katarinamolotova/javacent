@@ -38,8 +38,7 @@ jobs:
         MESSEGE: ${{ secrets.TG_MESSEGE }}
         TREAD: ${{ secrets.TG_TREAD_ID }}
 
-      run: echo $CHANNEL + " " + $MESSEGE
-      # run: |
-      #   curl -X POST -H 'Content-Type: application/json' \
-      #   -d '{"message_thread_id": $TREAD, "chat_id": $CHANNEL, "text": $MESSEGE}' \
-      #   https://api.telegram.org/bot$TOKEN/sendMessage
+      run: |
+        curl -X POST -H 'Content-Type: application/json' \
+        -d '{"message_thread_id": $TREAD, "chat_id": $CHANNEL, "text": "test message"}' \
+        https://api.telegram.org/bot$TOKEN/sendMessage
