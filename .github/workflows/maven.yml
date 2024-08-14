@@ -43,7 +43,7 @@ jobs:
           cache: maven
       - name: Prepare message
         run: |
-          echo "BUILD_MESSAGE='Build has status: ${{ job.status }}'" >> $GITHUB_ENV
+          echo "BUILD_MESSAGE=Build has status: ${{ job.status }}" >> $GITHUB_ENV
       # - name: Test stage
       #   run: mvn test --file pom.xml
 
@@ -54,7 +54,7 @@ jobs:
     steps:
       - name: Prepare message
         run: |
-          echo "TEST_MESSAGE='Test has status: ${{ job.status }}'" >> $GITHUB_ENV
+          echo "TEST_MESSAGE=Test has status: ${{ job.status }}" >> $GITHUB_ENV
       - name: status_info
         env:
           TOKEN: ${{ secrets.TG_KEY_TOKEN }}
