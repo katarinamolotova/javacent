@@ -14,9 +14,6 @@ on:
   pull_request:
     branches: [ "master" ]
 
-env:
-  BUILD_MESSAGE: " "
-
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -29,8 +26,17 @@ jobs:
           java-version: '8'
           distribution: 'temurin'
           cache: maven
-    # - name: Build with Maven
-    #   run: mvn -B package -DskipTests --file pom.xml
+      - name: Build project with Maven
+        id: build
+        run: mvn -B package -DskipTests --file pom.xml
+#      - name: stage_status
+#        continue-on-error: true
+#        env:
+#          TOKEN: ${{ secrets.TG_KEY_TOKEN }}
+#        run: |
+#          curl -X POST -H 'Content-Type: application/json' \
+#          -d '{"message_thread_id": "69", "chat_id": "-1002019006592", "text": "${{ steps.demo.conclusion }}"' \
+#          https://api.telegram.org/bot$TOKEN/sendMessage
 
   test:
     needs: build
@@ -44,14 +50,17 @@ jobs:
           java-version: '8'
           distribution: 'temurin'
           cache: maven
-      - name: Prepare message
-        run: |
-          echo "BUILD_MESSAGE=Build has status: ${{ job.status }}" >> $GITHUB_ENV
-          echo "BUILD_MESSAGE=${{ env.BUILD_MESSAGE }}"
-        with:
-           env: BUILD_MESSAGE
-      # - name: Test stage
-      #   run: mvn test --file pom.xml
+      - name: Test stage
+        id: test
+        run: mvn test --file pom.xml
+#      - name: stage_status
+#        continue-on-error: true
+#        env:
+#          TOKEN: ${{ secrets.TG_KEY_TOKEN }}
+#        run: |
+#          curl -X POST -H 'Content-Type: application/json' \
+#          -d '{"message_thread_id": "69", "chat_id": "-1002019006592", "text": "${{ steps.test.conclusion }}"' \
+#          https://api.telegram.org/bot$TOKEN/sendMessage
 
   message:
     if: ${{ always() }}
@@ -59,13 +68,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Prepare message
-        run: |
-          echo "TEST_MESSAGE=Test has status: ${{ job.status }}" >> $GITHUB_ENV
-      - name: status_info
+#        run: |
+#          echo "TEST_MESSAGE=Test has status: ${{ job.status }}" >> $GITHUB_ENV
+#      - name: status_info
         env:
           TOKEN: ${{ secrets.TG_KEY_TOKEN }}
         run: |
           curl -X POST -H 'Content-Type: application/json' \
-          -d '{"message_thread_id": "69", "chat_id": "-1002019006592", "text": "${{ env.TEST_MESSAGE }}"' \
+          -d '{"message_thread_id": "69", "chat_id": "-1002019006592", "text": "${{ needs.build.result }}"' \
           https://api.telegram.org/bot$TOKEN/sendMessage
           echo "BUILD_MESSAGE=${{ env.BUILD_MESSAGE }}"
