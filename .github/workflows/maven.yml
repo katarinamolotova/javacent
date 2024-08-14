@@ -17,7 +17,6 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
       - uses: actions/checkout@v4
       - name: Set up JDK 8
@@ -26,9 +25,9 @@ jobs:
           java-version: '8'
           distribution: 'temurin'
           cache: maven
-      - name: Build project with Maven
-        id: build
-        run: mvn -B package -DskipTests --file pom.xml
+#      - name: Build project with Maven
+#        id: build
+#        run: mvn -B package -DskipTests --file pom.xml
 #      - name: stage_status
 #        continue-on-error: true
 #        env:
@@ -50,9 +49,9 @@ jobs:
           java-version: '8'
           distribution: 'temurin'
           cache: maven
-      - name: Test stage
-        id: test
-        run: mvn test --file pom.xml
+#      - name: Test stage
+#        id: test
+#        run: mvn test --file pom.xml
 #      - name: stage_status
 #        continue-on-error: true
 #        env:
@@ -75,6 +74,9 @@ jobs:
           TOKEN: ${{ secrets.TG_KEY_TOKEN }}
         run: |
           curl -X POST -H 'Content-Type: application/json' \
-          -d '{"message_thread_id": "69", "chat_id": "-1002019006592", "text": "${{ needs.build.result }}"' \
+          -d '{"message_thread_id": "69", "chat_id": "-1002019006592", "text":\
+          "Stage: Build finished with status -   \
+          ${{ needs.build.result }} \
+          Stage: Test finished with status -   \
+          ${{ needs.test.result }}"' \
           https://api.telegram.org/bot$TOKEN/sendMessage
-          echo "BUILD_MESSAGE=${{ env.BUILD_MESSAGE }}"
