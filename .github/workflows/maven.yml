@@ -14,6 +14,9 @@ on:
   pull_request:
     branches: [ "master" ]
 
+env:
+  FINAL_MESSAGE: "Результат выполнения: \n"
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -26,8 +29,8 @@ jobs:
         java-version: '8'
         distribution: 'temurin'
         cache: maven
-    # - name: Build with Maven
-    #   run: mvn -B package -DskipTests --file pom.xml
+    - name: Build with Maven
+      run: mvn -B package -DskipTests --file pom.xml
 
   test:
     needs: build
@@ -43,9 +46,11 @@ jobs:
           cache: maven
       - name: Prepare message
         run: |
-          echo "BUILD_MESSAGE='Job: ${{ job.name }} has status: ${{ job.status }}'" >> $GITHUB_ENV
-      # - name: Test stage
-      #   run: mvn test --file pom.xml
+          finalMessage=${{ env.FINAL_MESSAGE }}
+          finalMessage="${finalMessage} Job: ${{ job.name }} has status: ${{ job.status }}"
+          echo "::set-env name=FINAL_MESSAGE value=$finalMessage"
+      - name: Test stage
+        run: mvn test --file pom.xml
 
   message:
     if: ${{ always() }}
@@ -54,13 +59,13 @@ jobs:
     steps:
       - name: Prepare message
         run: |
-          echo "TEST_MESSAGE='Job: ${{ job.name }} has status: ${{ job.status }}'" >> $GITHUB_ENV
+          finalMessage=${{ env.FINAL_MESSAGE }}
+          finalMessage="${finalMessage} Job: ${{ job.name }} has status: ${{ job.status }}"
+          echo "::set-env name=FINAL_MESSAGE value=$finalMessage"
       - name: status_info
         env:
           TOKEN: ${{ secrets.TG_KEY_TOKEN }}
         run: |
           curl -X POST -H 'Content-Type: application/json' \
-          -d '{"message_thread_id": "69", "chat_id": "-1002019006592", "text": "${{ env.BUILD_MESSAGE }} ${{ env.TEST_MESSAGE }}"' \
+          -d '{"message_thread_id": "69", "chat_id": "-1002019006592", "text": "Status: ${{ env.FINAL_MESSAGE }}"' \
           https://api.telegram.org/bot$TOKEN/sendMessage
-          echo "${{ env.BUILD_MESSAGE }}"
-          echo "${{ env.TEST_MESSAGE }}"
