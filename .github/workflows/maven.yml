@@ -44,6 +44,8 @@ jobs:
           java-version: '8'
           distribution: 'temurin'
           cache: maven
+      - name: test
+        run: echo ${{ job.status }}
       - name: Prepare message
         run: |
           echo "BUILD_MESSAGE=Build has status: ${{ job.status }}" >> $GITHUB_ENV
