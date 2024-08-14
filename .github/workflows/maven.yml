@@ -47,7 +47,7 @@ jobs:
       - name: Prepare message
         run: |
           finalMessage=${{ env.FINAL_MESSAGE }}
-          finalMessage="${finalMessage} Job: ${{ job.name }} has status: ${{ job.status }} \n"
+          finalMessage=$finalMessage + "Job: ${{ job.name }} has status: ${{ job.status }} \n"
           ::set-env name=FINAL_MESSAGE value=$finalMessage
       - name: Test stage
         run: mvn test --file pom.xml
@@ -60,7 +60,7 @@ jobs:
       - name: Prepare message
         run: |
           finalMessage=${{ env.FINAL_MESSAGE }}
-          finalMessage="${finalMessage} Job: ${{ job.name }} has status: ${{ job.status }} \n"
+          finalMessage=$finalMessage + "Job: ${{ job.name }} has status: ${{ job.status }} \n"
           ::set-env name=FINAL_MESSAGE value=$finalMessage
       - name: status_info
         env:
