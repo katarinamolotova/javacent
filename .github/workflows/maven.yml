@@ -49,6 +49,7 @@ jobs:
           finalMessage=${{ env.FINAL_MESSAGE }}
           finalMessage="${finalMessage} Job: ${{ job.name }} has status: ${{ job.status }}"
           ::set-env name=FINAL_MESSAGE value=$finalMessage
+          echo "Final Message: $finalMessage"
       - name: Test stage
         run: mvn test --file pom.xml
 
