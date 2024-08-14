@@ -13,7 +13,10 @@ on:
     branches: [ "master" ]
   pull_request:
     branches: [ "master" ]
-
+    
+env:
+ BUILD_MESSAGE: " "
+ 
 jobs:
   build:
     runs-on: ubuntu-latest
