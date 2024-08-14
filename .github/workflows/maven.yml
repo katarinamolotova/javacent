@@ -25,60 +25,6 @@ jobs:
           java-version: '8'
           distribution: 'temurin'
           cache: maven
-#      - name: Build project with Maven
-#        id: build
-#        run: mvn -B package -DskipTests --file pom.xml
-#      - name: stage_status
-#        continue-on-error: true
-#        env:
-#          TOKEN: ${{ secrets.TG_KEY_TOKEN }}
-#        run: |
-#          curl -X POST -H 'Content-Type: application/json' \
-#          -d '{"message_thread_id": "69", "chat_id": "-1002019006592", "text": "${{ steps.demo.conclusion }}"' \
-#          https://api.telegram.org/bot$TOKEN/sendMessage
-
-  test:
-    needs: build
-    runs-on: ubuntu-latest
-
-    steps:
-      - uses: actions/checkout@v4
-      - uses: docker/setup-qemu-action@v1
-      - uses: actions/setup-java@v4
-        with:
-          java-version: '8'
-          distribution: 'temurin'
-          cache: maven
-#      - name: Test stage
-#        id: test
-#        run: mvn test --file pom.xml
-#      - name: stage_status# This workflow will build a Java project with Maven, and cache/restore any dependencies to improve the workflow execution time
-# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-java-with-maven
-
-# This workflow uses actions that are not certified by GitHub.
-# They are provided by a third-party and are governed by
-# separate terms of service, privacy policy, and support
-# documentation.
-
-name: Java CI with Maven
-
-on:
-  push:
-    branches: [ "master" ]
-  pull_request:
-    branches: [ "master" ]
-
-jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - name: Set up JDK 8
-        uses: actions/setup-java@v4
-        with:
-          java-version: '8'
-          distribution: 'temurin'
-          cache: maven
 
   test:
     needs: build
@@ -106,27 +52,4 @@ jobs:
           -d '{"message_thread_id": "69", "chat_id": "-1002019006592", \
           "text": "Stage: Build finished with status:\n ${{ needs.build.result }} \
           \nStage: Test finished with status:\n ${{ needs.test.result }}"' \
-          https://api.telegram.org/bot$TOKEN/sendMessage
-#        continue-on-error: true
-#        env:
-#          TOKEN: ${{ secrets.TG_KEY_TOKEN }}
-#        run: |
-#          curl -X POST -H 'Content-Type: application/json' \
-#          -d '{"message_thread_id": "69", "chat_id": "-1002019006592", "text": "${{ steps.test.conclusion }}"' \
-#          https://api.telegram.org/bot$TOKEN/sendMessage
-
-  message:
-    if: ${{ always() }}
-    needs: [ build, test ]
-    runs-on: ubuntu-latest
-    steps:
-      - name: Prepare message
-#        run: |
-#          echo "TEST_MESSAGE=Test has status: ${{ job.status }}" >> $GITHUB_ENV
-#      - name: status_info
-        env:
-          TOKEN: ${{ secrets.TG_KEY_TOKEN }}
-        run: |
-          curl -X POST -H 'Content-Type: application/json' \
-          -d '{"message_thread_id": "69", "chat_id": "-1002019006592", "text": "Stage: Build finished with status - ${{ needs.build.result }} Stage: Test finished with status - ${{ needs.test.result }}"' \
           https://api.telegram.org/bot$TOKEN/sendMessage
