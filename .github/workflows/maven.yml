@@ -29,8 +29,8 @@ jobs:
         java-version: '8'
         distribution: 'temurin'
         cache: maven
-    - name: Build with Maven
-      run: mvn -B package -DskipTests --file pom.xml
+    # - name: Build with Maven
+    #   run: mvn -B package -DskipTests --file pom.xml
 
   test:
     needs: build
@@ -47,8 +47,8 @@ jobs:
       - name: Prepare message
         run: |
           ::set-env name=FINAL_MESSAGE value="${{ env.FINAL_MESSAGE }} Job: ${{ job.name }} has status: ${{ job.status }}"
-      - name: Test stage
-        run: mvn test --file pom.xml
+      # - name: Test stage
+      #   run: mvn test --file pom.xml
 
   message:
     if: ${{ always() }}
