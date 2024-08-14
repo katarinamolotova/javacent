@@ -14,9 +14,6 @@ on:
   pull_request:
     branches: [ "master" ]
 
-env:
-  FINAL_MESSAGE: "Результат выполнения: \n"
-
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -46,7 +43,7 @@ jobs:
           cache: maven
       - name: Prepare message
         run: |
-          ::set-env name="FINAL_MESSAGE" value="${{ env.FINAL_MESSAGE }} Job: ${{ job.name }} has status: ${{ job.status }}"
+          echo "BUILD_MESSAGE='Job: ${{ job.name }} has status: ${{ job.status }}'" >> $GITHUB_ENV
       # - name: Test stage
       #   run: mvn test --file pom.xml
 
@@ -57,11 +54,11 @@ jobs:
     steps:
       - name: Prepare message
         run: |
-          ::set-env name="FINAL_MESSAGE" value="${{ env.FINAL_MESSAGE }} Job: ${{ job.name }} has status: ${{ job.status }}"
+          echo "TEST_MESSAGE='Job: ${{ job.name }} has status: ${{ job.status }}'" >> $GITHUB_ENV
       - name: status_info
         env:
           TOKEN: ${{ secrets.TG_KEY_TOKEN }}
         run: |
           curl -X POST -H 'Content-Type: application/json' \
-          -d '{"message_thread_id": "69", "chat_id": "-1002019006592", "text": "Status: ${{ env.FINAL_MESSAGE }}"' \
+          -d '{"message_thread_id": "69", "chat_id": "-1002019006592", "text": "${{ env.BUILD_MESSAGE }}\n ${{ env.TEST_MESSAGE }}"' \
           https://api.telegram.org/bot$TOKEN/sendMessage
