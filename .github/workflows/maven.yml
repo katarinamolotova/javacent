@@ -74,9 +74,5 @@ jobs:
           TOKEN: ${{ secrets.TG_KEY_TOKEN }}
         run: |
           curl -X POST -H 'Content-Type: application/json' \
-          -d '{"message_thread_id": "69", "chat_id": "-1002019006592", "text":\
-          "Stage: Build finished with status -   \
-          ${{ needs.build.result }} \
-          Stage: Test finished with status -   \
-          ${{ needs.test.result }}"' \
+          -d '{"message_thread_id": "69", "chat_id": "-1002019006592", "text": "Stage: Build finished with status - ${{ needs.build.result }} Stage: Test finished with status - ${{ needs.test.result }}"' \
           https://api.telegram.org/bot$TOKEN/sendMessage
