@@ -50,5 +50,5 @@ jobs:
         run: |
           curl -X POST -H 'Content-Type: application/json' \
           -d '{"message_thread_id": "69", "chat_id": "-1002019006592", 
-          "text": "Stage: Build finished with status:\n ${{ needs.build.result }}\nStage: Test finished with status:\n ${{ needs.test.result }}"' \
+          "text": "Build finished with status: ${{ needs.build.result }}\nTest finished with status: ${{ needs.test.result }}"' \
           https://api.telegram.org/bot$TOKEN/sendMessage
