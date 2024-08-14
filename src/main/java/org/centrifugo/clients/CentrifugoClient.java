@@ -61,7 +61,6 @@ import org.centrifugo.models.responses.PresenceStatsResponse;
 import org.centrifugo.models.responses.PublishResponse;
 import org.centrifugo.models.responses.ResponseModel;
 import org.centrifugo.models.responses.SendPushNotificationResponse;
-import org.centrifugo.models.responses.StandardResponse;
 import org.centrifugo.models.responses.UserTopicListResponse;
 import org.centrifugo.clients.interfaces.BatchNotificationCommand;
 import org.centrifugo.clients.interfaces.ConnectionManagementCommand;
@@ -182,7 +181,7 @@ public class CentrifugoClient
     @Override
     public EmptyResponse subscribe(final SubscribeRequest request) {
         final HttpPost httpPost = getHttpPost(request, CentrifugoApiUrl.SUBSCRIBE);
-        return (EmptyResponse) sendToCentrifugo(httpPost, StandardResponse.class);
+        return (EmptyResponse) sendToCentrifugo(httpPost, EmptyResponse.class);
     }
 
     /**
@@ -204,7 +203,7 @@ public class CentrifugoClient
     @Override
     public EmptyResponse unsubscribe(final UnsubscribeRequest request) {
         final HttpPost httpPost = getHttpPost(request, CentrifugoApiUrl.UNSUBSCRIBE);
-        return (EmptyResponse) sendToCentrifugo(httpPost, StandardResponse.class);
+        return (EmptyResponse) sendToCentrifugo(httpPost, EmptyResponse.class);
     }
 
     /**
@@ -346,7 +345,7 @@ public class CentrifugoClient
     @Override
     public EmptyResponse deleteUserStatus(final DeleteUserStatusRequest request) {
         final HttpPost httpPost = getHttpPost(request, CentrifugoApiUrl.DELETE_USER_STATUS);
-        return (EmptyResponse) sendToCentrifugo(httpPost, StandardResponse.class);
+        return (EmptyResponse) sendToCentrifugo(httpPost, EmptyResponse.class);
     }
 
     /**
@@ -380,7 +379,7 @@ public class CentrifugoClient
     @Override
     public EmptyResponse updateUserStatus(final UpdateUserStatusRequest request) {
         final HttpPost httpPost = getHttpPost(request, CentrifugoApiUrl.UPDATE_USER_STATUS);
-        return (EmptyResponse) sendToCentrifugo(httpPost, StandardResponse.class);
+        return (EmptyResponse) sendToCentrifugo(httpPost, EmptyResponse.class);
     }
 
     /**
@@ -402,7 +401,7 @@ public class CentrifugoClient
     @Override
     public EmptyResponse blockUser(final BlockUserRequest request) {
         final HttpPost httpPost = getHttpPost(request, CentrifugoApiUrl.BLOCK_USER);
-        return (EmptyResponse) sendToCentrifugo(httpPost, StandardResponse.class);
+        return (EmptyResponse) sendToCentrifugo(httpPost, EmptyResponse.class);
     }
 
     /**
@@ -411,7 +410,7 @@ public class CentrifugoClient
     @Override
     public EmptyResponse unblockUser(final UnblockUserRequest request) {
         final HttpPost httpPost = getHttpPost(request, CentrifugoApiUrl.UNBLOCK_USER);
-        return (EmptyResponse) sendToCentrifugo(httpPost, StandardResponse.class);
+        return (EmptyResponse) sendToCentrifugo(httpPost, EmptyResponse.class);
     }
 
     /**
@@ -420,7 +419,7 @@ public class CentrifugoClient
     @Override
     public EmptyResponse invalidateUserTokens(final InvalidateUserTokensRequest request) {
         final HttpPost httpPost = getHttpPost(request, CentrifugoApiUrl.INVALIDATE_USER_TOKENS);
-        return (EmptyResponse) sendToCentrifugo(httpPost, StandardResponse.class);
+        return (EmptyResponse) sendToCentrifugo(httpPost, EmptyResponse.class);
     }
 
     /**
@@ -429,7 +428,7 @@ public class CentrifugoClient
     @Override
     public EmptyResponse revokeToken(final RevokeTokenRequest request) {
         final HttpPost httpPost = getHttpPost(request, CentrifugoApiUrl.REVOKE_TOKEN);
-        return (EmptyResponse) sendToCentrifugo(httpPost, StandardResponse.class);
+        return (EmptyResponse) sendToCentrifugo(httpPost, EmptyResponse.class);
     }
 
     /**
@@ -438,7 +437,7 @@ public class CentrifugoClient
     @Override
     public EmptyResponse cancelPush(final CancelPushRequest request) {
         final HttpPost httpPost = getHttpPost(request, CentrifugoApiUrl.CANCEL_PUSH);
-        return (EmptyResponse) sendToCentrifugo(httpPost, StandardResponse.class);
+        return (EmptyResponse) sendToCentrifugo(httpPost, EmptyResponse.class);
     }
 
     /**
@@ -465,7 +464,7 @@ public class CentrifugoClient
     @Override
     public EmptyResponse deviceRemove(final DeviceRemoveRequest request) {
         final HttpPost httpPost = getHttpPost(request, CentrifugoApiUrl.DEVICE_REMOVE);
-        return (EmptyResponse) sendToCentrifugo(httpPost, StandardResponse.class);
+        return (EmptyResponse) sendToCentrifugo(httpPost, EmptyResponse.class);
     }
 
     /**
@@ -483,7 +482,7 @@ public class CentrifugoClient
     @Override
     public EmptyResponse deviceTopicUpdate(final DeviceTopicUpdateRequest request) {
         final HttpPost httpPost = getHttpPost(request, CentrifugoApiUrl.DEVICE_TOPIC_UPDATE);
-        return (EmptyResponse) sendToCentrifugo(httpPost, StandardResponse.class);
+        return (EmptyResponse) sendToCentrifugo(httpPost, EmptyResponse.class);
     }
 
     /**
@@ -492,7 +491,7 @@ public class CentrifugoClient
     @Override
     public EmptyResponse deviceUpdate(final DeviceUpdateRequest request) {
         final HttpPost httpPost = getHttpPost(request, CentrifugoApiUrl.DEVICE_UPDATE);
-        return (EmptyResponse) sendToCentrifugo(httpPost, StandardResponse.class);
+        return (EmptyResponse) sendToCentrifugo(httpPost, EmptyResponse.class);
     }
 
     /**
@@ -510,7 +509,7 @@ public class CentrifugoClient
     @Override
     public EmptyResponse updatePushStatus(final UpdatePushStatusRequest request) {
         final HttpPost httpPost = getHttpPost(request, CentrifugoApiUrl.UPDATE_PUSH_STATUS);
-        return (EmptyResponse) sendToCentrifugo(httpPost, StandardResponse.class);
+        return (EmptyResponse) sendToCentrifugo(httpPost, EmptyResponse.class);
     }
 
     /**
@@ -528,7 +527,7 @@ public class CentrifugoClient
     @Override
     public EmptyResponse userTopicUpdate(final UserTopicUpdateRequest request) {
         final HttpPost httpPost = getHttpPost(request, CentrifugoApiUrl.USER_TOPIC_UPDATE);
-        return (EmptyResponse) sendToCentrifugo(httpPost, StandardResponse.class);
+        return (EmptyResponse) sendToCentrifugo(httpPost, EmptyResponse.class);
     }
 
     /**
