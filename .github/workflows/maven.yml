@@ -46,7 +46,7 @@ jobs:
           cache: maven
       - name: Prepare message
         run: |
-          ::set-env name=FINAL_MESSAGE value="${{ env.FINAL_MESSAGE }} Job: ${{ job.name }} has status: ${{ job.status }}"
+        ::set-env name=FINAL_MESSAGE value="${{ env.FINAL_MESSAGE }} Job: ${{ job.name }} has status: ${{ job.status }}"
       # - name: Test stage
       #   run: mvn test --file pom.xml
 
@@ -57,7 +57,7 @@ jobs:
     steps:
       - name: Prepare message
         run: |
-          ::set-env name=FINAL_MESSAGE value="${{ env.FINAL_MESSAGE }} Job: ${{ job.name }} has status: ${{ job.status }}"
+        ::set-env name=FINAL_MESSAGE value="${{ env.FINAL_MESSAGE }} Job: ${{ job.name }} has status: ${{ job.status }}"
       - name: status_info
         env:
           TOKEN: ${{ secrets.TG_KEY_TOKEN }}
