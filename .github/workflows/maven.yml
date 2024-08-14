@@ -47,6 +47,7 @@ jobs:
       - name: Prepare message
         run: |
           echo "BUILD_MESSAGE=Build has status: ${{ job.status }}" >> $GITHUB_ENV
+          echo "BUILD_MESSAGE=${{ env.BUILD_MESSAGE }}"
       # - name: Test stage
       #   run: mvn test --file pom.xml
 
@@ -65,5 +66,4 @@ jobs:
           curl -X POST -H 'Content-Type: application/json' \
           -d '{"message_thread_id": "69", "chat_id": "-1002019006592", "text": "${{ env.TEST_MESSAGE }}"' \
           https://api.telegram.org/bot$TOKEN/sendMessage
-          echo "${{ env.BUILD_MESSAGE }}"
-          echo "${{ env.TEST_MESSAGE }}"
+          echo "BUILD_MESSAGE=${{ env.BUILD_MESSAGE }}"
