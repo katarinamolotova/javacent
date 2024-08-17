@@ -76,7 +76,6 @@ public class ConfigurationService {
                 AvailableProperties.API_URL_PROPERTIES,
                 AvailableProperties.DEFAULT_API_URL_VALUE
         ).toLowerCase();
-        PropertiesValidator.urlValidate(url);
 
         final String port = properties.getProperty(
                 AvailableProperties.API_PORT_PROPERTIES,
