@@ -15,7 +15,7 @@ To add to your maven project:
 
 First of all, see the description of Centrifugo [server API](https://centrifugal.dev/docs/server/server_api) in the documentation. This library also supports API extensions provided by Centrifugo PRO.
 
-The library contains `CentrifugoService` to work with Centrifugo HTTP server API.
+The library contains `CentrifugoClient` to work with Centrifugo HTTP server API.
 
 ## Configuration
 
@@ -50,3 +50,8 @@ public class DemoApplication {
 
 }
 ```
+
+## License
+
+This repository is released under version 2.0 of the
+[Apache License](https://www.apache.org/licenses/LICENSE-2.0).
