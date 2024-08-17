@@ -4,7 +4,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>org.opensolutionlib.httpclients</groupId>
+    <groupId>org.opensolutionlab.httpclients</groupId>
     <artifactId>javacent</artifactId>
     <version>1.0.0</version>
     <packaging>jar</packaging>
@@ -12,12 +12,14 @@
     <name>javacent</name>
     <description>HTTP API client for Centrifugo v5 messaging server</description>
     <url>https://github.com/katarinamolotova/javacent</url>
+
     <licenses>
         <license>
             <name>The Apache Software License, Version 2.0</name>
             <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
         </license>
     </licenses>
+
     <developers>
         <developer>
             <name>Kukhtachev Mikhail</name>
@@ -92,15 +94,12 @@
             <artifactId>junit-jupiter</artifactId>
             <scope>test</scope>
         </dependency>
-
         <dependency>
             <groupId>org.testcontainers</groupId>
             <artifactId>junit-jupiter</artifactId>
             <version>1.15.1</version>
             <scope>test</scope>
         </dependency>
-
-
     </dependencies>
 
     <build>
@@ -128,14 +127,6 @@
                     </includes>
                 </configuration>
             </plugin>
-<!--            <plugin>-->
-<!--                <groupId>org.apache.maven.plugins</groupId>-->
-<!--                <artifactId>maven-checkstyle-plugin</artifactId>-->
-<!--                <version>3.4.0</version>-->
-<!--                <configuration>-->
-<!--                  <configLocation>src/main/resources/google_check_style.xml</configLocation>-->
-<!--                </configuration>-->
-<!--            </plugin>-->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-javadoc-plugin</artifactId>

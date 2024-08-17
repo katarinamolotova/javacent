@@ -5,9 +5,9 @@ Java SDK to communicate with Centrifugo v5 HTTP API. Java >= 8 supported.
 To add to your maven project:
 ```
 <dependency>
-  <groupId>org.centrifugo</groupId>
-  <artifactId>javacent</artifactId>
-  <version>1.0-SNAPSHOT</version>
+    <groupId>org.opensolutionlab.httpclients</groupId>
+    <artifactId>javacent</artifactId>
+    <version>1.0.0</version>
 </dependency>
 ```
 
@@ -39,13 +39,13 @@ centrifugo.api.insecure=FALSE
 ## Usage example
 
 ```
-import org.centrifugo.services.CentrifugoService;
+import org.opensolutionlab.httpclients.clients.CentrifugoClient;
 
 public class DemoApplication {
 
     public static void main(String[] args) {
-        CentrifugoService centrifugoService = new CentrifugoService();
-        centrifugoService.publish("Hello World!", "channel");
+        CentrifugoClient client = new CentrifugoClient();
+        client.publish("Hello World!", "channel");
     }
 
 }
