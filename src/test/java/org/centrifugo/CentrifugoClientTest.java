@@ -5,18 +5,8 @@ import org.centrifugo.models.requests.EmptyRequest;
 import org.centrifugo.models.requests.batch.BatchRequest;
 import org.centrifugo.models.requests.batch.Command;
 import org.centrifugo.models.requests.history.HistoryRequest;
-import org.centrifugo.models.requests.stats.ChannelsRequest;
-import org.centrifugo.models.responses.BatchResponse;
-import org.centrifugo.models.responses.BroadcastResponse;
-import org.centrifugo.models.responses.ChannelsResponse;
-import org.centrifugo.models.responses.EmptyResponse;
-import org.centrifugo.models.responses.HistoryResponse;
-import org.centrifugo.models.responses.InfoResponse;
-import org.centrifugo.models.responses.PresenceResponse;
-import org.centrifugo.models.responses.PresenceStatsResponse;
-import org.centrifugo.models.responses.PublishResponse;
+import org.centrifugo.models.responses.*;
 import org.centrifugo.models.responses.results.history.Publication;
-import org.centrifugo.models.responses.results.stats.info.InfoResult;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
@@ -26,6 +16,7 @@ import org.testcontainers.junit.jupiter.Container;
 import org.testcontainers.junit.jupiter.Testcontainers;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 @Testcontainers
@@ -118,6 +109,16 @@ public class CentrifugoClientTest {
     }
 
     @Test
+    public void connectionsSuccessTest() {
+        final ConnectionsResponse response = client.connections("", "");
+
+        Assertions.assertNotNull(response);
+        Assertions.assertNotNull(response.getResult());
+//        Assertions.assertNull(response.getError());
+        System.out.println(response.getError().getMessage());
+    }
+
+    @Test
     public void presenceSuccessTest() {
         final PresenceResponse response = client.presence(CHANNEL_1);
 
@@ -188,7 +189,7 @@ public class CentrifugoClientTest {
 
         final BatchRequest request = BatchRequest
                 .builder()
-                .commands(Arrays.asList(command))
+                .commands(Collections.singletonList(command))
                 .build();
 
         final BatchResponse response = client.batch(request);
