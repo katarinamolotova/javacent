@@ -2,12 +2,10 @@ package org.centrifugo.clients;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
-import org.apache.commons.io.IOUtils;
 import org.apache.hc.client5.http.classic.methods.HttpPost;
+import org.apache.hc.client5.http.impl.classic.BasicHttpClientResponseHandler;
 import org.apache.hc.client5.http.impl.classic.CloseableHttpClient;
-import org.apache.hc.client5.http.impl.classic.CloseableHttpResponse;
 import org.apache.hc.client5.http.impl.classic.HttpClients;
-import org.apache.hc.core5.http.HttpEntity;
 import org.apache.hc.core5.http.io.entity.StringEntity;
 import org.centrifugo.clients.interfaces.*;
 import org.centrifugo.configurations.ConfigurationService;
@@ -522,17 +520,10 @@ public class CentrifugoClient
             final HttpPost httpPost,
             final Class<? extends ResponseModel> responseClass
     ) {
-        try (
-                final CloseableHttpClient client = HttpClients.createDefault();
-                final CloseableHttpResponse response = client.execute(httpPost)
-        ) {
-            final HttpEntity entity = response.getEntity();
-            if (entity == null) {
-                return new EmptyResponse();
-            }
-
-            final String json = IOUtils.toString(entity.getContent(), "UTF-8");
-            return mapper.readValue(json, responseClass);
+        try (final CloseableHttpClient client = HttpClients.createDefault()) {
+            final BasicHttpClientResponseHandler responseHandler = new BasicHttpClientResponseHandler();
+            final String response = client.execute(httpPost, responseHandler);
+            return mapper.readValue(response, responseClass);
         } catch (final IOException e) {
             throw new CentrifugoException(e.getMessage());
         }
