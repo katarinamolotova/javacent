@@ -20,9 +20,12 @@ jobs:
         run: |
           VERSION=$(echo ${GITHUB_REF} | grep -oE 'refs/heads/(.*)')
           echo "VERSION=${VERSION}" >> $GITHUB_ENV
+      
+      - name: Test step
+        run: echo $VERSION
 
       - name: Check version number
-        run:  |
+        run: |
           if ! [[ "$VERSION" =~ \d+\.\d+\.\d+ ]]; then
           exit 1
           fi
