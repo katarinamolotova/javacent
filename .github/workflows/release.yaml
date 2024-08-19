@@ -1,0 +1,49 @@
+name: Pipeline for release to Maven central
+
+on:
+  push:
+    branches:
+    - release/*
+jobs:
+  set_version:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up JDK 8
+        uses: actions/setup-java@v4
+        with:
+          java-version: '8'
+          distribution: 'temurin'
+          cache: maven
+
+      - name: Extract version number
+        run: |
+          VERSION=$(echo ${GITHUB_REF} | grep -oE '^/+$')
+          echo "VERSION=$VERSION" >> $GITHUB_ENV
+
+      - name: Check version number
+        run:  |
+          if ! [[ "$VERSION" =~ \d+\.\d+\.\d+ ]]; then
+          exit 1
+          fi
+
+      - name: Set version in pom.xml
+        run: mvn versions:set -DnewVersion=$VERSION
+
+      - name: Save changes to pom.xml
+        run: mvn versions:commit
+
+#  release:
+#    needs: [set_version]
+#    runs-on: ubuntu-latest
+#    steps:
+#      - uses: actions/checkout@v4
+#      - name: Set up JDK 8
+#        uses: actions/setup-java@v4
+#        with:
+#          java-version: '8'
+#          distribution: 'temurin'
+#          cache: maven
+#
+#      - name: Build test and release with Maven
+#        run: mvn deploy -Prelease
