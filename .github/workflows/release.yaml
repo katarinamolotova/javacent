@@ -18,8 +18,7 @@ jobs:
 
       - name: Extract version number
         run: |
-          VERSION=$(echo ${GITHUB_REF} | grep -oE 'refs/heads/(.*)')
-          echo "VERSION=${VERSION}" >> $GITHUB_ENV
+          $(echo ${GITHUB_REF} | grep -oE '^refs/heads/release/(.*)$' | cut -d '/' -f 2)
       
       - name: Test step
         run: echo $VERSION
