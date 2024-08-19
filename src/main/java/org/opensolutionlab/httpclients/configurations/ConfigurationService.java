@@ -91,7 +91,7 @@ public class ConfigurationService {
             final String filePath = ClassLoader.getSystemResource(PROPERTIES_FILE_NAME).getFile();
             properties.load(new FileReader(filePath));
             return properties;
-        } catch (IOException e) {
+        } catch (IOException | NullPointerException e) {
             return new Properties();
         }
     }
