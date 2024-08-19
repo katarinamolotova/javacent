@@ -18,8 +18,8 @@ jobs:
 
       - name: Extract version number
         run: |
-          VERSION=$(echo ${GITHUB_REF} | grep -oE '^/+$')
-          echo "VERSION=$VERSION" >> $GITHUB_ENV
+          VERSION=$(echo ${GITHUB_REF} | grep -oE 'refs/heads/(.*)')
+          echo "VERSION=${VERSION}" >> $GITHUB_ENV
 
       - name: Check version number
         run:  |
