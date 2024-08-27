@@ -19,8 +19,7 @@ package org.opensolutionlab.httpclients.clients.interfaces;
 import org.opensolutionlab.httpclients.exceptions.CentrifugoException;
 import org.opensolutionlab.httpclients.models.requests.history.HistoryRemoveRequest;
 import org.opensolutionlab.httpclients.models.requests.history.HistoryRequest;
-import org.opensolutionlab.httpclients.models.responses.EmptyResponse;
-import org.opensolutionlab.httpclients.models.responses.HistoryResponse;
+import org.opensolutionlab.httpclients.models.responses.results.history.HistoryResult;
 
 public interface HistoryCommand {
 
@@ -30,41 +29,35 @@ public interface HistoryCommand {
      * information - i.e. <b>offset</b> and <b>epoch</b> fields.
      *
      * @param request history request {@link HistoryRequest}
-     *
-     * @return channel history information {@link HistoryResponse}
+     * @return channel history information {@link HistoryResult}
      * @throws CentrifugoException base Centrifugo exception
      */
-    HistoryResponse history(final HistoryRequest request);
+    HistoryResult history(final HistoryRequest request);
 
     /**
      * Get channel history information without list of last messages published into the channel
      *
      * @param channel channel name
-     *
-     * @return current stream position information (<b>offset</b> and <b>epoch</b> fields) {@link HistoryResponse}
+     * @return current stream position information (<b>offset</b> and <b>epoch</b> fields) {@link HistoryResult}
      * @throws CentrifugoException base Centrifugo exception
      */
-    HistoryResponse history(final String channel);
+    HistoryResult history(final String channel);
 
     /**
      * Remove publications in channel history <br>
      * Current top stream position meta data kept untouched to avoid client disconnects due to insufficient state.
      *
      * @param request history remove request {@link HistoryRemoveRequest}
-     *
-     * @return empty object
      * @throws CentrifugoException base Centrifugo exception
      */
-    EmptyResponse historyRemove(final HistoryRemoveRequest request);
+    void historyRemove(final HistoryRemoveRequest request);
 
     /**
      * Remove publications in channel history <br>
      * Current top stream position meta data kept untouched to avoid client disconnects due to insufficient state.
      *
      * @param channel channel name
-     *
-     * @return empty object
      * @throws CentrifugoException base Centrifugo exception
      */
-    EmptyResponse historyRemove(final String channel);
+    void historyRemove(final String channel);
 }
