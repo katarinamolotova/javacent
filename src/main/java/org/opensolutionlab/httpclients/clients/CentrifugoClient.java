@@ -519,7 +519,10 @@ public class CentrifugoClient
     }
 
     private HttpPost getHttpPost(final RequestModel request, final String url) {
-        final HttpPost httpPost = new HttpPost(configurations.getCentrifugoApiUrl() + url);
+        final HttpPost httpPost = new HttpPost(
+                configurations.getCentrifugoApiUrl() +
+                configurations.getApiCommandUrl(url)
+        );
 
         try {
             final String json = mapper.writeValueAsString(request);

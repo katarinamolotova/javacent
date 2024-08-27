@@ -26,6 +26,8 @@ Possible properties:
 * `centrifugo.api.port` - Centrifugo port (defult is `8000`)
 * `centrifugo.api.url` - Centrifugo URL address without port (defult is `http://localhost`)
 * `centrifugo.api.insecure` - Centrifugo HTTP API is insecure. If it is true, `centrifugo.api.key` will be an empty string (default is `false`)
+* `centrifugo.api.handler.prefix` - Centrifugo HTTP API URL prefix (default is `/api`)
+
 
 Properties example:
 
@@ -34,6 +36,7 @@ centrifugo.api.key=centrifugo
 centrifugo.api.url=http://localhost
 centrifugo.api.port=8000
 centrifugo.api.insecure=FALSE
+centrifugo.api.handler.prefix=/api
 ```
 
 ## Usage example
