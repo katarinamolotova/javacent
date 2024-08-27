@@ -20,14 +20,15 @@ public class PropertiesValidator {
 
     private final static int MIN_PORT = 1024;
     private final static int MAX_PORT = 49151;
-    private final static String HANDLER_PREFIX_REGEX = "/^\\/(\\w+(\\/\\w+)*)$/gm\n";
+    private final static String HANDLER_PREFIX_REGEX = "^/(\\w+(/\\w+)*)$";
 
     public static void apiHandlerPrefixValidate(final String prefix) {
         if (!prefix.matches(HANDLER_PREFIX_REGEX)) {
             throw new IllegalStateException(
                     String.format(
-                            "Illegal argument for %s property, value must match the regular expression /\\/\\w+/gm",
-                            prefix
+                            "Illegal argument for %s property, value must match the regular expression %s",
+                            prefix,
+                            HANDLER_PREFIX_REGEX
                     ));
         }
     }
