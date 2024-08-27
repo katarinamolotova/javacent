@@ -5,12 +5,19 @@ import org.opensolutionlab.httpclients.models.requests.EmptyRequest;
 import org.opensolutionlab.httpclients.models.requests.batch.BatchRequest;
 import org.opensolutionlab.httpclients.models.requests.batch.Command;
 import org.opensolutionlab.httpclients.models.requests.history.HistoryRequest;
-import org.opensolutionlab.httpclients.models.responses.*;
+import org.opensolutionlab.httpclients.models.responses.BatchResponse;
+import org.opensolutionlab.httpclients.models.responses.results.history.HistoryResult;
 import org.opensolutionlab.httpclients.models.responses.results.history.Publication;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+import org.opensolutionlab.httpclients.models.responses.results.presence.PresenceResult;
+import org.opensolutionlab.httpclients.models.responses.results.presence.PresenceStatsResult;
+import org.opensolutionlab.httpclients.models.responses.results.publication.BroadcastResult;
+import org.opensolutionlab.httpclients.models.responses.results.publication.PublishResult;
+import org.opensolutionlab.httpclients.models.responses.results.stats.channels.ChannelsResult;
+import org.opensolutionlab.httpclients.models.responses.results.stats.info.InfoResult;
 import org.testcontainers.containers.GenericContainer;
 import org.testcontainers.junit.jupiter.Container;
 import org.testcontainers.junit.jupiter.Testcontainers;
@@ -48,126 +55,95 @@ public class CentrifugoClientTest {
 
     @Test
     public void publishSuccessTest() {
-        final PublishResponse response = client.publish(DATA, CHANNEL_1);
+        final PublishResult result = client.publish(CHANNEL_1, DATA);
 
-        Assertions.assertNotNull(response);
-        Assertions.assertNotNull(response.getResult());
-        Assertions.assertNull(response.getError());
-        Assertions.assertEquals(1, response.getResult().getOffset());
+        Assertions.assertNotNull(result);
+        Assertions.assertEquals(1, result.getOffset());
     }
 
     @Test
     public void broadcastSuccessTest() {
-        final BroadcastResponse response = client.broadcast(DATA, Arrays.asList(CHANNEL_1, CHANNEL_2));
+        final BroadcastResult result = client.broadcast(Arrays.asList(CHANNEL_1, CHANNEL_2), DATA);
 
-        Assertions.assertNotNull(response);
-        Assertions.assertNotNull(response.getResult());
-        Assertions.assertNull(response.getError());
-        Assertions.assertEquals(2, response.getResult().getResponses().size());
+        Assertions.assertNotNull(result);
+        Assertions.assertEquals(2, result.getResponses().size());
     }
 
     @Test
     public void historySuccessTest() {
-        client.publish(DATA, CHANNEL_3);
+        client.publish(CHANNEL_3, DATA);
 
         final HistoryRequest request = HistoryRequest.builder().limit(LIMIT).channel(CHANNEL_3).build();
-        final HistoryResponse response = client.history(request);
+        final HistoryResult result = client.history(request);
 
-        Assertions.assertNotNull(response);
-        Assertions.assertNotNull(response.getResult());
-        Assertions.assertNull(response.getError());
-        Assertions.assertEquals(1, response.getResult().getOffset());
+        Assertions.assertNotNull(result);
+        Assertions.assertEquals(1, result.getOffset());
 
-        final List<Publication> publications = response.getResult().getPublications();
+        final List<Publication> publications = result.getPublications();
         Assertions.assertEquals(1, publications.size());
         Assertions.assertEquals(DATA, publications.get(0).getData());
     }
 
     @Test
     public void historyRemoveSuccessTest() {
-        client.publish(DATA, CHANNEL_3);
+        client.publish(CHANNEL_3, DATA);
+        client.historyRemove(CHANNEL_3);
+        final HistoryResult result = client.history(CHANNEL_3);
 
-        final EmptyResponse response = client.historyRemove(CHANNEL_3);
-
-        Assertions.assertNotNull(response);
-        Assertions.assertNull(response.getError());
-
-        final HistoryResponse history = client.history(CHANNEL_3);
-
-        final List<Publication> publications = history.getResult().getPublications();
+        final List<Publication> publications = result.getPublications();
         Assertions.assertEquals(0, publications.size());
     }
 
     @Test
     public void channelsSuccessTest() {
-        final ChannelsResponse response = client.channels(CHANNEL_PATTERN);
+        final ChannelsResult result = client.channels(CHANNEL_PATTERN);
 
-        Assertions.assertNotNull(response);
-        Assertions.assertNotNull(response.getResult());
-        Assertions.assertNull(response.getError());
-        Assertions.assertEquals(0, response.getResult().getChannels().size());
+        Assertions.assertNotNull(result);
+        Assertions.assertEquals(0, result.getChannels().size());
     }
 
     @Test
     public void presenceSuccessTest() {
-        final PresenceResponse response = client.presence(CHANNEL_1);
+        final PresenceResult result = client.presence(CHANNEL_1);
 
-        Assertions.assertNotNull(response);
-        Assertions.assertNotNull(response.getResult());
-        Assertions.assertNull(response.getError());
-        Assertions.assertEquals(0, response.getResult().getPresence().size());
+        Assertions.assertNotNull(result);
+        Assertions.assertEquals(0, result.getPresence().size());
     }
 
     @Test
     public void presenceStatsSuccessTest() {
-        final PresenceStatsResponse response = client.presenceStats(CHANNEL_1);
+        final PresenceStatsResult result = client.presenceStats(CHANNEL_1);
 
-        Assertions.assertNotNull(response);
-        Assertions.assertNotNull(response.getResult());
-        Assertions.assertNull(response.getError());
-        Assertions.assertEquals(0, response.getResult().getNumClients());
-        Assertions.assertEquals(0, response.getResult().getNumUsers());
+        Assertions.assertNotNull(result);
+        Assertions.assertEquals(0, result.getNumClients());
+        Assertions.assertEquals(0, result.getNumUsers());
     }
 
     @Test
     public void refreshStatsSuccessTest() {
-        final EmptyResponse response = client.refresh(USER_ID);
-
-        Assertions.assertNotNull(response);
-        Assertions.assertNull(response.getError());
+        client.refresh(USER_ID);
     }
 
     @Test
     public void subscribeStatsSuccessTest() {
-        final EmptyResponse response = client.subscribe(USER_ID, CHANNEL_1);
-
-        Assertions.assertNotNull(response);
-        Assertions.assertNull(response.getError());
+        client.subscribe(USER_ID, CHANNEL_1);
     }
 
     @Test
     public void unsubscribeStatsSuccessTest() {
-        final EmptyResponse response = client.unsubscribe(USER_ID, CHANNEL_1);
-
-        Assertions.assertNotNull(response);
-        Assertions.assertNull(response.getError());
+        client.unsubscribe(USER_ID, CHANNEL_1);
     }
 
     @Test
     public void disconnectStatsSuccessTest() {
-        final EmptyResponse response = client.disconnect(USER_ID);
-
-        Assertions.assertNotNull(response);
-        Assertions.assertNull(response.getError());
+        client.disconnect(USER_ID);
     }
 
     @Test
     public void infoStatsSuccessTest() {
-        final InfoResponse response = client.info();
+        final InfoResult result = client.info();
 
-        Assertions.assertNotNull(response);
-        Assertions.assertNull(response.getError());
-        Assertions.assertNotNull(response.getResult());
+        Assertions.assertNotNull(result);
     }
 
     @Test

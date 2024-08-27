@@ -19,8 +19,9 @@ package org.opensolutionlab.httpclients.clients.interfaces;
 import org.opensolutionlab.httpclients.exceptions.CentrifugoException;
 import org.opensolutionlab.httpclients.models.requests.presence.PresenceRequest;
 import org.opensolutionlab.httpclients.models.requests.presence.PresenceStatsRequest;
-import org.opensolutionlab.httpclients.models.responses.PresenceResponse;
 import org.opensolutionlab.httpclients.models.responses.PresenceStatsResponse;
+import org.opensolutionlab.httpclients.models.responses.results.presence.PresenceResult;
+import org.opensolutionlab.httpclients.models.responses.results.presence.PresenceStatsResult;
 
 public interface PresenceCommand {
 
@@ -28,40 +29,36 @@ public interface PresenceCommand {
      * Get channel online presence information
      *
      * @param request presence request {@link PresenceRequest}
-     *
-     * @return all clients currently subscribed on this channel {@link PresenceResponse}
+     * @return all clients currently subscribed on this channel {@link PresenceResult}
      * @throws CentrifugoException base Centrifugo exception
      */
-    PresenceResponse presence(final PresenceRequest request);
+    PresenceResult presence(final PresenceRequest request);
 
     /**
      * Get channel online presence information
      *
      * @param channel channel name
-     *
-     * @return all clients currently subscribed on this channel {@link PresenceResponse}
+     * @return all clients currently subscribed on this channel {@link PresenceResult}
      * @throws CentrifugoException base Centrifugo exception
      */
-    PresenceResponse presence(final String channel);
+    PresenceResult presence(final String channel);
 
     /**
      * Get short channel presence information (based on user ID)
      *
-     * @param request presence statistics request {@link PresenceStatsRequest}
-     *
+     * @param request presence statistics request {@link PresenceStatsResult}
      * @return number of clients and number of unique users {@link PresenceStatsResponse}
      * @throws CentrifugoException base Centrifugo exception
      */
-    PresenceStatsResponse presenceStats(final PresenceStatsRequest request);
+    PresenceStatsResult presenceStats(final PresenceStatsRequest request);
 
     /**
      * Get short channel presence information (based on user ID)
      *
      * @param channel channel name
-     *
-     * @return number of clients and number of unique users {@link PresenceStatsResponse}
+     * @return number of clients and number of unique users {@link PresenceStatsResult}
      * @throws CentrifugoException base Centrifugo exception
      */
-    PresenceStatsResponse presenceStats(final String channel);
+    PresenceStatsResult presenceStats(final String channel);
 
 }

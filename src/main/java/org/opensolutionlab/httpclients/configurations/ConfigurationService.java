@@ -26,6 +26,7 @@ public class ConfigurationService {
     private final String centrifugoApiKey;
     private final String centrifugoApiUrl;
     private final boolean centrifugoIsInsecure;
+    private final String apiHandlerPrefix;
     private final Properties properties;
 
     public ConfigurationService() {
@@ -33,6 +34,7 @@ public class ConfigurationService {
         this.centrifugoApiUrl = getApiUrl();
         this.centrifugoIsInsecure = getInSecureOption();
         this.centrifugoApiKey = getApiKey();
+        this.apiHandlerPrefix = getHandlerPrefix();
     }
 
     public boolean isCentrifugoInsecure() {
@@ -45,6 +47,21 @@ public class ConfigurationService {
 
     public String getCentrifugoApiUrl() {
         return centrifugoApiUrl;
+    }
+
+    public String getApiCommandUrl(final String url) {
+        return apiHandlerPrefix + url;
+    }
+
+    private String getHandlerPrefix() {
+        final String property = properties
+                .getProperty(
+                        AvailableProperties.API_HANDLER_PREFIX,
+                        AvailableProperties.DEFAULT_API_HANDLER_PREFIX
+                )
+                .toLowerCase();
+        PropertiesValidator.apiHandlerPrefixValidate(property);
+        return property;
     }
 
     private boolean getInSecureOption() {
@@ -60,7 +77,7 @@ public class ConfigurationService {
     }
 
     private String getApiKey() {
-        if (centrifugoIsInsecure) {
+        if (isCentrifugoInsecure()) {
             return AvailableProperties.DEFAULT_API_KEY_VALUE;
         }
         return properties
