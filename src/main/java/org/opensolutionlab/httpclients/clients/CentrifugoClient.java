@@ -20,7 +20,6 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import org.apache.hc.client5.http.classic.methods.HttpPost;
-import org.apache.hc.client5.http.impl.classic.BasicHttpClientResponseHandler;
 import org.apache.hc.client5.http.impl.classic.CloseableHttpClient;
 import org.apache.hc.client5.http.impl.classic.HttpClients;
 import org.apache.hc.core5.http.io.entity.StringEntity;
@@ -38,6 +37,7 @@ import org.opensolutionlab.httpclients.configurations.ConfigurationService;
 import org.opensolutionlab.httpclients.constants.CentrifugoApiUrl;
 import org.opensolutionlab.httpclients.exceptions.CentrifugoDecodeException;
 import org.opensolutionlab.httpclients.exceptions.CentrifugoNetworkException;
+import org.opensolutionlab.httpclients.handlers.CentrifugoHttpClientResponseHandler;
 import org.opensolutionlab.httpclients.models.requests.EmptyRequest;
 import org.opensolutionlab.httpclients.models.requests.RequestModel;
 import org.opensolutionlab.httpclients.models.requests.batch.BatchRequest;
@@ -627,7 +627,7 @@ public class CentrifugoClient
             final Class<? extends ResponseModel> responseClass
     ) {
         try (final CloseableHttpClient client = HttpClients.createDefault()) {
-            final BasicHttpClientResponseHandler responseHandler = new BasicHttpClientResponseHandler();
+            final CentrifugoHttpClientResponseHandler responseHandler = new CentrifugoHttpClientResponseHandler();
             final String response = client.execute(httpPost, responseHandler);
             return mapper.readValue(response, responseClass);
         } catch (final ConnectException e) {
