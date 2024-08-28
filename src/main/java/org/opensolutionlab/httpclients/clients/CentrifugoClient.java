@@ -16,10 +16,10 @@
 
 package org.opensolutionlab.httpclients.clients;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import org.apache.hc.client5.http.classic.methods.HttpPost;
-import org.apache.hc.client5.http.impl.classic.BasicHttpClientResponseHandler;
 import org.apache.hc.client5.http.impl.classic.CloseableHttpClient;
 import org.apache.hc.client5.http.impl.classic.HttpClients;
 import org.apache.hc.core5.http.io.entity.StringEntity;
@@ -35,7 +35,10 @@ import org.opensolutionlab.httpclients.clients.interfaces.UserBlockCommand;
 import org.opensolutionlab.httpclients.clients.interfaces.UserStatusCommand;
 import org.opensolutionlab.httpclients.configurations.ConfigurationService;
 import org.opensolutionlab.httpclients.constants.CentrifugoApiUrl;
-import org.opensolutionlab.httpclients.exceptions.CentrifugoException;
+import org.opensolutionlab.httpclients.exceptions.CentrifugoApiResponseException;
+import org.opensolutionlab.httpclients.exceptions.CentrifugoDecodeException;
+import org.opensolutionlab.httpclients.exceptions.CentrifugoNetworkException;
+import org.opensolutionlab.httpclients.handlers.CentrifugoHttpClientResponseHandler;
 import org.opensolutionlab.httpclients.models.requests.EmptyRequest;
 import org.opensolutionlab.httpclients.models.requests.RequestModel;
 import org.opensolutionlab.httpclients.models.requests.batch.BatchRequest;
@@ -70,6 +73,8 @@ import org.opensolutionlab.httpclients.models.requests.user_status.DeleteUserSta
 import org.opensolutionlab.httpclients.models.requests.user_status.GetUserStatusRequest;
 import org.opensolutionlab.httpclients.models.requests.user_status.UpdateUserStatusRequest;
 import org.opensolutionlab.httpclients.models.responses.BatchResponse;
+import org.opensolutionlab.httpclients.models.responses.Error;
+import org.opensolutionlab.httpclients.models.responses.StandardResponse;
 import org.opensolutionlab.httpclients.models.responses.BroadcastResponse;
 import org.opensolutionlab.httpclients.models.responses.ChannelsResponse;
 import org.opensolutionlab.httpclients.models.responses.ConnectionsResponse;
@@ -102,6 +107,7 @@ import org.opensolutionlab.httpclients.models.responses.results.stats.info.InfoR
 import org.opensolutionlab.httpclients.models.responses.results.user_status.GetUserStatusResult;
 
 import java.io.IOException;
+import java.net.ConnectException;
 import java.util.List;
 
 public class CentrifugoClient
@@ -614,8 +620,8 @@ public class CentrifugoClient
             httpPost.setEntity(entity);
             httpPost.setHeader("X-API-Key", configurations.getCentrifugoApiKey());
             return httpPost;
-        } catch (final IOException e) {
-            throw new CentrifugoException(e.getMessage());
+        } catch (final JsonProcessingException e) {
+            throw new CentrifugoDecodeException(e.getMessage());
         }
     }
 
@@ -624,11 +630,28 @@ public class CentrifugoClient
             final Class<? extends ResponseModel> responseClass
     ) {
         try (final CloseableHttpClient client = HttpClients.createDefault()) {
-            final BasicHttpClientResponseHandler responseHandler = new BasicHttpClientResponseHandler();
+            final CentrifugoHttpClientResponseHandler responseHandler = new CentrifugoHttpClientResponseHandler();
             final String response = client.execute(httpPost, responseHandler);
-            return mapper.readValue(response, responseClass);
+
+            final ResponseModel responseModel = mapper.readValue(response, responseClass);
+            checkApiError(responseClass, responseModel);
+            return responseModel;
+        } catch (final ConnectException e) {
+            throw new CentrifugoNetworkException(e.getMessage());
         } catch (final IOException e) {
-            throw new CentrifugoException(e.getMessage());
+            throw new CentrifugoDecodeException(e.getMessage());
+        }
+    }
+
+    private static void checkApiError(
+            final Class<? extends ResponseModel> responseClass,
+            final ResponseModel responseModel
+    ) {
+        if (responseClass != BatchResponse.class) {
+            final Error error = ((StandardResponse<?>) responseModel).getError();
+            if (error != null) {
+                throw new CentrifugoApiResponseException(error.getCode().intValue(), error.getMessage());
+            }
         }
     }
 }

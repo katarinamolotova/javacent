@@ -1,10 +1,13 @@
 package org.opensolutionlab.httpclients;
 
 import org.opensolutionlab.httpclients.clients.CentrifugoClient;
+import org.opensolutionlab.httpclients.exceptions.CentrifugoApiResponseException;
+import org.opensolutionlab.httpclients.exceptions.CentrifugoTransportException;
 import org.opensolutionlab.httpclients.models.requests.EmptyRequest;
 import org.opensolutionlab.httpclients.models.requests.batch.BatchRequest;
 import org.opensolutionlab.httpclients.models.requests.batch.Command;
 import org.opensolutionlab.httpclients.models.requests.history.HistoryRequest;
+import org.opensolutionlab.httpclients.models.requests.publication.PublishRequest;
 import org.opensolutionlab.httpclients.models.responses.BatchResponse;
 import org.opensolutionlab.httpclients.models.responses.results.history.HistoryResult;
 import org.opensolutionlab.httpclients.models.responses.results.history.Publication;
@@ -162,5 +165,21 @@ public class CentrifugoClientTest {
 
         Assertions.assertNotNull(response);
         Assertions.assertEquals(1, response.getReplies().size());
+    }
+
+    @Test
+    public void publishFailTest() {
+        Assertions.assertThrows(
+                CentrifugoApiResponseException.class,
+                () -> client.publish(PublishRequest.builder().build())
+        );
+    }
+
+    @Test
+    public void notFoundTest() {
+        Assertions.assertThrows(
+                CentrifugoTransportException.class,
+                () -> client.connections(USER_ID, "")
+        );
     }
 }
