@@ -647,7 +647,10 @@ public class CentrifugoClient
         if (responseClass != BatchResponse.class) {
             final Error error = ((StandardResponse<?>) responseModel).getError();
             if (error != null) {
-                throw new CentrifugoApiResponseException(error.getCode().intValue(), error.getMessage());
+                throw new CentrifugoApiResponseException(
+                        error.getCode().intValue(),
+                        String.format("Server API response error #%s: %s", error.getCode(), error.getMessage())
+                );
             }
         }
     }
