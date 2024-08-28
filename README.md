@@ -41,7 +41,7 @@ centrifugo.api.handler.prefix=/api
 
 ## Usage example
 
-```
+```java
 import org.opensolutionlab.httpclients.clients.CentrifugoClient;
 
 public class DemoApplication {
@@ -53,6 +53,66 @@ public class DemoApplication {
 
 }
 ```
+
+## Handling errors
+
+This library raises exceptions if sth goes wrong. All exceptions are subclasses of CentrifugoException.
+
+* `CentrifugoException` - base class for all exceptions
+* `CentrifugoNetworkException` - raised in case of network related errors (connection refused)
+* `CentrifugoTransportException` - raised in case of transport related errors (HTTP status code is not 2xx)
+* `CentrifugoTimeoutException` - raised in case of timeout
+* `CentrifugoUnauthorizedException` - raised in case of unauthorized access (signal of invalid API key)
+* `CentrifugoDecodeException` - raised in case of server response deserialize error
+* `CentrifugoApiResponseException` - raised in case of API response error (i.e. error returned by Centrifugo itself, you can inspect code and message returned by Centrifugo in this case)
+
+Note, that `BroadcastRequest` and `BatchRequest` are quite special – since they contain multiple commands in one request, 
+handling `CentrifugoApiResponseException` is still required, but not enough – you also need to manually iterate over the results to check for individual errors. 
+For example, one publish command can fail while another one can succeed. For example:
+
+```java
+import org.opensolutionlab.httpclients.clients.CentrifugoClient;
+
+public class DemoApplication {
+
+    public static void main(String[] args) {
+        CentrifugoClient client = new CentrifugoClient();
+        
+        client.broadcast(Arrays.asList("1", "2"), "Hello!");
+        /*
+         *  BroadcastResult(
+         *      responses = {
+         *          PublishResponse(error = null, result = PublishResult(offset = 7, epoch = "rqKx")),
+         *          PublishResponse(error = null, result = PublishResult(offset = 7, epoch = "nUrf"))
+         *      }
+         *  )
+         */
+
+        client.broadcast(Arrays.asList("invalid:1", "2"), "Hello!");
+        /*
+         *  BroadcastResult(
+         *      responses = {
+         *          PublishResponse(error = Error(code = 102, message = "unknown channel"), result = null),
+         *          PublishResponse(error = null, result = PublishResult(offset = 8, epoch = "nUrf"))
+         *      }
+         *  )
+         */
+    }
+}
+```
+
+I.e. `javacent` library does not raise exceptions for individual errors in BroadcastRequest or BatchRequest, 
+only for top-level response error, for example, sending empty list of channels in broadcast:
+
+```
+client.broadcast(Arrays.emptyList(), "");
+
+org.opensolutionlab.httpclients.exceptions.CentrifugoApiResponseException: bad request
+    ...
+```
+
+So this all adds some complexity, but that's the trade-off for the performance and efficiency of these two methods. 
+You can always write some convenient wrappers around javacent library to handle errors in a way that suits your application.
 
 ## License
 
