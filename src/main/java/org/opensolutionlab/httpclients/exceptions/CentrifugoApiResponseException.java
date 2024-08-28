@@ -16,9 +16,9 @@
 
 package org.opensolutionlab.httpclients.exceptions;
 
-public class CentrifugoApiResponseException extends CentrifugoException {
+public class CentrifugoApiResponseException extends CentrifugoNetworkException {
 
-    public CentrifugoApiResponseException(final String message) {
-        super(message);
+    public CentrifugoApiResponseException(int responseCode, final String message) {
+        super(responseCode, message);
     }
 }
