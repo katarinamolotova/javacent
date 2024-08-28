@@ -41,6 +41,8 @@ centrifugo.api.handler.prefix=/api
 
 ## Usage example
 
+[//]: # (TODO: FIX CONFIGURETIONS)
+
 ```java
 import org.opensolutionlab.httpclients.clients.CentrifugoClient;
 

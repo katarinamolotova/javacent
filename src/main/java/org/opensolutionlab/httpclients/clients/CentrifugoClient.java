@@ -33,7 +33,7 @@ import org.opensolutionlab.httpclients.clients.interfaces.StatisticsCommand;
 import org.opensolutionlab.httpclients.clients.interfaces.TokenCommand;
 import org.opensolutionlab.httpclients.clients.interfaces.UserBlockCommand;
 import org.opensolutionlab.httpclients.clients.interfaces.UserStatusCommand;
-import org.opensolutionlab.httpclients.configurations.ConfigurationService;
+import org.opensolutionlab.httpclients.configurations.CentrifugoConfigurations;
 import org.opensolutionlab.httpclients.constants.CentrifugoApiUrl;
 import org.opensolutionlab.httpclients.exceptions.CentrifugoApiResponseException;
 import org.opensolutionlab.httpclients.exceptions.CentrifugoDecodeException;
@@ -114,11 +114,11 @@ public class CentrifugoClient
         implements BatchNotificationCommand, ConnectionManagementCommand, HistoryCommand, PushNotificationCommand,
         PresenceCommand, PublicationCommand, TokenCommand, StatisticsCommand, UserBlockCommand, UserStatusCommand
 {
-    private final ConfigurationService configurations;
     private final ObjectMapper mapper;
+    private final CentrifugoConfigurations configuration;
 
-    public CentrifugoClient() {
-        this.configurations = new ConfigurationService();
+    public CentrifugoClient(final CentrifugoConfigurations configuration) {
+        this.configuration = configuration;
         this.mapper = new ObjectMapper();
         mapper.configure(SerializationFeature.FAIL_ON_EMPTY_BEANS, false);
     }
@@ -610,15 +610,16 @@ public class CentrifugoClient
 
     private HttpPost getHttpPost(final RequestModel request, final String url) {
         final HttpPost httpPost = new HttpPost(
-                configurations.getCentrifugoApiUrl() +
-                configurations.getApiCommandUrl(url)
+                configuration.getApiUrl() +
+                configuration.getApiHandlerPrefix() +
+                url
         );
 
         try {
             final String json = mapper.writeValueAsString(request);
             final StringEntity entity = new StringEntity(json);
             httpPost.setEntity(entity);
-            httpPost.setHeader("X-API-Key", configurations.getCentrifugoApiKey());
+            httpPost.setHeader("X-API-Key", configuration.getApiKey());
             return httpPost;
         } catch (final JsonProcessingException e) {
             throw new CentrifugoDecodeException(e.getMessage());
