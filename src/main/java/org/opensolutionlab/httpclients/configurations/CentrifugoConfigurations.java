@@ -38,12 +38,16 @@ public class CentrifugoConfigurations {
         this.apiHandlerPrefix = apiHandlerPrefix;
     }
 
-    public static ConfigurationsBuilder builder() {
-        return new ConfigurationsBuilder();
-    }
-
     public String getApiUrl() {
         return this.apiUrl;
+    }
+
+    public String getFullUrl(final String url) {
+        return String.format("%s:%s%s%s", apiUrl, apiPort, apiHandlerPrefix, url);
+    }
+
+    public static ConfigurationsBuilder builder() {
+        return new ConfigurationsBuilder();
     }
 
     public String getApiPort() {

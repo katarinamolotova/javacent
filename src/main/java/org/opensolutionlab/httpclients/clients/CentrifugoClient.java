@@ -609,11 +609,7 @@ public class CentrifugoClient
     }
 
     private HttpPost getHttpPost(final RequestModel request, final String url) {
-        final HttpPost httpPost = new HttpPost(
-                configuration.getApiUrl() +
-                configuration.getApiHandlerPrefix() +
-                url
-        );
+        final HttpPost httpPost = new HttpPost(configuration.getFullUrl(url));
 
         try {
             final String json = mapper.writeValueAsString(request);
