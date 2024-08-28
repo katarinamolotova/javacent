@@ -1,6 +1,7 @@
 package org.opensolutionlab.httpclients;
 
 import org.opensolutionlab.httpclients.clients.CentrifugoClient;
+import org.opensolutionlab.httpclients.configurations.CentrifugoConfigurations;
 import org.opensolutionlab.httpclients.exceptions.CentrifugoApiResponseException;
 import org.opensolutionlab.httpclients.exceptions.CentrifugoTransportException;
 import org.opensolutionlab.httpclients.models.requests.EmptyRequest;
@@ -41,10 +42,19 @@ public class CentrifugoClientTest {
     private static final String DATA = "Hello World!";
     private static final String USER_ID = "1";
 
-    private final CentrifugoClient client = new CentrifugoClient();
+    private static CentrifugoClient client;
 
    @Container
    static GenericContainer<?> container = CentrifugoTestContainer.getTestContainer(PORT);
+
+    @BeforeAll
+    public static void init(){
+        final CentrifugoConfigurations configurations = CentrifugoConfigurations
+                .builder()
+                .apiKey("centrifugo")
+                .build();
+        client = new CentrifugoClient(configurations);
+    }
 
    @BeforeAll
    public static void startContainer() {

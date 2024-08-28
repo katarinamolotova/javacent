@@ -19,24 +19,24 @@ The library contains `CentrifugoClient` to work with Centrifugo HTTP server API.
 
 ## Configuration
 
-To configure the library, you need to create a file in the resources folder called `centrifugo.properties`.
+To configure the library, you need to create a configuration class `CentrifugoConfigurations`.
 
-Possible properties:
-* `centrifugo.api.key` - Centrifugo HTTP API key for auth (default is empty string)
-* `centrifugo.api.port` - Centrifugo port (defult is `8000`)
-* `centrifugo.api.url` - Centrifugo URL address without port (defult is `http://localhost`)
-* `centrifugo.api.insecure` - Centrifugo HTTP API is insecure. If it is true, `centrifugo.api.key` will be an empty string (default is `false`)
-* `centrifugo.api.handler.prefix` - Centrifugo HTTP API URL prefix (default is `/api`)
+Possible configurations:
+* `apiKey` - Centrifugo HTTP API key for auth (default is empty string)
+* `apiPort` - Centrifugo port (defult is `8000`)
+* `apiUrl` - Centrifugo URL address without port (defult is `http://localhost`)
+* `apiInsecure` - Centrifugo HTTP API is insecure. If it is true, `apiKey` will be an empty string (default is `false`)
+* `apiHandlerPrefix` - Centrifugo HTTP API URL prefix (default is `/api`)
 
+You can use a builder to create it. The fields that you do not specify will be filled with default values. For example:
 
-Properties example:
-
-```
-centrifugo.api.key=centrifugo
-centrifugo.api.url=http://localhost
-centrifugo.api.port=8000
-centrifugo.api.insecure=FALSE
-centrifugo.api.handler.prefix=/api
+```java
+CentrifugoConfigurations configurations = CentrifugoConfigurations
+        .builder()
+        .apiKey("centrifugo")
+        .apiUrl("http://localhost")
+        .apiPort("8000")
+        .build();
 ```
 
 ## Usage example
@@ -47,7 +47,11 @@ import org.opensolutionlab.httpclients.clients.CentrifugoClient;
 public class DemoApplication {
 
     public static void main(String[] args) {
-        CentrifugoClient client = new CentrifugoClient();
+        CentrifugoConfigurations configurations = CentrifugoConfigurations
+                .builder()
+                .apiKey("centrifugo")
+                .build();
+        CentrifugoClient client = new CentrifugoClient(configurations);
         client.publish("Hello World!", "channel");
     }
 
@@ -107,8 +111,19 @@ only for top-level response error, for example, sending empty list of channels i
 ```
 client.broadcast(Arrays.emptyList(), "");
 
-org.opensolutionlab.httpclients.exceptions.CentrifugoApiResponseException: bad request
+org.opensolutionlab.httpclients.exceptions.CentrifugoApiResponseException: Server API response error #107: bad request
     ...
+```
+
+You can get the error code from all network exceptions for analysis:
+
+```
+try {
+    ...
+} catch (CentrifugoNetworkException ex) {
+    int code = ex.getResponseCode();
+    ...
+}
 ```
 
 So this all adds some complexity, but that's the trade-off for the performance and efficiency of these two methods. 
